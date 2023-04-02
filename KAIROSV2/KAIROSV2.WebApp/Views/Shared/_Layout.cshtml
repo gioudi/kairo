@@ -1,0 +1,140 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using KAIROSV2.Business.Entities
+@inject SignInManager<TUUsuario> SignInManager
+@inject UserManager<TUUsuario> UserManager
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=0, initial-scale=1.0,maximun-scale=1.0, minimal-ui">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <title>@ViewData["Title"] - KAIROSV2.WebApp</title>
+    <link rel="apple-touch-icon" href="~/images/favicon/KAIROS_circulo_32x32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon/KAIROS_circulo_153x153.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/dist/css/packages.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/select2/select2-materialize.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/fuente_neo.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/data-tables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/materialize-stepper/materialize-stepper.min.css" />
+    <!-- END: CSS-->
+    <!-- BEGIN: SCRIPT-->
+    <script src="~/js/vendors.min.js" asp-append-version="true" defer></script>
+    <script src="~/js/plugins.js" asp-append-version="true" defer></script>
+    <script src="~/js/search.js" asp-append-version="true" defer></script>
+    <script src="~/dist/js/pages/packages.js" asp-append-version="true" defer></script>
+    <script src="~/dist/js/pages/app.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
+    <script src="~/lib/materialize-stepper/materialize-stepper.min.js"></script></script>
+    <!-- END: SCRIPT-->
+
+</head>
+
+<body id="body-html">
+
+    @if (IsSectionDefined("NoNavBar_Nosidenav"))
+    {
+        @RenderSection("NoNavBar_Nosidenav", false)
+    }
+    else
+    {
+        var user = await UserManager.GetUserAsync(User);
+        var imgsrc = "";
+        @if (user?.TUUsuarioImagen?.Imagen != null)
+        {
+            var base64 = Convert.ToBase64String(user.TUUsuarioImagen.Imagen);
+            imgsrc = string.Format("data:image/png;base64,{0}", base64);
+        }
+        else
+        {
+            imgsrc = "/images/avatar/account_circle-black-48dp.svg";
+        }
+        <!-- BEGIN: Header-->
+        <header class="page-topbar custom-contentheader" id="header">
+            <div class="navbar custom-navbarkairos navbar-fixed">
+                <nav class="navbar-main custom-navbarmain-kairos  nav-collapsible sideNav-lock navbar-dark  ">
+                    <div class="nav-wrapper custom-nav-wrapper">
+                        @*<div class="header-search-wrapper hide-on-med-and-down">
+                                <i class="material-icons">search</i>
+                                <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Explorar" data-search="template-list">
+                                <ul class="search-list collection display-none"></ul>
+                            </div>*@
+                        <ul class="navbar-list right">
+                            <li><a class="chip custom-chip"><i class=" custom-fa far fa-user-circle"></i>@user?.Nombre</a></li>
+                            <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light custom-toogle-fullscreen toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
+                            @*<li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>*@
+                            <li><a class="waves-effect waves-block  custom-logout waves-light" asp-controller="Account" asp-action="Logout"><i class="material-icons">power_settings_new</i></a></li>
+                        </ul>
+                    </div>
+                    <nav class="display-none search-sm">
+                        <div class="nav-wrapper">
+                            <form id="navbarForm">
+                                <div class="input-field search-input-sm">
+                                    @*<input class="search-box-sm mb-0" type="search" required="" id="search" placeholder="Explorar" data-search="template-list">*@
+                                    <label class="label-icon" for="search"><i class="material-icons search-sm-icon">search</i></label><i class="material-icons search-sm-close">close</i>
+                                    <ul class="search-list collection search-list-sm display-none"></ul>
+                                </div>
+                            </form>
+                        </div>
+                    </nav>
+                </nav>
+            </div>
+        </header>
+        <!-- END: Header-->
+
+        <!-- BEGIN: Search-->
+        @*<ul class="display-none" id="page-search-title">
+                <li class="auto-suggestion-title">
+                    <a class="collection-item" href="#">
+                        <h6 class="search-title">RESULTADOS:</h6>
+                    </a>
+                </li>
+            </ul>
+            <ul class="display-none" id="search-not-found">
+                <li class="auto-suggestion"><a class="collection-item display-flex align-items-center" href="#"><span class="material-icons">error_outline</span><span class="member-info">No se encontraron resultados</span></a></li>
+            </ul>*@
+        <!-- END: Search-->
+
+        <!-- BEGIN: SideNav-->
+        <div id="sidenav-bar" data-turbolinks-permanent>
+            @await Component.InvokeAsync("SideNavBar")
+        </div>
+        <!-- END: SideNav-->
+    }
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- BEGIN: Footer-->
+    @*<footer class="page-footer footer footer-static footer-dark gradient-45deg-amber-amber gradient-shadow navbar-border navbar-shadow">
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; 2020 - KairosII_Prueba - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </div>
+        </footer> *@
+    <!-- END: Footer-->
+
+
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

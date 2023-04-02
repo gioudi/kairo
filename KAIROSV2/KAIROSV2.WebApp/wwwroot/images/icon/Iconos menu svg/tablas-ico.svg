@@ -1,0 +1,24 @@
+<svg id="Componente_28_1" data-name="Componente 28 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="20.8" viewBox="0 0 24 20.8">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff6b39"/>
+      <stop offset="1" stop-color="#ffb81c"/>
+    </linearGradient>
+  </defs>
+  <g id="Grupo_224" data-name="Grupo 224" transform="translate(0.4 5.2)">
+    <path id="Trazado_2907" data-name="Trazado 2907" d="M30.134,145.067h-20a1.6,1.6,0,0,0-1.6,1.6v12a1.6,1.6,0,0,0,1.6,1.6h20a1.6,1.6,0,0,0,1.6-1.6v-12A1.6,1.6,0,0,0,30.134,145.067Zm-6,12.8h-8v-4h1.6v4h1.6v-7.2h1.6v7.2h1.6v-10.4h1.6v10.4Z" transform="translate(-8.534 -145.067)" fill="#fff"/>
+    <rect id="Rectángulo_57" data-name="Rectángulo 57" width="1.6" height="10.4" transform="translate(14 2.4)" fill="#fff"/>
+  </g>
+  <path id="Trazado_2908" data-name="Trazado 2908" d="M30.134,45.068H20.99a1.6,1.6,0,0,1-1.332-.712l-.648-.976a1.6,1.6,0,0,0-1.332-.712H10.134a1.6,1.6,0,0,0-1.6,1.6v4.8a1.6,1.6,0,0,1,1.6-1.6h20a1.6,1.6,0,0,1,1.6,1.6v-2.4A1.6,1.6,0,0,0,30.134,45.068Z" transform="translate(-8.134 -42.268)" fill="#fff"/>
+  <g id="Grupo_225" data-name="Grupo 225" transform="translate(8 7.8)">
+    <rect id="Rectángulo_58" data-name="Rectángulo 58" width="1.6" height="7.2" transform="translate(3.2 3)" fill="url(#linear-gradient)"/>
+    <rect id="Rectángulo_59" data-name="Rectángulo 59" width="1.6" height="4" transform="translate(0 6.2)" fill="url(#linear-gradient)"/>
+    <rect id="Rectángulo_60" data-name="Rectángulo 60" width="1.6" height="7.2" transform="translate(3.2 3)" fill="url(#linear-gradient)"/>
+    <rect id="Rectángulo_61" data-name="Rectángulo 61" width="1.6" height="7.2" transform="translate(6.2 3)" fill="url(#linear-gradient)"/>
+    <rect id="Rectángulo_62" data-name="Rectángulo 62" width="1.6" height="10.2" transform="translate(6.2 0)" fill="url(#linear-gradient)"/>
+  </g>
+  <g id="Grupo_226" data-name="Grupo 226">
+    <path id="Trazado_2909" data-name="Trazado 2909" d="M22,36.533H12.856a1.2,1.2,0,0,1-1-.533l-.647-.977a2,2,0,0,0-1.665-.89H2a2,2,0,0,0-2,2v16.8a2,2,0,0,0,2,2H22a2,2,0,0,0,2-2v-14.4A2,2,0,0,0,22,36.533Zm-21.2-.4a1.2,1.2,0,0,1,1.2-1.2H9.544a1.2,1.2,0,0,1,1,.533l.648.976a2,2,0,0,0,1.664.89H22a1.2,1.2,0,0,1,1.2,1.2v.8c-.015-.011-.033-.02-.049-.031-.033-.024-.068-.044-.1-.066a1.949,1.949,0,0,0-.209-.113c-.04-.018-.078-.036-.12-.051A2.05,2.05,0,0,0,22.482,39c-.038-.009-.074-.021-.112-.028A2.007,2.007,0,0,0,22,38.933H2a1.989,1.989,0,0,0-.371.038c-.04.007-.075.019-.112.028a2.055,2.055,0,0,0-.238.074c-.04.016-.08.033-.12.051a1.946,1.946,0,0,0-.209.113c-.035.022-.07.042-.1.066-.016.011-.034.02-.049.031Zm22.4,16.8a1.2,1.2,0,0,1-1.2,1.2H2a1.2,1.2,0,0,1-1.2-1.2v-12a1.2,1.2,0,0,1,1.2-1.2H22a1.2,1.2,0,0,1,1.2,1.2v12Z" transform="translate(0 -34.133)" fill="#707070"/>
+    <path id="Trazado_2910" data-name="Trazado 2910" d="M147.335,198.134h-.8v-10a.4.4,0,0,0-.4-.4h-1.6a.4.4,0,0,0-.4.4v10h-.8v-6.8a.4.4,0,0,0-.4-.4h-1.6a.4.4,0,0,0-.4.4v6.8h-.8v-3.6a.4.4,0,0,0-.4-.4h-1.6a.4.4,0,0,0-.4.4v3.6h-.8a.4.4,0,0,0,0,.8h10.4a.4.4,0,1,0,0-.8Zm-2.4-9.6h.8v9.6h-.8Zm-6.4,9.6v-3.2h.8v3.2Zm3.2,0v-6.4h.8v6.4Z" transform="translate(-130.135 -180.534)" fill="#707070"/>
+  </g>
+</svg>

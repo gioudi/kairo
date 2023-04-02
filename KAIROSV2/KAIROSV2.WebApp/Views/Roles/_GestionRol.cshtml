@@ -1,0 +1,77 @@
+﻿@model GestionRolViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="rol-form" novalidate>
+    <div id="rol-modalcontent" class="modal-content">
+        <fieldset disabled="@(Model.Lectura ? "disabled" : null)">
+            @if (!Model.Lectura)
+            {
+                <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                       value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+            }
+            <div class="section row equal-col">
+
+                <!--Header-->
+                <div class="col s12">
+                    <h4>@Model.Titulo</h4>
+                    <div class="divider"></div><br />
+                </div>
+
+                <!--Id rol-->
+                <div class="col s12 m6 input-field">
+                    <i class="material-icons prefix">label</i>
+                    <input id="rol-id" type="text" class="validate" asp-for="@Model.IdRol" name="IdRol" disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disabled" : null)">
+                    <label class="active" for="rol-id">Id *</label>
+                    <small><span class="red-text" asp-validation-for="@Model.IdRol"></span></small>
+                </div>
+
+                <!--Nombre rol-->
+                <div class="col s12 m6 input-field">
+                    <i class="material-icons prefix">assignment_turned_in</i>
+                    <input id="rol-name" data-val="true" class="validate" asp-for="@Model.Nombre" data-val-notequal="No se permite igual al Id" value="@Model.Nombre" name="Nombre" data-val-notequal-IdinputTocompare="rol-id">
+                    <label class="active" for="rol-name">Nombre *</label>
+                    <small><span class="red-text" asp-validation-for="@Model.Nombre"></span></small>
+                </div>
+
+                <!--Descripción rol-->
+                <div class="col s12 m12 input-field">
+                    <i class="material-icons prefix">comment</i>
+                    <textarea id="rol-descripcion" class="validate materialize-textarea" asp-for="@Model.Descripcion" name="Descripcion" data-length="120"></textarea>
+                    <label class="active" for="rol-descripcion">Descripción *</label>
+                    <small><span class="red-text" asp-validation-for="@Model.Descripcion"></span></small>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <ul class="collapsible rol">
+                    <li>
+                        <div id="rol-collapsible" class="collapsible-header"><i class="material-icons">playlist_add_check</i>Jerarquía de Permisos</div>
+                        <div class="collapsible-body">
+                            <ul id="rol-permisos">
+                                <li>
+                                    <label>
+                                        <input type="hidden" asp-for="@Model.Permisos.IdPermiso" />
+                                        <input type="hidden" asp-for="@Model.Permisos.Nombre" />
+                                        <input type="hidden" asp-for="@Model.Permisos.IdEntidadPadre" />
+                                        <input type="checkbox" asp-for="@Model.Permisos.Habilitada" checked="@Model.Permisos.Habilitada" />
+                                        <span>@Model.Permisos.Nombre</span>
+                                    </label>
+                                    @await Html.PartialAsync("_PermisosRol", Model.Permisos, "Permisos")
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="rol-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+</form>

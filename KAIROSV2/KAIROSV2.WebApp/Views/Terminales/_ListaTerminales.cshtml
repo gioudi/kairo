@@ -1,0 +1,43 @@
+﻿@model ListViewModel<TTerminal>
+
+<div id="kanba" class="row">
+    @foreach (var terminal in Model.Entidades)
+    {
+        <div id="@terminal.IdTerminal" class="col s12 m6 l4" data-turbolinks="false">
+            <div id="profile-card" class="card animate fadeRight ">
+                <div class="card-image waves-effect waves-block waves-light" style="background: lightgrey;">
+                    @*<img src="~/images/gallery/shutterstock_1106084129.jpg" alt="user bg">*@
+                </div>
+                    <div class="card-content">
+                        <a class="btn-floating activator btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" style="background-color:#FF6900">
+                            <i class="material-icons">remove_red_eye</i>
+                        </a>
+                        <a class="btn-floating btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Editar ? "" : "disable-action")" style="background-color: #1E22AA" data-turbolinks="false">
+                            <i class="material-icons terminal-action terminal-edit" data-terminalid="@terminal.IdTerminal" data-terminalname="@terminal.Terminal">edit</i>
+                        </a>
+                        <a class="btn-floating btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" style="background-color: #707070" data-turbolinks="false">
+                            <i class="material-icons terminal-action terminal-delete" data-terminalid="@terminal.IdTerminal" data-terminalname="@terminal.Terminal">delete</i>
+                        </a>
+                        <p class="level-one"><i class="material-icons profile-card-i" style="color:#FF6900">business</i> @terminal.Terminal </p>
+                        <p><i class="material-icons profile-card-i" style="color:#FF6900">label</i> ID: @terminal.IdTerminal </p>
+                        <p><i class="material-icons profile-card-i" style="color:@terminal.IdEstadoNavigation.ColorHex">@terminal.IdEstadoNavigation.Icono</i> @terminal.IdEstadoNavigation.Descripcion </p>
+                        <p><i class="material-icons profile-card-i" style="color:#FF6900">select_all</i> Área: @terminal.IdAreaNavigation.Area </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4 level-one">
+                            @terminal.Terminal <i class="material-icons right">close</i>
+                        </span>
+                        <p>Estado: <b>@terminal.IdEstadoNavigation.Descripcion</b></p>
+                        <p>Área: <b>@terminal.IdAreaNavigation.Area</b></p>
+                        <p>Superintendente: <b>@terminal.Superintendente</b></p>
+                        <p>Dirección: <b>@terminal.Direccion</b></p>
+                        <p>teléfono: <b>@terminal.Telefono</b></p>
+                        <p>Conjunta: <b>@terminal.Conjunta</b></p>
+                        <p>Centro de Costo: <b>@terminal.CentroCosto</b></p>
+                        <p></p>
+                    </div>
+            </div>
+        </div>
+    }
+
+</div>

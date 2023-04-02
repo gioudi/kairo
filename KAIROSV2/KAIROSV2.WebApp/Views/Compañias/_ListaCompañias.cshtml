@@ -1,0 +1,39 @@
+﻿@model ListViewModel<TCompañia>
+
+<div id="kanba" class="row">
+    @foreach (var compañia in Model.Entidades)
+    {
+        <div id="@compañia.IdCompañia" class="col s12 m6 l4">
+            <div id="profile-card" class="card animate fadeRight" data-turbolinks="false">
+                <div class="card-image waves-effect waves-block waves-light" style="background:lightgrey;">
+                    @*<img src="~/images/gallery/shutterstock_1106084129.jpg" alt="user bg">*@
+                </div>
+                <div class="card-content">
+                    <a class="btn-floating activator btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" style="background-color:#FF6900">
+                        <i class="material-icons compañia-action compañia-detail" data-compañiaid="@compañia.IdCompañia" data-compañianame="@compañia.Nombre">visibility</i>
+                    </a>
+                    <a class="btn-floating btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Editar ? "" : "disable-action")" style="background-color:#1E22AA">
+                        <i class="material-icons compañia-action compañia-edit" data-compañiaid="@compañia.IdCompañia" data-compañianame="@compañia.Nombre">edit</i>
+                    </a>
+                    <a class="btn-floating btn-move-up waves-effect waves-light accent-2 z-depth-4 right @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" style="background-color:#707070">
+                        <i class="material-icons compañia-action compañia-delete" data-compañiaid="@compañia.IdCompañia" data-compañianame="@compañia.Nombre">delete</i>
+                    </a>
+                    <p><i class="material-icons profile-card-i" style="color:#FF6900">apps</i> @compañia.Nombre</p>
+                    <p><i class="material-icons profile-card-i" style="color:#FF6900">select_all</i> ID: @compañia.CodigoSicom</p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        @compañia.Nombre <i class="material-icons right">close</i>
+                    </span>
+                    <p>Id: <b>@compañia.IdCompañia</b></p>
+                    <p>Sales Organization: <b>@compañia.SalesOrganization</b></p>
+                    <p>Distribution Channel: <b>@compañia.DistributionChannel</b></p>
+                    <p>Division: <b>@compañia.Division</b></p>
+                    <p>Supplier Type: <b>@compañia.SupplierType</b></p>
+                    <p>SICOM: <b>@compañia.CodigoSicom</b></p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

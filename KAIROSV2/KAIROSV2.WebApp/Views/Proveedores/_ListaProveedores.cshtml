@@ -1,0 +1,33 @@
+﻿@model ListViewModel<TProveedor>
+
+<div id="button-trigger" class="card small-card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-proveedor" class="display" style="width:100%;white-space:nowrap">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var proveedor in Model.Entidades)
+                {
+                    <tr id="@proveedor.IdProveedor">
+                        <td>@proveedor.IdProveedor</td>
+                        <td>@proveedor.NombreProveedor</td>
+                        <td>@proveedor.SicomProveedor</td>
+                        <td>
+                            <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons proveedor-action proveedor-edit" data-proveedorid="@proveedor.IdProveedor">edit</i></a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons proveedor-action proveedor-delete" data-proveedorid="@proveedor.IdProveedor">delete</i></a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons proveedor-action proveedor-detail" data-proveedorid="@proveedor.IdProveedor">remove_red_eye</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

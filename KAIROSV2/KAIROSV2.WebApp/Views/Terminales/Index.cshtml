@@ -1,0 +1,77 @@
+﻿@model ListViewModel<TTerminal>
+
+@{
+    ViewData["Title"] = "Terminales";
+}
+
+<div id="main">
+    <div id="teminales">
+        <div class="row">
+            <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+            <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+                <!-- Titulo de la ventana -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Terminales</span></h5>
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item">
+                                    <a>Kairos</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Configuración</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Lista Terminales
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin del titulo de la ventana -->
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <!-- Botón para agregar una nueva área -->
+                    <div class="contact-overlay"></div>
+                    <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")" data-turbolinks="false">
+                        <a id="terminal-add" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point" data-turbolinks="false">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                    <!-- Inicio del área de contenido -->
+                    <div class="content-terminal">
+                        <div class="app-wrapper">
+                            @await Html.PartialAsync("_ListaTerminales")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="terminal-modal" class="modal modal-fixed-footer" style="width:75% !important; height: 80% !important"></div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" type="text/css" href="~/css/pages/terminales.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/imoglay/imoglay.min.css" />
+    <script src="~/lib/imoglay/imoglay.min.js" asp-append-version="true"></script>
+    <script type="module" src="~/dist/js/pages/terminales.js" asp-append-version="true"></script>
+
+    <script language="javascript">       
+
+        function eliminarVigencia(objeto, lectura) {
+            if (lectura == "disabled") return
+
+            @*let componentes = document.getElementsByClassName('ppm-' + indiceReceta);
+            if (componentes.length == 1) {
+                M.toast({ html: 'Una receta debe tener minimo un componente', classes: "error" });
+                return;
+            }*@
+            objeto.closest("tr").remove();
+        };
+
+    </script>
+}
+

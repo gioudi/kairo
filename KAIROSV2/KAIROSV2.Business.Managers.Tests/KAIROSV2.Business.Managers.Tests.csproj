@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.0-preview-20210106-01" />
+    <PackageReference Include="Moq" Version="4.16.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.0-preview-20210115-03" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.0-preview-20210115-03" />
+    <PackageReference Include="coverlet.collector" Version="3.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KAIROSV2.Business.Contracts\KAIROSV2.Business.Contracts.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Entities\KAIROSV2.Business.Entities.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Managers\KAIROSV2.Business.Managers.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Data.Contracts\KAIROSV2.Data.Contracts.csproj" />
+    <ProjectReference Include="..\KAIROSV2.WebApp.Tests\KAIROSV2.WebApp.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LightCore.Common">
+      <HintPath>..\Libs\LightCore.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

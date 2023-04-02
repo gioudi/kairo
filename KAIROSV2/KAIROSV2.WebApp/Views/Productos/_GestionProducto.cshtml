@@ -1,0 +1,266 @@
+﻿@model GestionProductosViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="user-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <b><h5>@Model.Titulo</h5></b>
+            </div>
+
+            <div class="row col s12">
+                <div class="col s12">
+                    <ul class="tabs ulgu">
+                        <li class="tab col s6"><a class="active" href="#tab-producto">Productos</a></li>
+                        <li class="tab col s6 disabled" id="recetas-list"><a href="#tab-recetas">Recetas</a></li>
+                    </ul>
+                </div>
+                <div id="tab-producto" class="col s12" style="margin-top: 20px;">
+                    <!--Imagen-->
+                    <div class="col row s5 m2 pr-0">
+                        <div class="s12">
+                            <i class="material-icons" style="margin: 0; font-size:9vw", color: red>@Model.Icono</i>
+                        </div>
+                    </div>
+
+                    <div class="row col s10">
+                        <div class="row col s12" style="padding: 0 !important;">
+                            <!--Codigo Producto-->
+                            <div class="col s12 m6 input-field">
+                                <input id="codigo" type="text" class="" value="@Model.IdProducto" asp-for="IdProducto" name="IdProducto"
+                                       disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disabled" : null)">
+                                <label class="active" for="IdProducto">Código Producto *</label>
+                                <small><span class="red-text" asp-validation-for="IdProducto"></span></small>
+                            </div>
+                            <!--SICOM producto-->
+                            <div class="col s12 m6 input-field">
+                                <input id="sicom" type="number" class="" value="@Model.Sicom" asp-for="Sicom" name="Sicom" min="0"
+                                       readonly="@(Model.Lectura ? "disabled" : null)"
+                                       onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                                <label class="active" for="Sicom">SICOM *</label>
+                                <small><span class="red-text" asp-validation-for="Sicom"></span></small>
+                            </div>
+                        </div>
+                        <div class="row col s12" style="padding: 0 !important;">
+                            <!--Nombre ERP-->
+                            <div class="col s12 m6 input-field">
+                                <input id="nombre-erp" type="tel" class="" value="@Model.NombreErp" asp-for="NombreErp" name="NombreErp"
+                                       readonly="@(Model.Lectura ? "disabled" : null)">
+                                <label class="active" for="NombreERP">Nombre ERP *</label>
+                                <small><span class="red-text" asp-validation-for="NombreErp"></span></small>
+                            </div>
+                            <!--Nombre Corto-->
+                            <div class="col s12 m6 input-field">
+                                <input id="nombre-corto" type="tel" class="" value="@Model.NombreCorto" asp-for="NombreCorto" name="NombreCorto"
+                                       readonly="@(Model.Lectura ? "disabled" : null)">
+                                <label class="active" for="NombreCorto">Nombre Corto *</label>
+                                <small><span class="red-text" asp-validation-for="NombreCorto"></span></small>
+                            </div>
+                        </div>
+                        <div class="row col s12" style="padding: 0 !important; margin-top: 10px;">
+                            <!--Tipo-->
+                            <div class="col s12 m6  input-field">
+                                <select id="selectFactores" class="" asp-for="@Model.IdTipo" name="IdTipo" asp-items="@Model.TipoProducto"
+                                        disabled="@(Model.Lectura ? "disabled" : null)">
+                                    <option value="" selected disabled>Seleccionar tipo</option>
+                                </select>
+                                <label class="active" style="top: 0;" for="IdTipo">Tipo *</label>
+                                <small><span class="red-text" asp-validation-for="IdTipo"></span></small>
+                            </div>
+                            <!--Clase-->
+                            <div class="col s12 m6  input-field">
+                                <select id="selectClase" asp-for="@Model.IdClase" name="IdClase" asp-items="@Model.ClaseProducto"
+                                        disabled="@(Model.Lectura ? "disabled" : null)">
+                                    <option value="" selected disabled>Seleccionar clase</option>
+                                </select>
+                                <label class="active" style="top: 0;" for="terminal-estado">Clase *</label>
+                                <small><span class="red-text" asp-validation-for="IdClase"></span></small>
+                            </div>
+                        </div>
+                            
+                            
+                            
+                            <!--Tabla Factores de Correccion-->
+                            <div class="col s12 m6 input-field">
+                                <select class="select2 browser-default" asp-for="@Model.TablaCorreccion" asp-items="@Model.TablasCorreccion"
+                                        disabled="@(Model.Lectura ? "disabled" : null)">
+                                    <option value="" selected disabled>Seleccionar tabla</option>
+                                </select>
+                                <label style="top: 0;" class="active" asp-for="TablaCorreccion">Tabla correción *</label>
+                            </div>
+                            <!--Estado-->
+                            <div class="col s12 m6 l3 input-field" style="margin-top: 40px">
+                                <div class="display-flex justify-content-between pb-2">
+                                    <span>Estado</span>
+                                    <div class="switch">
+                                        <label>
+                                            <input id="switch" type="checkbox" asp-for="@Model.Estado" name="Estado" checked="@Model.Estado"
+                                                   disabled="@(Model.Lectura ? "disabled" : null)">
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s2">
+
+                            </div>
+                            <!--Es Aditivado-->
+                            <div class="col s10 input-field">
+                                <div class="display-flex">
+                                    <span>Es Aditivado</span>
+                                    <div class="switch">
+                                        <label>
+                                            <input id="aditivo" type="checkbox" asp-for="@Model.EsAditivado" name="EsAditivado"
+                                                   checked="@Model.EsAditivado" disabled="@(Model.Lectura ? "disabled" : null)">
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s2">
+
+                            </div>
+                            <!--Es Aditivación-->
+                            <div class="col s10 input-field" id="switchiden" style="display: none">
+                                <div class="display-flex">
+                                    <span>Aditivación después del medidor del producto base</span>
+                                    <div class="switch">
+                                        <label>
+                                            <input id="adtitivacion" type="checkbox" asp-for="@Model.AditivadoDespues" name="AditivadoDespues"
+                                                   checked="@Model.AditivadoDespues" disabled="@(Model.Lectura ? "disabled" : null)">
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- INICIO DEL TAB 2 SECCION DE RECETAS-->
+                <div id="tab-recetas" class="col s12" style="margin-top: 20px;">
+                    <div id="recetas-container" class="col s12 algui">
+                        <div style="text-align: end">
+                            <a id="recetAdd" class="btn-floating waves-effect waves-light blue accent-2" 
+                               style="text-align: center; margin-top: 10px; height: 30px; width: 30px;" disabled="@(Model.Lectura ? "disabled" : null)">
+                                <i class="material-icons" style="font-size: 20px; display: flex; margin: -5px 0px 0px 5px">add</i>
+                            </a>
+                        </div>
+                        @if (Model.Recetas.Count > 0)
+                        {
+                            @for (var r = 0; r < Model.Recetas.Count; r++)
+                            {
+                                <div class="section receta" id="receta-@r" style="width: 80%; margin: 0 auto">
+                                    <ul class="collapsible">
+                                        <li>
+                                            <div class="collapsible-header" style="color: black; align-items: center;">
+                                                <input type="hidden" name="Recetas.Index" value="@r" />
+                                                <input type="hidden" asp-for="@Model.Recetas[r].IdRecetaCurrent" />
+                                                <input asp-for="@Model.Recetas[r].IdReceta" placeholder="Nombre Receta" class="receta-name" readonly="@(Model.Accion == "Actualizar" || Model.Lectura ? "readonly" : null)"/>
+                                                <div style="margin-left: auto;">
+                                                    <a class="btn-floating waves-effect waves-light red accent-2" style=" text-align: center;" disabled="@(Model.Lectura ? "disabled" : null)">
+                                                        <i class="material-icons receta-action receta-delete" data-recetaid="receta-@r" style="margin: 0;">delete</i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-body" style="background-color: white">
+                                                <div style="text-align: end; margin-top: -25px">
+                                                    <a class="btn-floating waves-effect waves-light blue accent-2" 
+                                                       style="text-align: center; margin-top: 10px; height: 30px; width: 30px;" disabled="@(Model.Lectura ? "disabled" : null)">
+                                                        <i class="material-icons receta-action receta-add" data-recetaid="@r" style="font-size: 20px; display: flex; margin: -5px 0px 0px 5px">add</i>
+                                                    </a>
+                                                </div>
+                                                <div class="section row equal-col">
+                                                    <div class="row" style="margin-right: auto; margin-left: auto; width: 90%;">
+                                                        <div class="col s12 m12 l12">
+                                                            <div id="responsive-table" class="card card card-default scrollspy">
+                                                                <div class="card-content">
+                                                                    <p class="mb-2">
+                                                                        Composición
+                                                                    </p>
+                                                                    <div class="row">
+                                                                        <div class="col s12">
+                                                                            <table id="data-table-receta-@r" class="Highlight">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Producto</th>
+                                                                                        <th>Tipo</th>
+                                                                                        <th>Cantidad PPM</th>
+                                                                                        <th>Porcentaje</th>
+                                                                                        <th>Acción</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @if (Model.Recetas[r]?.Componentes?.Count > 0)
+                                                                                    {
+                                                                                        @for (var c = 0; c < Model.Recetas[r].Componentes.Count; c++)
+                                                                                        {
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <input type="hidden" name="Recetas[@r].Componentes.Index" value="@c" />
+                                                                                                    <select class="clases-options" id="@("sr"+r+"0")" asp-for="@Model.Recetas[r].Componentes[c].IdComponente" asp-items="@Model.ProductosComponentes">
+                                                                                                        <option value="" selected disabled>Seleccionar producto</option>
+                                                                                                    </select>
+                                                                                                </td>
+                                                                                                <td class="clase-prod">@Model.Recetas[r].Componentes[c].Tipo</td>
+                                                                                                <td><input id="cod" type="text" class="ppm-@r" asp-for="@Model.Recetas[r].Componentes[c].ProporcionComponente" value="@Model.Recetas[r].Componentes[c].ProporcionComponente"/></td>
+                                                                                                <td class="porcent">@Model.Recetas[r].Componentes[c].Porcentaje</td>
+                                                                                                <td><a class="cursor-point" disabled="@(Model.Lectura ? "disabled" : null)"><i class="material-icons componente-delete" onclick="eliminarComponente(this, @r, @Model.Lectura)">delete</i></a></td>
+                                                                                            </tr>
+                                                                                        }
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="width: 100%">
+                                                    <div class="col s6"> </div>
+                                                    <div class="col s4">
+                                                        <p class="total-@r">Total: </p>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <p class="total-@r">Total: </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="user-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+
+    </div>
+
+</form>

@@ -1,0 +1,46 @@
+﻿@model ListViewModel<TProducto>
+
+<div id="button-trigger" class="card card card-default scrollspy  custom-cotent-dataTable border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-producto" class="display custom-datacontent-kairos" style="width:100% ; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    { 
+                        <th>@cabecera</th>
+                    }     
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in Model.Entidades)
+                {
+                <tr id="@producto.IdProducto">
+                    <td class="aling-center"><i class="material-icons" style="color: @producto.IdClaseNavigation?.Color">@producto.IdClaseNavigation?.Icono</i></td>
+                    <td>@producto.IdProducto</td>
+                    <td>@producto.NombreCorto</td>
+                    <td class="aling-center">
+                        @if (@producto.Estado == "1")
+                        {
+                            <span class="chip lighten-5 green green-text">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="chip lighten-5 red red-text">Inactivo</span>
+                        }
+                        
+                    </td>
+                    <td>@producto.IdTipoNavigation?.Descripcion</td>
+                    <td>@producto.IdClaseNavigation?.Descripcion</td>
+                    <td>@producto.Sicom</td>
+                    <td>
+                        <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons producto-action producto-edit" data-productoid="@producto.IdProducto">edit</i></a>
+                        <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons producto-action producto-delete" data-productoid="@producto.IdProducto">delete</i></a>
+                        <a class="cursor-point @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons producto-action producto-detail" data-productoid="@producto.IdProducto">remove_red_eye</i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

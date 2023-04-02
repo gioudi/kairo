@@ -1,0 +1,51 @@
+﻿@model GestionAreaViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="area-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+        @*<fieldset class="modal-content">*@
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <h4>@Model.Titulo</h4>
+                <div class="divider"></div><br />
+            </div>
+
+            <!--Id área-->
+            <div class="col s12 input-field">
+                <i class="material-icons prefix" style="color:#FF6900">label</i>
+                <input id="area-id" type="text" class="validate" value="@Model.IdArea" asp-for="IdArea" name="IdArea" readonly="@(Model.Accion == "Actualizar" || Model.Lectura ? "readonly" : null)">
+                <label class="active" for="area-id">Id</label>
+                <small><span class="red-text" asp-validation-for="IdArea"></span></small>
+            </div>
+
+            <!--Nombre área-->
+            <div class="col s12 input-field">
+                <i class="material-icons prefix" style="color:#FF6900">assignment_turned_in</i>
+                <input id="area-name" type="text" class="validate" value="@Model.Area" asp-for="Area" name="Area">
+                <label class="active" for="area-name">Nombre</label>
+                <small><span class="red-text" asp-validation-for="Area"></span></small>
+            </div>
+
+        </div>
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="area-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

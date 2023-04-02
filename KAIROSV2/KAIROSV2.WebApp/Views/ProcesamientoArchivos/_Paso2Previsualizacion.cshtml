@@ -1,0 +1,105 @@
+﻿@model MapeoArchivoPrevisualizacion
+
+@if ((bool)ViewData["Result"])
+{
+    <div>
+        <h5 class="blue-text text-lighten-1">Previsualización de datos</h5>
+
+        <div class="row">
+            <div class="col s12">
+                <div id="chips-styles" class="card card-default">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <h4 class="card-title">Columnas</h4>
+                            </div>
+                            <div class="col s12">
+                                <div class="section">
+                                    @foreach (var cabecera in Model.ColumnasArchivo)
+                                    {
+                                        <div class="chip cyan white-text z-depth-4">
+                                            @cabecera
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+            <div id="container-table-step2" class="card-content p-0">
+                <h4 class="card-title ml-2 mb-0">Muestra datos</h4>
+                <table id="table-step2" class="display responsive" style="width:100%">
+                    <thead>
+                        <tr>
+                            @foreach (var cabecera in Model.ColumnasArchivo)
+                            {
+                                <th>@cabecera</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var fila in Model.MuestraDatosArchivo)
+                        {
+                            @if (Model.ColumnasArchivo.Count == fila.Count)
+                            {
+                                <tr>
+                                    @foreach (var celda in fila)
+                                    {
+                                        <td>
+                                            @celda
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="step-actions">
+        <div>
+            <button id="step2-next" class="btn btn-flat purple-text waves-effect waves-light btn-next btn next-step">
+                <span class="hide-on-small-only">Siguiente</span> <i class="material-icons">navigate_next</i>
+            </button>
+        </div>
+        <div>
+            <button class="middle-indicator-text btn btn-flat red-text waves-effect waves-light close" type="button">
+                <span class="hide-on-small-only">Cerrar</span>
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-flat purple-text waves-effect waves-light btn-prev previous-step" type="button">
+                <i class="material-icons">navigate_before</i> <span class="hide-on-small-only">Anterior</span>
+            </button>
+        </div>
+    </div>
+
+}
+else
+{
+    <!--Header-->
+    <div class="col s12">
+        <h4>Error archivo</h4>
+        <div class="divider"></div><br />
+    </div>
+
+    <div class="col s12">
+        <h6 class="center-align">@ViewData["Message"]</h6>
+    </div>
+
+    <div class="step-actions">
+        <div class="right">
+            <button class="middle-indicator-text btn btn-flat purple-text waves-effect waves-light btn-prev previous-step" type="button">
+                <i class="material-icons">navigate_before</i> <span class="hide-on-small-only">Anterior</span>
+            </button>
+        </div>
+    </div>
+}

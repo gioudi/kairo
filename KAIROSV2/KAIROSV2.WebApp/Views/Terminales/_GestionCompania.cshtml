@@ -1,0 +1,86 @@
+﻿@model GestionTerminalCompañiaViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+
+<form id="compania-form" novalidate>
+    <fieldset class="modal-content">
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <h5><b>Habilitar Compañia</b></h5>
+                <div class="divider"></div><br />
+            </div>
+
+            <!--Id Terminal-->
+            <div class="col s12 m6 input-field">
+                <i class="material-icons prefix" style="color: #FF6900">label</i>
+                <input type="text" class="" value="@Model.IdTerminal" asp-for="IdTerminal" name="IdTerminal" readonly>
+                <label class="active" for="user-name">Id Terminal</label>
+                <small><span class="red-text" asp-validation-for="IdTerminal"></span></small>
+            </div>
+            <!--Compañia-->
+            <div class="col s12 m6 input-field">
+                <i class="material-icons prefix" style="color: #FF6900">label</i>
+                <input type="text" class="" value="@Model.Compañia" asp-for="Compañia" name="Compañia" readonly>
+                <label class="active" for="user-name">Compañía</label>
+                <small><span class="red-text" asp-validation-for="Compañia"></span></small>
+            </div>
+            <!--Estado Texto-->
+            <div class="col s12 m6 input-field">
+                <input type="text" class="" value="@Model.Estado" asp-for="Estado" name="Estado">
+                <label class="active" for="user-name">Estado *</label>
+                <small><span class="red-text" asp-validation-for="Estado"></span></small>
+            </div>
+            <!--SICOM-->
+            <div class="col s12 m6 input-field">
+                <input type="text" class="" value="@Model.SicomCompañiaTerminal" asp-for="SicomCompañiaTerminal" name="SicomCompañiaTerminal">
+                <label class="active" for="user-phone">SICOM *</label>
+                <small><span class="red-text" asp-validation-for="SicomCompañiaTerminal"></span></small>
+            </div>
+            <!--Compañía agrupadora-->
+            <div class="col s12 m6 input-field">
+                <select id="compañia-agrupadora" class="select2 browser-default" value="@Model.CompañiaAgrupadora" asp-for="@Model.CompañiaAgrupadora" asp-items="@Model.CompañiasAgrupadora">
+                    <option value="" selected disabled>Seleccionar compañía agrupadora</option>
+                </select>
+                <label class="active" for="compañia-agrupadora">Compañía Agrupadora</label>
+                <small><span class="red-text" asp-validation-for="CompañiaAgrupadora"></span></small>
+            </div>
+            <!--Porcentaje Propiedad float-->
+            <div class="col s12 m6 input-field">
+                <input type="number" min="0" pattern="^[0-9]+" class="" value="@Model.PorcentajePropiedad" asp-for="PorcentajePropiedad" name="PorcentajePropiedad">
+                <label class="active" for="user-phone">Porcentaje</label>
+                <small><span class="red-text" asp-validation-for="PorcentajePropiedad"></span></small>
+            </div>
+            <!--Id Compañia-->
+            <div class="col s12 m6 input-field">
+                <input type="text" class="" value="@Model.IdCompañia" asp-for="IdCompañia" name="IdCompañia" readonly hidden>
+            </div>
+            <!--Socia on off-->
+            <div class="col s12 m6 input-field">
+                <div class="display-flex justify-content-between pb-2">
+                    <span>Socia</span>
+                    <div class="switch">
+                        <label>
+                            <input type="checkbox" asp-for="Socia">
+                            <span class="lever"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="compania-modal-cancel">Cancelar</button>
+        <button class="waves-effect btn-flat btn-orange" type="submit" name="action">Habilitar</button>
+    </div>
+
+</form>

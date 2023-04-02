@@ -1,0 +1,37 @@
+﻿@model ListViewModel<TURole>
+
+<div id="button-trigger" class="card small-card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-rol" class="display" style="width:100%; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rol in Model.Entidades)
+                {
+                    <tr id="@rol.IdRol">
+                        <td>@rol.IdRol</td>
+                        <td>@rol.Nombre</td>
+                        <td>@rol.Descripcion</td>
+                        <td>
+                            <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" disable-action" data-turbolinks="false">
+                                <i class="material-icons rol-action rol-edit" data-rolid="@rol.IdRol" data-rolname="@rol.Nombre">edit</i>
+                            </a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons rol-action rol-delete" data-rolid="@rol.IdRol" data-rolname="@rol.Nombre">delete</i>
+                            </a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Detalles ?  "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons rol-action rol-detail" data-rolid="@rol.IdRol" data-rolname="@rol.Nombre">remove_red_eye</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProductoTerminalDto>
+<div class="card card-default scrollspy border-radius-6 fixed-width">
+    <fieldset id="fieldset-producto" disabled="disabled" class="card-content">
+        <table id="data-table-producto" class="display" style="width:100%; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @*@foreach (var cabecera in Model.Encabezados)
+                        {
+                            <th>@cabecera</th>
+                        }*@
+                    <th>Asignado</th>
+                    <th>Icono</th>
+                    <th>Código Producto</th>
+                    <th>Nombre Corto</th>
+                    <th>Recetas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*@if (false)
+                {*@
+
+                
+                @foreach (var producto in Model)
+                {
+                    <tr>
+                        <td class="center-align contact-checkbox">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked="@producto.Asignado" class="producto-action producto-asignar" data-productoid="@producto.CodigoProducto" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="aling-center"><i class="material-icons" style="color: black">@producto.Icon</i></td>
+                        <td>@producto.CodigoProducto</td>
+                        <td>@producto.NombreCorto</td>
+                        <td>
+                            @foreach (var receta in producto.Recetas)
+                            {
+                                <span class="chip lighten-5 @(receta.Asignada ? "green green-text" : "red red-text")">@receta.NombreReceta</span>
+                            }
+                        </td>
+                        <td>
+                            <a class="cursor-point" data-turbolinks="false"><i class="material-icons producto-action producto-edit" data-productoid="@producto.CodigoProducto">edit</i></a>
+                            <a class="cursor-point" data-turbolinks="false"><i class="material-icons producto-action producto-detail" data-productoid="@producto.CodigoProducto">remove_red_eye</i></a>
+                        </td>
+                    </tr>
+                }
+                @*}*@
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+

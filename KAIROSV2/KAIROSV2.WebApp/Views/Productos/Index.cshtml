@@ -1,0 +1,90 @@
+﻿@model ListViewModel<TProducto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana-->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Productos</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a>Operación</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Productos
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana-->
+        </div>
+        <div class="col s12">
+
+            <div class="container">
+
+                <!-- Botón para agregar un nuevo usuario -->
+                <div class="contact-overlay"></div>
+                <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")">
+                    <a id="producto-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point">
+                        <i class="material-icons">person_add</i>
+                    </a>
+                </div>
+                <!-- Fin de popup nuevo usuario -->
+                <!-- Inicio del área de contenido -->
+                <div class="content-area">
+                    <div class="app-wrapper">
+                        <div class="datatable-search">
+                            <i class="material-icons mr-2 search-icon">search</i>
+                            <input type="text" placeholder="Buscar usuario" class="app-filter" id="global_filter">
+                        </div>
+                        @await Html.PartialAsync("_ListaProductos")
+                    </div>
+                </div>
+                <!-- Fin del área de contenido -->
+            </div>
+        </div>
+    </div>
+
+    <div id="producto-modal" class="modal modal-fixed-footer" style="width:75% !important; height: 70% !important">
+    </div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    @*<link rel="stylesheet" type="text/css" href="~/css/pages/productos.css">*@
+    <link rel="stylesheet" type="text/css" href="~/lib/imoglay/imoglay.min.css" />
+    <script src="~/lib/imoglay/imoglay.min.js" asp-append-version="true"></script>
+    <script type="module" src="~/dist/js/pages/productos.js" asp-append-version="true"></script>
+    <script type="module" src="~/js/gestionMenu.js" asp-append-version="true"></script>
+
+    <script language="javascript">
+        function eliminarComponente(algo, indiceReceta, lectura) {
+            if (lectura == "disabled") return
+
+            let componentes = document.getElementsByClassName('ppm-' + indiceReceta);
+            if (componentes.length == 1) {
+                M.toast({ html: 'Una receta debe tener minimo un componente', classes: "error" });
+                return;
+            }
+            algo.closest("tr").remove();
+        };
+
+    </script>
+
+}

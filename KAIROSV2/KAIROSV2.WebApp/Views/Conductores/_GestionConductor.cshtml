@@ -1,0 +1,59 @@
+﻿@model GestionConductorViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="conductor-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+    <div class="section row equal-col">
+
+        <!--Header-->
+        <div class="col s12">
+            <h4>@Model.Titulo</h4>
+            <div class="divider"></div>
+        </div>
+
+        <div class="row col s12">
+            <!--Busqueda Conductor-->
+            <!--Nombre conductor-->
+            <div class="col s12 input-field" style="margin: 60px 0px">
+                <i class="material-icons prefix" style="color:#FF6900">account_box</i>
+                <input id="name" type="text" class="validate" value="@Model.Nombre" asp-for="Nombre" name="Nombre" pattern="[A-Za-z]+">
+                <label class="active" for="name">Nombre</label>
+                <small>
+                    <span class="red-text" asp-validation-for="Nombre"></span>
+                </small>
+            </div>
+            <!--Cedula conductor-->
+            <div class="col s12 input-field">
+                <i class="material-icons prefix" style="color:#FF6900">featured_video</i>
+                <input id="cedula" type="number" min="0" pattern="^[0-9]+" class="validate" value="@Model.Cedula" asp-for="Cedula" name="Cedula" maxlength="10" readonly="@(Model.Accion == "Actualizar" || Model.Lectura ? "readonly" : null)">
+                <label class="active" for="cedula">Cédula</label>
+                
+                <small>
+                    <span class="red-text" asp-validation-for="Cedula"></span>
+                </small>
+            </div>
+
+        </div>
+
+        <div class="row col s10">
+        </div>
+
+</fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="conductor-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

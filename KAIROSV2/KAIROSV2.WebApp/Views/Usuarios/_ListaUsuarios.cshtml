@@ -1,0 +1,50 @@
+﻿@model ListViewModel<TUUsuario>
+
+<div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-usuario" class="display" style="width:100% ; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model.Entidades)
+                {
+                <tr id="@usuario.IdUsuario">
+                    @if (usuario?.TUUsuarioImagen?.Imagen != null)
+                    {
+                        var base64 = Convert.ToBase64String(usuario.TUUsuarioImagen.Imagen);
+                        var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                        <td><span class="avatar-contact avatar-online"><img src="@imgsrc" alt="avatar"></span></td>
+                    }
+                    else
+                    {
+                        <td><span class="avatar-contact avatar-online"><img src="~/images/avatar/baseline_account_circle_black_48dp.png" alt="avatar"></span></td>
+                    }
+                    <td>@usuario.IdUsuario</td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.RolId</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.Telefono</td>
+                    <td>
+                        <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false">
+                            <i class="material-icons user-action user-edit" data-userid="@usuario.IdUsuario" data-username="@usuario.Nombre">edit</i>
+                        </a>
+                        <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false">
+                            <i class="material-icons user-action user-delete" data-userid="@usuario.IdUsuario" data-username="@usuario.Nombre">delete</i>
+                        </a>
+                        <a class="cursor-point @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" data-turbolinks="false">
+                            <i class="material-icons user-action user-detail" data-userid="@usuario.IdUsuario" data-username="@usuario.Nombre">remove_red_eye</i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

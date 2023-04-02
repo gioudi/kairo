@@ -1,0 +1,211 @@
+﻿@model ProductoTerminalDto
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="receta-form" novalidate>
+
+    <fieldset disabled="@(ViewBag.Lectura ? "disabled" : null)" class="modal-content">
+
+        @if (!ViewBag.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="row col s12">
+                <div class="row col s6">
+                    <h5><b>Producto</b> @Model.NombreCorto</h5>
+                </div>
+                <div class="row col s6" style="text-align: end">
+                    <h5><b>Terminal: @Model.NombreTerminal</b></h5>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="divider"></div>
+            </div>
+
+            <div class="row col s12" style="margin-top: 20px;">
+                <div id="recetas-container" class="col s12 algui">
+                    @*---- RECETAS ----*@
+                    @if (Model.Recetas.Count > 0)
+                    {
+                        @for (var r = 0; r < Model.Recetas.Count; r++)
+                        {
+                            <div class="section receta" id="receta-@Model.Recetas[r].NombreReceta" data-recetaid="@r" style="width: 80%; margin: 0 auto">
+                                <ul class="collapsible">
+                                    <li>
+                                        @* ---- HEADER RECETA  ---- *@
+                                        <div class="collapsible-header" style="color: black; align-items: center;">
+
+                                            <label>No</label>
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" checked="@Model.Recetas[r].Asignada" asp-for="@Model.Recetas[r].Asignada"
+                                                           class="receta-action receta-check" data-receta-name="@Model.Recetas[r].NombreReceta" data-recetaid="@r">
+                                                    <span class="lever"></span>
+                                                </label>
+                                            </div>
+                                            <label>Si</label>
+                                            <input type="hidden" asp-for="@Model.Recetas[r].NombreReceta" />
+                                            <h5 style="margin: auto">@Model.Recetas[r].NombreReceta</h5>
+                                        </div>
+                                        @* ---- BODY RECETA ---- *@
+                                        <div class="collapsible-body" style="background-color: white">
+                                            <div class="section row equal-col">
+                                                <div class="row" style="margin-right: auto; margin-left: auto; width: 90%;">
+                                                    <div class="col s12 m12 l12">
+                                                        <div id="responsible-table" class="card card card-default scrollspy">
+                                                            <div class="card-content">
+                                                                <p class="mb-2">
+                                                                    Composición
+                                                                </p>
+                                                                <div class="row">
+                                                                    <div class="col s12">
+                                                                        <table class="Highlight">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th><b>Producto</b></th>
+                                                                                    <th><b>Tipo</b></th>
+                                                                                    <th><b>Cantidad PPM</b></th>
+                                                                                    <th><b>Porcentaje</b></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @if (Model.Recetas[r]?.Componentes?.Count > 0)
+                                                                                {
+                                                                                    @for (var c = 0; c < Model.Recetas[r].Componentes.Count; c++)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="clase-prod">@Model.Recetas[r].Componentes[c].NombreProducto</td>
+                                                                                            <td class="clase-prod">@Model.Recetas[r].Componentes[c].Tipo</td>
+                                                                                            <td class="clase-prod">@Model.Recetas[r].Componentes[c].ProporcionComponente</td>
+                                                                                            <td class="porcent">@Model.Recetas[r].Componentes[c].Porcentaje</td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                }
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="width: 100%">
+                                                <div class="col s6"> </div>
+                                                <div class="col s4">
+                                                    <p>Total: @Model.Recetas[r].Componentes?.Sum(e => e.ProporcionComponente)</p>
+                                                </div>
+                                                <div class="col s2">
+                                                    <p>Total: @Model.Recetas[r].Componentes?.Sum(e => e.Porcentaje)</p>
+                                                </div>
+                                            </div>
+                                            @* ---- VIGENCIA ---- *@
+                                            <div class="row" style="margin-right: auto; margin-left: auto; width: 90%;">
+                                                <div class="col s12" id="vigencia-@r">
+                                                    @if (Model.Recetas[r]?.Vigencias?.Count > 0)
+                                                    {
+                                                        <div id="responsive-table" class="card card card-default scrollspy">
+                                                            <div class="card-content vigencia">
+                                                                <div class="row">
+                                                                    <div class="col s6">
+                                                                        <p class="mb-2">
+                                                                            'Vigencia'
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col s6" style="text-align: end">
+                                                                        <a class="btn-floating waves-effect waves-light blue accent-2" disabled="@(ViewBag.Lectura ? "disabled" : null)"
+                                                                           style="text-align: center; margin-top: 10px; height: 30px; width: 30px; ">
+                                                                            <i class="material-icons receta-action vigencia-add" data-vigenciaid="@r" data-receta-name="@Model.Recetas[r].NombreReceta"
+                                                                               style="font-size: 20px; display: flex; margin: -5px 0px 0px 5px"> add </i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col s12">
+                                                                        <table class="Highlight" id="table-vigencia-@r">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th><b>Fecha Inicio </b></th>
+                                                                                    <th><b>Fecha Expiración </b></th>
+                                                                                    <th><b>Activo </b></th>
+                                                                                    <th><b>Acción </b></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @if (Model.Recetas[r]?.Vigencias?.Count > 0)
+                                                                                {
+                                                                                    @for (var c = 0; c < Model.Recetas[r].Vigencias.Count; c++)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <input type="hidden" name="Recetas[@r].Vigencias.Index" value="@c" />
+                                                                                                <input type="hidden" asp-for="@Model.Recetas[r].Vigencias[c].IdTerminal" />
+                                                                                                <input type="hidden" asp-for="@Model.Recetas[r].Vigencias[c].IdProducto" />
+                                                                                                <input type="hidden" asp-for="@Model.Recetas[r].Vigencias[c].IdReceta" />
+                                                                                                <input type="text" placeholder="Fecha" asp-format="{0:dd/MMM/yyyy}" asp-for="@Model.Recetas[r].Vigencias[c].FechaInicio"
+                                                                                                       style="width: 45%; margin-right: 5px;" class="datepicker formato-fecha-corta fechaIni" />
+                                                                                                <input type="text" class="timepicker horaIni" placeholder="Hora" style="width: 45%;" asp-for="@Model.Recetas[r].Vigencias[c].HoraInicio" />
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" asp-format="{0:dd/MMM/yyyy}" placeholder="Fecha" asp-for="@Model.Recetas[r].Vigencias[c].FechaExpiracion"
+                                                                                                       style="width: 45%; margin-right: 5px;" class="datepicker formato-fecha-corta fechaFin" />
+                                                                                                <input type="text" class="timepicker horaFin" placeholder="Hora" style="width: 45%;" asp-for="@Model.Recetas[r].Vigencias[c].HoraExpiracion" />
+                                                                                            </td>
+                                                                                            <td style="display: -webkit-box; margin-top: 10px;">
+                                                                                                <label> No </label>
+                                                                                                <div class="switch">
+                                                                                                    <label>
+                                                                                                        <input class="activo sv-@r" type="checkbox" id="sw-@r-0"
+                                                                                                               asp-for="@Model.Recetas[r].Vigencias[c].Activo" disabled checked="@Model.Recetas[r].Vigencias[c].Activo" />
+                                                                                                        <span class="lever"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                                <label> Si </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <a class="cursor-point">
+                                                                                                    <i class="material-icons receta-action vigencia-delete"
+                                                                                                       data-switchid='sw-@r-0' onclick="eliminarVigencia(this, ViewBag.Lectura)">delete</i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                }
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="receta-modal-cancel">Cancelar</button>
+        @if (!ViewBag.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@ViewBag.Accion</button>
+        }
+    </div>
+
+</form>

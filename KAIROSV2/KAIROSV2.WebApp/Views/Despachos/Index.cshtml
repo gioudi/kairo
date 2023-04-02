@@ -1,0 +1,115 @@
+﻿@model DespachosViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before custom-content-wrapper-before " ></div>
+        <div class="breadcrumbs-dark  custom-breadcrumbs-dark " id="breadcrumbs-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h6 class="breadcrumbs-title  custom-breadcrumbs-title mt-0 mb-0">Despachos</h6>
+                        <ol class="breadcrumbs custom-breadcrumbs mb-0">
+                            <li class="breadcrumb-item custom-breadcrumb-item">
+                                <a href="index.html">Operación</a>
+                            </li>
+                            <li class="breadcrumb-item custom-breadcrumb-item">
+                                <a href="#">Movimientos</a>
+                            </li>
+                            <li class="breadcrumb-item active custom-breadcrumb-item">
+                                Despachos
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <div class="content-area">
+                    <div class="app-wrapper">
+                        <div id="prefixes" class="card card card-default scrollspy">
+                            <div class="card-panel">
+                                <form id="despacho-form" novalidate>
+                                    <fieldset>
+                                        <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                                               value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+                                        <div class="row">
+                                            <!--Terminal-->
+                                            <div class="col s12 m6 l3 input-field">
+                                                <select class="select2 browser-default" id="terminal-despacho" name="Terminal">
+                                                    <option value="" selected disabled>Seleccionar terminal</option>
+                                                    @foreach (var Terminal in Model.Terminales)
+                                                    {
+                                                        <option value="@Terminal.Value">@Terminal.Text</option>
+                                                    }
+                                                </select>
+                                                <label class="active" for="terminal-despacho">Terminal *</label>
+                                                <small><span class="red-text"></span></small>
+                                            </div>
+                                            <!--Compañía-->
+                                            <div class="col s12 m6 l3 input-field">
+                                                <select class="select2  custom-select browser-default" id="compañia-despacho" name="Compañia">
+                                                    <option value="" selected disabled>Seleccionar Compañía</option>
+                                                    @foreach (var Compañia in Model.Compañias)
+                                                    {
+                                                        <option value="@Compañia.Value">@Compañia.Text</option>
+                                                    }
+                                                </select>
+                                                <label class="active" for="compañia-despacho">Compañía *</label>
+                                                <small><span class="red-text"></span></small>
+                                            </div>
+                                            <!--Fecha Despacho-->
+                                            <div class="col s12 m6 l3 input-field custom-input-field">
+                                                <input id="fecha-despacho" type="text" asp-format="{0:dd/MMM/yyyy}" class="custom-inputf custom-form-control formato-fecha-corta" data-actua="@Model.FechaActual" readonly disabled="disabled">
+                                                <label class="active" for="fecha-despacho">Fecha Despacho *</label>
+                                                <small><span class="red-text"></span></small>
+                                            </div>
+                                            <!--Botones-->
+                                            <div class="col s12 m6 l3">
+                                                <a id="borrar-filtro" name="borrar-filtro" class="custom-btn mb-1  custom-btn-primary disabled d-flex  waves-effect waves-light">Borrar Filtro</a><br />
+                                                <button type="submit" class="custom-btn custom-btn-gradient darken-4  d-flex waves-effect waves-light" name="action">
+                                                    <i class="material-icons left">search</i>
+                                                    Buscar
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")">
+                                            <a id="despacho-add" data-turbolinks="false" class="custom-btnic custom-btnic-primary  btn-large waves-effect  gradient-shadow contact-sidebar-trigger cursor-point disabled">
+                                                <i class="material-icons">add</i>
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row" id="kanba">
+                            <div class="col s12">
+                                
+                                <ul class="tabs custom-tabs">
+                                    <li class="tab  custom-tab col m3"><a id="tab_detalle" class="active" href="#lista-detalle">Detalle</a></li>
+                                    <li class="tab custom-tab col m3"><a id="tab_consolidado" href="#lista-consolidado">Consolidado</a></li>
+                                </ul>
+                            </div>
+                            <div class="col s12">
+                                <div id="lista-detalle" data-turbolinks="false" >
+                                    @await Html.PartialAsync("_ListaDetalle")
+                                </div>
+                                <div id="lista-consolidado" data-turbolinks="false" style="display: none;">
+                                    @await Html.PartialAsync("_ListaConsolidado")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="despacho-modal" class="modal modal-fixed-footer"></div>
+</div>
+
+
+@section scripts {
+    <link rel="stylesheet" type="text/css" href="~/css/pages/despachos.css">
+    <script type="module" src="~/dist/js/pages/despachos.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,83 @@
+﻿@model ListViewModel<object>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main" class="page-header-dark app-page">
+    <div class="row">
+        <!-- Header -->
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana -->
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6 l10">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Tablas del Sistema</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Configuración</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a style="color: #9e9e9e;">Tablas del Sistema</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana -->
+        </div>
+        <!-- Fin Header -->
+
+        <div class="col s12">
+            <div class="container p-0">
+
+                <!-- Sidebar Area Starts -->
+                <div class="sidebar-left sidebar-fixed">
+                    <div class="sidebar">
+                        <div class="sidebar-content">
+                            <a data-turbolinks="false" data-target="contact-sidenav" id="tables-sidenav-trigger" class="sidenav-trigger hide-on-large-only cursor-point">
+                                <i class="material-icons">menu</i>
+                            </a>
+                            <div class="sidebar-header">
+                                <div class="sidebar-details">
+                                    <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">view_quilt</i> Tablas</h5>
+                                </div>
+                            </div>
+                            <div id="sidebar-list" class="sidebar-menu list-group position-relative animate fadeLeft delay-1">
+                                <div class="sidebar-list-padding app-sidebar sidenav" id="contact-sidenav">
+                                    <ul class="contact-list display-grid">
+                                        <li class="sidebar-title">Tablas</li>
+                                        <li id="table-5b" class="active">
+                                            <a href="javascript:void(0)" data-turbolinks="false" class="text-sub sidenav-close"><i class="material-icons mr-2"> view_quilt </i> Corrección 5B</a>
+                                        </li>
+                                        <li id="table-6b"><a href="javascript:void(0)" data-turbolinks="false" class="text-sub sidenav-close"><i class="material-icons mr-2"> view_quilt </i> Corrección 6B</a></li>
+                                        <li id="table-6c-alcohol"><a href="javascript:void(0)" data-turbolinks="false" class="text-sub sidenav-close"><i class="material-icons mr-2"> view_quilt </i> Corrección 6C Alcohol</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar Area Ends -->
+
+                <!-- Content Area Starts -->
+                <div id="area-tabla-sistema">
+                    @await Html.PartialAsync("_TablasCorreccion", Model)
+                </div>
+                <!-- Content Area Ends -->
+            </div>
+            <div class="content-overlay"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/app-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pages/TablasSistema.css">
+    <script type="module" src="~/dist/js/pages/tablasSistema.js" asp-append-version="true"></script>
+}

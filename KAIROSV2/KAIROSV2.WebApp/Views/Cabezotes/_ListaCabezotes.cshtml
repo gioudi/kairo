@@ -1,0 +1,28 @@
+﻿@model ListViewModel<TCabezote>
+
+<div id="button-trigger" class="card small-card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-cabezote" class="display" style="width:100%; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cabezote in Model.Entidades)
+                {
+                <tr> 
+                    <td>@cabezote.PlacaCabezote</td>
+                    <td>
+                        <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false"><i class="material-icons cabezote-action cabezote-delete" data-cabezoteId="@cabezote.PlacaCabezote">delete</i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

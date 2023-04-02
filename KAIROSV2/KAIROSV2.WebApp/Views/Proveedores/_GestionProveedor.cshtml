@@ -1,0 +1,210 @@
+﻿@model GestionProveedorViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+<form id="proveedor-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <b><h5>@Model.Titulo</h5></b>
+                <div class="divider"></div>
+            </div>
+
+            <div class="row col s12">
+                <!--Busqueda Conductor-->
+                <!--Id Proveedor-->
+                <div class="col s12 m6 input-field" style="margin: 30px 0px">
+                    @*<i class="material-icons prefix" style="color:#FF6900">account_box</i>*@
+                    <input id="proveedor-id" type="text" class="validate" name="IdProveedor" asp-for="@Model.IdProveedor" disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disabled" : null)">
+                    <label class="active" for="proveedor-id">Id *</label>
+                    <small>
+                        <span class="red-text" asp-validation-for="IdProveedor"></span>
+                    </small>
+                </div>
+                <!--Codigo agente SICOM-->
+                <div class="col s12 m6 input-field" style="margin: 30px 0px">
+                    @*<i class="material-icons prefix" style="color:#FF6900">account_box</i>*@
+                    <input id="sicom" type="number" class="validate" name="SicomProveedor" 
+                           onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))"
+                           asp-for="@Model.SicomProveedor">
+                    <label class="active" for="sicom">Código Agente SICOM *</label>
+                    <small>
+                        <span class="red-text" asp-validation-for="SicomProveedor"></span>
+                    </small>
+                </div>
+                <!--Nombre Proveedor-->
+                <div class="col s12 m6 input-field" style="margin: 30px 1px">
+                    @*<i class="material-icons prefix" style="color:#FF6900">account_box</i>*@
+                    <input id="nombre" type="text" class="validate" asp-for="@Model.NombreProveedor" name="NombreProveedor" readonly="@(Model.Lectura ? "disabled" : null)">
+                    <label class="active" for="nombre">Nombre *</label>
+                    <small>
+                        <span class="red-text" asp-validation-for="@Model.NombreProveedor"></span>
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="collapsibles">
+            <!--Tipo de producto-->
+            <div class="section">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header" style="color:#FF6900"><i class="material-icons">local_gas_station</i><b style="color: black">Tipo de Producto</b></div>
+                        <div class="collapsible-body">
+                            <div class="section row equal-col">
+                                <div class="row col s12">
+                                    <!--Tipo Producto-->
+                                    <div class="col s4">
+                                        <select class="select2 browser-default" id="tipo-producto" asp-items="@(Model.Tipos)" disabled="@(Model.Lectura ? "disabled" : null)">
+                                            <option value="" selected disabled>Seleccionar Tipo</option>
+                                        </select>
+                                        <label class="active" for="tipo-producto">Tipo *</label>
+                                    </div>
+                                    <div class="col s8">
+                                        <div style="text-align: end; margin-top: 10px">
+                                            <a class="btn-floating waves-effect waves-light blue accent-2" style="text-align: center; margin-top: 10px; height: 30px; width: 30px;" disabled="@(Model.Lectura ? "disabled" : null)">
+                                                <i class="material-icons gestion-action tipo-add" data-recetaid="1" style="font-size: 20px; display: flex; margin: -5px 0px 0px 5px">add</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <div id="responsive-table" class="card card card-default scrollspy" style="width: 50vw;">
+                                            <div class="card-content">
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <table id="tabla-producto" class="Highlight">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="id">Nombre</th>
+                                                                    <th data-field="status">Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @for (var p = 0; p < Model.ProveedoresProductos?.Count; p++)
+                                                                {
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="hidden" name="ProveedoresProductos.Index" value="@p" />
+                                                                        <input type="hidden" class="proveedor-producto" asp-for="@Model.ProveedoresProductos[p].IdTipoProducto" />
+                                                                        @Model.ProveedoresProductos[p].DescripcionTipo
+                                                                    </td>
+                                                                    @if (!@Model.Lectura)
+                                                                    {
+                                                                        <td><a class="cursor-point"><i class="material-icons  producto-delete">delete</i></a></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><a class="disable-action"><i class="material-icons">delete</i></a></td>
+                                                                    }
+                                                                </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--Plantas-->
+            <div class="section">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header" style="color:#FF6900"><i class="material-icons">domain</i><b style="color: black">Plantas</b></div>
+                        <div class="collapsible-body">
+                            <div class="section row equal-col">
+                                <div class="row col s12">
+                                    <!--Nombre-->
+                                    <div class="col s5 input-field">
+                                        <input id="nombre-producto" type="text" class="input-unidades" maxlength="30" name="NombrePlanta">
+                                        <label class="active" for="nombre-producto">Nombre *</label>
+                                        <small><span class="red-text"></span></small>
+                                    </div>
+                                    <!--SICOM-->
+                                    <div class="col s5 input-field">
+                                        <input id="sicom-planta" type="number"  maxlength="10"
+                                               onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" 
+                                               class="input-unidades" name="SicomPlanta">
+                                        <label class="active" for="sicom-planta">SICOM Planta Proveedor *</label>
+                                        <small><span class="red-text"></span></small>
+                                    </div>
+                                    <div class="col s2">
+                                        <div style="text-align: end; margin-top: 20px" class="@(@Model.Lectura ? "disable-action" : "")">
+                                            <a class="btn-floating waves-effect waves-light blue accent-2" style="text-align: center; margin-top: 10px; height: 30px; width: 30px;" disabled="@(Model.Lectura ? "disabled" : null)">
+                                                <i class="material-icons gestion-action planta-add" style="font-size: 20px; display: flex; margin: -5px 0px 0px 5px">add</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <div id="responsive-table" class="card card card-default scrollspy" style="width: 50vw;">
+                                            <div class="card-content">
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <table id="tabla-planta" class="Highlight">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Nombre</th>
+                                                                    <th>SICOM</th>
+                                                                    <th>Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @for (var p = 0; p < Model.ProveedoresPlanta?.Count; p++)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input type="hidden" name="ProveedoresPlanta.Index" value="@p" />
+                                                                            <input type="hidden" class="proveedor-planta" asp-for="@Model.ProveedoresPlanta[p].PlantaProveedor" />
+                                                                            @Model.ProveedoresPlanta[p].PlantaProveedor
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="hidden" asp-for="@Model.ProveedoresPlanta[p].SicomPlantaProveedor" />
+                                                                            @Model.ProveedoresPlanta[p].SicomPlantaProveedor
+                                                                        </td>
+                                                                        <td><a class="cursor-point"><i class="material-icons planta-delete">delete</i></a></td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="proveedor-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

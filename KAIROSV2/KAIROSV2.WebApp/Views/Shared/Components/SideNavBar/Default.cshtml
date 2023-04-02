@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MenuViewModel>
+
+<aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-rounded custom-sidenav">
+    <div class="brand-sidebar custom-brandsidebar">
+        <div class="logo-wrapper custom-logowrapper">
+            <picture class="custom-contentlogo">
+                <a class="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo/logo-kairos.svg" />
+                </a>
+            </picture>
+
+            <a class="navbar-toggler custom-navbartoggler " data-turbolinks="false"><i class="material-icons">radio_button_checked</i></a>
+        </div>
+    </div>
+    <ul class="sidenav sidenav-collapsible leftside-navigation custom-listsidenav collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+
+        @foreach (var nivelUno in Model)
+        {
+            @if (@nivelUno.Clase != "")
+            {
+                <!-- Nivel 1 Colapsable    asp-controller='@nivelUno.Controlador' asp-action='@nivelUno.Accion'-->
+                <li id="@nivelUno.IdPermiso" class="custom-listFather listaPadre">
+                    <a class="@nivelUno.Clase custom-list-collheader waves-effect waves-light"><i class="material-icons">@nivelUno.Icono</i><span class="menu-title  custom-menutitle">@nivelUno.Nombre</span></a>
+                    @if (nivelUno.SubMenus.Count > 0) // Pregunta de sub nivel Nivel 2
+                    {
+                        @foreach (var nivelDos in nivelUno.SubMenus)
+                        {
+                            @if (@nivelDos.Clase != "")
+                            {
+                                <!-- Nivel 2 -->
+                                <div class="collapsible-body custom-collbody nivel2">
+                                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                        <li id="@nivelDos.IdPermiso" name="@nivelDos.IdPermisoPadre" class=" custom-listitem-collbody listaPadre">
+                                            <a class="@nivelDos.Clase custom-listitem-collheader custom-waves-effect waves-light" href="JavaScript:void(0)"><i class="material-icons">@nivelDos.Icono</i><span>@nivelDos.Nombre</span></a>
+
+                                            @if (nivelDos.SubMenus.Count > 0) // Pregunta de sub nivel Nivel 3
+                                            {
+                                                @foreach (var nivelTres in nivelDos.SubMenus)
+                                                {
+                                                    <!-- Nivel 3 -->
+                                                    <div class="collapsible-body custom-sublisitemcollbody">
+                                                        <ul class="collapsible  custom-navlist nav-list" data-collapsible="accordion">
+                                                            <li>
+                                                                <a class="menu-item-link custom-mainitem-link" name="@nivelTres.IdPermisoPadre" asp-controller="@nivelTres.Controlador" asp-action="@nivelTres.Accion"><i class="custom-icon material-icons"></i><span>@nivelTres.Nombre</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                }
+                                            }
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- Nivel 3 -->
+                                <div class="collapsible-body custom-sublisitemcollbody">
+                                    <ul class="collapsible nav-list custom-navlist" data-collapsible="accordion">
+                                        <li>
+                                            <a class="menu-item-link custom-mainitem-link" name="@nivelDos.IdPermisoPadre" asp-controller="@nivelDos.Controlador" asp-action="@nivelDos.Accion"><i class="custom-icon material-icons"></i><span>@nivelDos.Nombre</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+
+                    }
+
+                </li>
+            }
+            else
+            {
+                <!-- Nivel 1 Directo -->
+                <li class="custom-listFather listaPadre ">
+                    <a class="waves-effect custom-list-collheader waves-light" asp-controller="@nivelUno.Controlador" asp-action="@nivelUno.Accion">
+                        <i class="custom-icon  material-icons">@nivelUno.Icono</i><span class="menu-title custom-menutitle level-one">@nivelUno.Nombre</span>
+                    </a>
+                </li>
+            }
+        }
+
+    </ul>
+    <div class="navigation-background"></div><a data-turbolinks="false" id="main-sidenav-trigger" style="margin-top: 10px; margin-left: 10px;" class="main-trigger btn-floating btn-medium waves-effect waves-light hide-on-large-only cursor-point M"><i class="material-icons">menu</i></a>
+</aside>
+
+@section scripts {
+
+
+    <script language="javascript">
+
+        $(document).ready(function () {
+
+            $(".collapsible-body").css({ 'display': '' });
+
+        });
+
+    </script>
+}

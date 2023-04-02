@@ -1,0 +1,62 @@
+﻿@model ListViewModel<TTrailer>
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana -->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Trailers</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a>Suministro y Logística</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Lista Trailers
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana -->
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <!-- Botón para agregar un nuevo usuario -->
+                <div class="contact-overlay"></div>
+                <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")">
+                    <a id="trailer-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point">
+                        <i class="material-icons">person_add</i>
+                    </a>
+                </div>
+                <!-- Fin de popup nuevo usuario -->
+                <!-- Inicio del área de contenido -->
+                <div class="content-area">
+                    <div class="app-wrapper">
+                        <div class="datatable-search">
+                            <i class="material-icons mr-2 search-icon">search</i>
+                            <input type="text" placeholder="Buscar trailer" class="app-filter" id="global_filter">
+                        </div>
+                        @await Html.PartialAsync("_ListaTrailers")
+                    </div>
+                </div>
+                <!-- Fin del área de contenido -->
+            </div>
+        </div>
+    </div>
+
+    <div id="trailer-modal" style="height: 290px !important;" class="modal small-modal modal-fixed-footer">
+    </div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" type="text/css" href="~/css/pages/trailers.css">
+    <script type="module" src="~/js/pages/trailers.js" asp-append-version="true"></script>
+    <script type="module" src="~/dist/js/pages/trailers.js" asp-append-version="true"></script>
+}

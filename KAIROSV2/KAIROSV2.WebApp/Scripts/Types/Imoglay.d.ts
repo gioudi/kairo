@@ -1,0 +1,1 @@
+﻿declare function ImoglayInput(inputFile: HTMLInputElement, icon?: string, label?: string, remove?: boolean): HTMLElement;

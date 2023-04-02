@@ -1,0 +1,166 @@
+﻿@model ListViewModel<TanqueDTO>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana-->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Tanques</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a>Almacenamiento</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Lista Tanques
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana-->
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <!-- Botón para agregar un nuevo tanque -->
+                <div class="contact-overlay"></div>
+                <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")">
+                    <a id="tanque-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+                <!-- Fin de popup nuevo usuario -->
+                <!-- Inicio del área de contenido -->
+                <div class="content-area">
+                    <div class="app-wrapper">
+                        <div class="datatable-search">
+                            <i class="material-icons mr-2 search-icon">search</i>
+                            <input type="text" placeholder="Buscar tanques" class="app-filter" id="global_filter">
+                        </div>
+                        @await Html.PartialAsync("_ListaTanques")
+                    </div>
+                </div>
+                <!-- Fin del área de contenido -->
+            </div>
+        </div>
+    </div>
+    <!-- Inicio de modal detalle-->
+    <div class="detail-overlay"></div>
+    <div class="compose-sidebar">
+        <div class="card quill-wrapper">
+            <div class="card-content pt-0">
+                <div class="card-header display-flex pb-2">
+                    <h3 class="card-title contact-title-label">Detalle Tanque</h3>
+                    <div class="close close-icon">
+                        <i id="detail-close" class="material-icons">close</i>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <fieldset disabled>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="tanque" type="text" class="">
+                            <label class="active" for="tanque">Tanque</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="terminal" type="text" class="">
+                            <label class="active" for="terminal">Terminal</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="tipoTanque" type="text" class="">
+                            <label class="active" for="tipoTanque">Tipo Tanque</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="capacidadNominal" name="capacidadNominal" type="text" class="input-unidades formato-int">
+                            <label class="active" for="capacidadNominal">Capacidad Nominal</label>
+                            <span class="span-unidades">gal</span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="capacidadOper" type="text" class="input-unidades formato-int">
+                            <label class="active" for="capacidadOper">Capacidad Operativa</label>
+                            <span class="span-unidades">gal</span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="volumenNoBombeable" type="text" class="input-unidades formato-decimal">
+                            <label class="active" for="volumenNoBombeable">Volumen no Bombeable</label>
+                            <span class="span-unidades">gal</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="alturaMaxAforo" type="text" class="input-unidades formato-int">
+                            <label class="active" for="alturaMaxAforo">Altura Máxima Aforo</label>
+                            <span class="span-unidades">cm</span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="aforadoPor" type="text" class="">
+                            <label class="active" for="aforadoPor">Aforado por</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="dd/mm/aaaa" id="fechaAforo" type="text">
+                            <label class="active" for="fechaAforo">Fecha Aforo</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <div class="display-flex justify-content-between pb-2">
+                                <span>Pantalla Flotante</span>
+                                <div class="switch">
+                                    <label>
+                                        No
+                                        <input id="pantallaFlotante" type="checkbox" disabled>
+                                        <span class="lever"></span>
+                                        Si
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea placeholder="" id="observaciones" class="materialize-textarea"></textarea>
+                            <label class="active" for="observaciones">Observaciones</label>
+                        </div>
+                    </div>
+                    <div id="datosPantallaFlotant" class="card" hidden>
+                        <div class="card-content z-depth-1">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="densidadAforo" type="text" class="input-unidades formato-decimal">
+                                <label class="active" for="densidadAforo">Densidad Aforo</label>
+                                <span class="span-unidades">API</span>
+                            </div>
+                            <div class="input-field col s12">
+                                <input placeholder="" id="nivelCorreccionInicial" type="text" class="input-unidades formato-int">
+                                <label class="active" for="nivelCorreccionInicial">Nivel Corrección Inicial</label>
+                                <span class="span-unidades">cm</span>
+                            </div>
+                            <div class="input-field col s12">
+                                <input placeholder="" id="nivelCorreccionFinal" type="text" class="input-unidades formato-int">
+                                <label class="active" for="nivelCorreccionFinal">Nivel Corrección Final</label>
+                                <span class="span-unidades">cm</span>
+                            </div>
+                            <div class="input-field col s12">
+                                <input placeholder="" id="galonesPorGrado" type="text" class="input-unidades formato-decimal">
+                                <label class="active" for="galonesPorGrado">Galones x Grado</label>
+                                <span class="span-unidades">gal</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de modal detalle-->
+    <div id="tanque-modal" class="modal modal-fixed-footer"></div>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" type="text/css" href="~/css/pages/tanques.css">
+    <script type="module" src="~/dist/js/pages/tanques.js" asp-append-version="true"></script>
+}

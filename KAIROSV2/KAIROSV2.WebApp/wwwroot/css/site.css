@@ -1,0 +1,260 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #1E22AA;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.btn-orange {
+    color: #FF6900;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.main-trigger{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-family: 'Neo Sans Std';
+    font-size: 16px;
+}
+@media (min-width: 768px) {
+  html {
+    font-family: 'Neo Sans Std';
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+   Margin bottom by footer height 
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+/* Modal customization */
+.modal-confirm-message-small {
+    max-height:25%;
+    width: 35%;
+}
+
+/* Grid customization */
+.equal-col {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Fieldset customization */
+fieldset {
+    border-width: 0px;
+    border-color: transparent;
+    margin: 0px 0px 0px 0px;
+    border-style: none;
+    border-image: none;
+}
+
+.image-gap-margin{
+    margin: -14px 0px -25px 0px;
+}
+
+.cursor-point{
+    cursor: pointer;
+}
+
+.disable-action {
+    opacity: 0.4;
+    color: gray;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/*Modificaciones en modales*/
+.modal 
+{
+    width: 40% !important;
+}
+
+.modal.modal-fixed-footer 
+{
+    height: 50% !important;
+}
+
+.modal.modal-fixed-footer h5 
+{
+    font-weight: 600 !important;
+}
+
+/*.modal .modal-content 
+{
+    padding: 20px !important;
+}*/
+
+.modal-confirm-message-small p 
+{
+    padding: 1rem 0 0 1.5rem !important;
+}
+
+.modal-confirm-message-small h5 
+{
+    font-weight: 600 !important;
+}
+
+@media only screen and (min-width: 300px) 
+{
+    .modal 
+    {
+        width: 70% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 75% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 38% !important;
+        width: 80% !important;
+    }
+}
+
+@media only screen and (min-width: 500px) 
+{
+    .modal.modal-fixed-footer 
+    {
+        height: 70% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 30% !important;
+        width: 55% !important;
+    }
+}
+
+@media only screen and (min-width: 900px) 
+{
+    .modal-confirm-message-small 
+    {
+        max-height: 25% !important;
+        width: 45% !important;
+    }
+}
+
+@media only screen and (min-width: 1300px) 
+{
+    .modal 
+    {
+        width: 50% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 80% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 30% !important;
+        width: 35% !important;
+    }
+}
+
+@media only screen and (min-width: 1400px)
+{
+    .modal 
+    {
+        width: 40% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 53% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 220px !important;
+        width: 470px !important;
+    }
+}
+
+.datepicker-table td.is-selected 
+{
+    color: #fff;
+    background-color: #ffa533;
+}
+
+.datepicker-table td.is-closed-date {
+    color: #fff;
+    background-color: #dd373c;
+}
+
+.datepicker-table td.is-open-date {
+    color: #fff;
+    background-color: #0eaf35;
+}
+
+.datepicker-table td.is-current-date {
+    color: #fff;
+    background-color: #ff6900;
+}
+
+table.datepicker-table.disable 
+{
+    pointer-events: none;
+}
+}
+
+input[type=checkbox].disable-action{
+    pointer-events: none;
+}

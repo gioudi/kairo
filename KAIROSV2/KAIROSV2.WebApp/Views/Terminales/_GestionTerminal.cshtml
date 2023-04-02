@@ -1,0 +1,215 @@
+﻿@model GestionTerminalViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+    <form id="terminal-form" novalidate>
+
+        
+        <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        
+
+
+        <div class="row">
+            <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+            <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+                <!-- Titulo de la ventana -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>@Model.Titulo</span></h5>
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item">
+                                    <a>Kairos</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Configuración</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    @Model.Titulo
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="col s2 m6 l6">
+                            <a id="terminal-atras" asp-controller="Terminales" asp-action="Index" class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" data-turbolinks="false">
+                                <i class="material-icons hide-on-med-and-up">reply</i>
+                                <span class="hide-on-small-onl">Atras</span>
+                                <i class="material-icons left">reply</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin del titulo de la ventana -->
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <!-- Inicio del área de contenido -->
+                    <div class="content-terminal">
+                        <div class="card-panel">
+                            <form id="terminal-form" novalidate>
+                                <!--ROW 1-->
+                                <div class="row">
+
+                                    @if (!Model.Lectura)
+                                    {
+                                        <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                                               value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+                                    }
+                                    <!--Id terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <i class="material-icons prefix">label</i>
+                                        <input id="terminal-id" type="text" value="@Model.Terminal.IdTerminal" asp-for="IdTerminal" name="IdTerminal" readonly="@(Model.Accion != "" ? "readonly" : null)">
+                                        <label class="" for="terminal-id">Id *</label>
+                                        <small><span class="red-text" asp-validation-for="IdTerminal"></span></small>
+                                    </div>
+                                    <!--Nombre terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <i class="material-icons prefix">business</i>
+                                        <input id="terminal-name" type="text" value="@Model.Terminal.Terminal" asp-for="Nombre" name="Nombre">
+                                        <label class="" for="terminal-name">Terminal *</label>
+                                        <small><span class="red-text" asp-validation-for="Nombre"></span></small>
+                                    </div>
+                                    <!--Dirección terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <i class="material-icons prefix">business</i>
+                                        <input id="terminal-direccion" type="text" value="@Model.Terminal.Direccion" asp-for="Direccion" name="Direccion">
+                                        <label class="" for="terminal-direccion">Dirección *</label>
+                                        <small><span class="red-text" asp-validation-for="Direccion"></span></small>
+                                    </div>
+                                    <!--Teléfono terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <i class="material-icons prefix">phone</i>
+                                        <input id="terminal-telefono" type="number" value="@Model.Terminal.Telefono" asp-for="Telefono" name="Telefono">
+                                        <label class="" for="terminal-telefono">Teléfono *</label>
+                                        <small><span class="red-text" asp-validation-for="Telefono"></span></small>
+                                    </div>
+                                </div>
+                                <!--ROW 2-->
+                                <div class="row">
+                                    <!--Superintendente terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <i class="material-icons prefix">account_box</i>
+                                        <input id="terminal-superI" type="text" value="@Model.Terminal.Superintendente" asp-for="Superintendente" name="Superintendente">
+                                        <label class="" for="terminal-superI">Superintendente *</label>
+                                        <small><span class="red-text" asp-validation-for="Superintendente"></span></small>
+                                    </div>
+                                    <!--Estado terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <select class="select2 browser-default" asp-for="@Model.Terminal.IdEstadoNavigation.Descripcion" name="Estado" id="terminal-estado" asp-items="@(new SelectList(Model.EstadosTerminal))">
+                                            <option value="" selected disabled>Seleccionar estado</option>
+                                        </select>
+                                        <label class="active" for="terminal-estado">Estado *</label>
+                                        <small><span class="red-text" asp-validation-for="Estado"></span></small>
+                                    </div>
+                                    <!--Área terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        <select class="select2 browser-default" asp-for="@Model.Terminal.IdAreaNavigation.Area" name="Area" id="terminal-area" asp-items="@(new SelectList(Model.Areas))">
+                                            <option value="" selected disabled>Seleccionar área</option>
+                                        </select>
+                                        <label class="active" for="terminal-estado">Área *</label>
+                                        <small><span class="red-text" asp-validation-for="Area"></span></small>
+                                    </div>
+                                    <!--Centro de costo terminal -->
+                                    <div class="col s12 m6 l3 input-field">
+                                        @*<i class="material-icons prefix">phone</i>*@
+                                        <input id="terminal-centroCosto" type="text" value="@Model.Terminal.CentroCosto" asp-for="CentroCosto" name="CentroCosto">
+                                        <label class="" for="terminal-centroCosto">Centro de Costo *</label>
+                                        <small><span class="red-text" asp-validation-for="CentroCosto"></span></small>
+                                    </div>
+                                </div>
+                                <!--ROW 3-->
+                                <div class="row">
+                                    <!--Poliducto terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        @*<i class="material-icons prefix">phone</i>*@
+                                        <input id="terminal-poliducto" type="text" value="@Model.Terminal.Poliducto" asp-for="Poliducto" name="Poliducto">
+                                        <label class="" for="terminal-poliducto">Poliducto *</label>
+                                        <small><span class="red-text" asp-validation-for="Poliducto"></span></small>
+                                    </div>
+                                    <!--Tipo informe terceros terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        @*<i class="material-icons prefix">phone</i>*@
+                                        <input id="terminal-tipoInforme" type="text" value="@Model.Terminal.TipoInformeTerceros" asp-for="TipoInformeTerceros" name="TipoInformeTerceros">
+                                        <label class="" for="terminal-tipoInforme">Tipo Informe Terceros *</label>
+                                        <small><span class="red-text" asp-validation-for="TipoInformeTerceros"></span></small>
+                                    </div>
+                                    <!--Id compañía operadora terminal-->
+                                    <div class="col s12 m6 l3 input-field">
+                                        @*<i class="material-icons prefix">phone</i>*@
+                                        <input id="terminal-idCompania" type="text" value="@Model.Terminal.IdCompañiaOperadora" asp-for="IdCompañiaOperadora" name="IdCompañiaOperadora">
+                                        <label class="" for="terminal-idCompania">Id Compañía Operadora *</label>
+                                        <small><span class="red-text" asp-validation-for="IdCompañiaOperadora"></span></small>
+                                    </div>
+                                    <!--Conjunta terminal-->
+                                    <div class="col s12 m6 l3">
+                                        <div class="row">
+                                            <!--Conjunta terminal-->
+                                            <div class="display-flex justify-content-between pb-2">
+                                                <span>Conjunta</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" asp-for="Conjunta" checked="@Model.Terminal.Conjunta">
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--Venta terceros terminal-->
+                                            <div class="display-flex justify-content-between pb-2">
+                                                <span>Venta terceros</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" asp-for="VentasTerceros" checked="@Model.Terminal.VentasTerceros">
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align: -webkit-right;">
+                                    <button type="submit" class="btn btn-block waves-effect waves-light" name="action" style="background-color:#FF6900; width: 25%;">
+                                        Guardar
+                                        <i class="material-icons left">save</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*INICIO SECCION DE TABS*@
+
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs tab-border">
+                    <li class="tab col s6"><a class="active" href="#tab-companias">Compañías</a></li>
+                    <li class="tab col s6"><a href="#tab-productos">Productos</a></li>
+                </ul>
+            </div>
+
+            <!-- TAB COMPANIAS -->
+            <div id="tab-companias" class="col s12">
+                <div class="container">
+                    <div class="content-area">
+                        <div class="app-wrapper">
+                            @await Html.PartialAsync("_ListaCompanias")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TAB PRODUCTOS -->
+            <div id="tab-productos" class="col s12">
+                <div class="container">
+                    <div class="content-area">
+                        <div class="app-wrapper">
+                            @await Html.PartialAsync("_ListaProductos", Model.Productos)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </form>

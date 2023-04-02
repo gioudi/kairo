@@ -1,0 +1,239 @@
+{
+  "listItems": [
+    {
+      "url": "#",
+      "name": "Areas",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Terminales",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Compa&ntildeias",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Productos",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Campos de Recibos",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Recibos",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Despachos",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Liquidaci&oacuten de Tanques",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Prestamos/Devoluciones",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Consumos",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Mezclas",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Contadores",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Drenaje de tanques",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Recirculaciones",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Ajustes",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Tanques",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Lineas",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Contadores",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Precierre",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Cierre Diario",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Cierre Mensual",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Errores",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Conductores",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Vehiculos - Cabezotes",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Vehiculos - Trailers",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Cias. Transportadoras",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Proveedores",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Correcci&oacuten 5B",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Correcci&oacuten 6B",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Correcci&oacuten 6B-Alcohol",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Aforo",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Conversiones API",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Diarios",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Acumulados",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Mensuales",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Otros",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Usuarios",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+
+    {
+      "url": "#",
+      "name": "Roles",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    },
+    {
+      "url": "#",
+      "name": "Im&aacutegenes",
+      "icon": "radio_button_unchecked",
+      "category": "VENTANA"
+    }
+  ]
+}

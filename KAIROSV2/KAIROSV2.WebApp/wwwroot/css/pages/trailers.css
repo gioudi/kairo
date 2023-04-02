@@ -1,0 +1,80 @@
+/*----------------------------------------
+  Trailers
+------------------------------------------*/
+.content-area {
+    margin-top: 49px;
+}
+
+    .content-area .app-wrapper .datatable-search {
+        position: relative;
+    }
+
+        .content-area .app-wrapper .datatable-search .search-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #bdbdbd;
+        }
+
+        .content-area .app-wrapper .datatable-search .app-filter {
+            max-width: calc(100% - 3rem);
+            margin-bottom: .5rem;
+            padding: .2rem;
+            padding-left: 2.75rem;
+            border: none;
+            border-radius: .4rem;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+        }
+
+            .content-area .app-wrapper .datatable-search .app-filter:focus {
+                border-bottom: none !important;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2) !important;
+            }
+
+    .content-area .app-wrapper .avatar-contact img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .12);
+    }
+
+    .content-area .app-wrapper .dataTables_wrapper .dataTables_length,
+    .content-area .app-wrapper .dataTables_wrapper .dataTables_filter {
+        display: none;
+    }
+
+    .content-area .app-wrapper .dataTables_wrapper .dataTables_info {
+        margin-left: 10px;
+        color: #616161;
+    }
+
+    .content-area .app-wrapper .dataTables_wrapper .dataTables_paginate {
+        margin-right: 1.5rem;
+        padding-bottom: .75rem;
+    }
+
+        .content-area .app-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button {
+            margin-top: .25rem;
+            padding: .25em .65em;
+        }
+
+            .content-area .app-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+            .content-area .app-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+                color: #fff !important;
+                border: 1px solid #FF6900;
+                border-radius: 6px;
+                background: #FF6900;
+                box-shadow: 0 0 8px 0 #989898;
+            }
+
+            .content-area .app-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                color: #FF6900 !important;
+                cursor: pointer;
+            }
+
+    .content-area .app-wrapper .dataTables_wrapper .remove-margin {
+        margin-right: 0rem !important;
+        margin-left: 0px !important;
+    }

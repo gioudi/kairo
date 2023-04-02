@@ -1,0 +1,31 @@
+﻿@model ListViewModel<TConductor>
+
+<div id="button-trigger" class="card small-card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content  custom-cotent-dataTable">
+        <table id="data-table-conductor" class="display custom-datatable" style="width:100%;white-space:nowrap">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var conductor in Model.Entidades)
+                {
+                <tr id="@conductor.Cedula">
+                    <td>@conductor.Nombre</td>
+                    <td>@conductor.Cedula</td>                    
+                    <td>
+                        <a href="#" data-turbolinks="false" class="@(@Model.ActionsPermission.Editar ? "" : "disable-action")"><i class="material-icons conductor-action conductor-edit" data-conducid="@conductor.Cedula">edit</i></a>
+                        <a href="#" data-turbolinks="false" class="@(@Model.ActionsPermission.Borrar ? "" : "disable-action")"><i class="material-icons conductor-action conductor-delete" data-conducid="@conductor.Cedula" data-name="@conductor.Nombre">delete</i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

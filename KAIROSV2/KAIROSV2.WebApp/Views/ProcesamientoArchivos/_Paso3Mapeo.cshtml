@@ -1,0 +1,232 @@
+﻿@model MapeoArchivoTablas
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="mapeo-form-step3" novalidate>
+    <div class="scroll-content">
+        <h5 class="blue-text text-lighten-1">Mapeo de datos</h5>
+        <div class="row">
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+            <input id="map-step3-separator" type="hidden" asp-for="@Model.Separador" />
+            <input id="map-step3-otro-separator" type="hidden" asp-for="@Model.OtroCaracter" />
+
+            @if (!Model.Nuevo)
+            {
+                <h6 class="card-title s12 mb-0 ml-2">Datos iniciales</h6>
+                <div class="row ml-4 mr-4">
+                    <div class="input-field col m6 s12 p-0 pr-1">
+                        <input id="mapeo-step3-id" type="hidden" asp-for="@Model.IdMapeo" />
+                        <input id="mapeo-step3-id" type="text" class="validate" placeholder="Id Mapeo" asp-for="@Model.IdMapeo" disabled>
+                        <label class="active" for="mapeo-id">Id Mapeo *</label>
+                        <small><span class="red-text" asp-validation-for="@Model.IdMapeo"></span></small>
+                    </div>
+                    <div class="input-field col m6 s12 p-0 pl-1">
+                        <input id="mapeostep3-desc" type="text" placeholder="Descripción" class="validate" asp-for="@Model.Descripcion">
+                        <label class="active" for="mapeo-desc">Descripción *</label>
+                        <small><span class="red-text" asp-validation-for="@Model.Descripcion"></span></small>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <input id="mapeo-step3-id" type="hidden" asp-for="@Model.IdMapeo" />
+                <input id="mapeo-step3-desc" type="hidden" asp-for="@Model.Descripcion" />
+
+                <h6 class="card-title ml-2 mb-0">Muestra Datos</h6>
+                <div id="container-table-step3" class="display responsive pl-5 pr-5" style="width:100%">
+                </div>
+            }
+
+            <div class="row m-0 mt-3">
+                <div class="left ml-2">
+                    <h6 class="card-title mb-0">Tablas</h6>
+                </div>
+                <div class="right mr-4">
+                    <a class="mb-6 btn-floating waves-effect waves-light light-green
+                   lightrn-1 btn-small" id="add-map-table">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible collapsible-accordion section-tables-map">
+                        @if (Model.TablasSistemas?.Count > 0)
+                        {
+                            @for (var t = 0; t < Model.TablasSistemas?.Count; t++)
+                            {
+                                <li data-map-table="@t">
+                                    <div class="collapsible-header">
+                                        <i class="material-icons">view_list</i>
+                                        <input type="hidden" name="TablasSistemas.Index" value="@t" />
+                                        <div class="input-field">
+                                            <select class="list-table-names" asp-for="@Model.TablasSistemas[t].NombreTabla" asp-items="@(new SelectList(Model.TablasSistemaListado))">
+                                                <option value="" selected>Selecciona una tabla</option>
+                                            </select>
+                                        </div>
+                                        @if (t != 0)
+                                        {
+                                            <div class="right mr-4">
+                                                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1 btn-small ">
+                                                    <i class="material-icons map-table-action" data-map-table-delete="@t">remove</i>
+                                                </a>
+                                            </div>
+                                        }
+                                        <small ml-3><span class="red-text" asp-validation-for="@Model.TablasSistemas[0].NombreTabla"></span></small>
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <div class="row">
+                                            <small><span class=" right red-text mr-2" asp-validation-for="@Model.TablasSistemas[0].Prioridad"></span></small>
+                                            <div class="col s12 display-flex justify-content-end short-group">
+                                                Prioridad:
+                                                <input class="short-text map-priority" type="text" asp-for="@Model.TablasSistemas[@t].Prioridad" />
+                                                <a class=" ml-2 btn-floating waves-effect waves-light light-green lightrn-1 btn-small @(@Model.Nuevo ? "disabled-btn" : "")">
+                                                    <i class="material-icons map-table-action" data-map-column-add="@t">add</i>
+                                                </a>
+                                            </div>
+                                            <div class="card card-default scrollspy border-radius-6 col s12">
+                                                <div class="card-content p-0">
+                                                    <table data-map-column-list="@t" class="display responsive" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Col. Archivo</th>
+                                                                <th>Col. Tabla</th>
+                                                                <th>Es Llave</th>
+                                                                <th>Es Nulo</th>
+                                                                <th>Tipo</th>
+                                                                <th>Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.TablasSistemas[t]?.Columnas?.Count > 0)
+                                                            {
+                                                                @for (var c = 0; c < Model.TablasSistemas[t].Columnas.Count; c++)
+                                                                {
+                                                                    <tr data-map-column="@t">
+                                                                        <td>
+                                                                            <input type="hidden" name="TablasSistema[t].Columnas.Index" value="@c" />
+                                                                            <input type="hidden" asp-for="@Model.TablasSistemas[t].Columnas[c].IndexColumnaArchivo" />
+                                                                            <div class="input-field">
+                                                                                <select class="columns-file-options" asp-for="@Model.TablasSistemas[t].Columnas[c].ColumnaArchivo" asp-items="@(new SelectList(Model.ColumnasArchivo))">
+                                                                                    <option value="" selected disabled>Escoge columna</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="input-field">
+                                                                                @if (!Model.TablasSistemas[t].Columnas[c].IsNull)
+                                                                                {
+                                                                                    <input id="map-step3-separator" type="hidden" asp-for="@Model.TablasSistemas[t].Columnas[c].Nombre" />
+                                                                                }
+                                                                                <select class="clases-options" asp-for="@Model.TablasSistemas[t].Columnas[c].Nombre" asp-items="@(new SelectList(Model.TablasSistemas[t].NombresColumnas))" disabled="@(Model.TablasSistemas[t].Columnas[c].IsNull ? null : "disabled")">
+                                                                                    <option value="" selected disabled>Escoge columna</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label>
+                                                                                <input type="checkbox" asp-for="@Model.TablasSistemas[t].Columnas[c].Llave" checked="@Model.TablasSistemas[t].Columnas[c].Llave" disabled />
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <label>
+                                                                                <input type="checkbox" asp-for="@Model.TablasSistemas[t].Columnas[c].IsNull" checked="@Model.TablasSistemas[t].Columnas[c].IsNull" disabled />
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                        <td> <input type="text" asp-for="@Model.TablasSistemas[t].Columnas[c].Tipo" disabled /></td>
+                                                                        <td>
+                                                                            @if (Model.TablasSistemas[t].Columnas[c].IsNull)
+                                                                            {
+                                                                                <a class="mb-6 btn-floating waves-effect waves-light purple lightrn-1 btn-small">
+                                                                                    <i class="material-icons map-table-action" data-map-column-remove="@t">remove</i>
+                                                                                </a>
+                                                                            }
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li data-map-table="0">
+                                <div class="collapsible-header">
+                                    <i class="material-icons">view_list</i>
+                                    <input type="hidden" name="TablasSistemas.Index" value="0" />
+                                    <div class="input-field">
+                                        <select class="list-table-names" asp-for="@Model.TablasSistemas[0].NombreTabla" asp-items="@(new SelectList(Model.TablasSistemaListado))">
+                                            <option value="" selected>Selecciona una tabla</option>
+                                        </select>
+                                    </div>
+                                    <small ml-3><span class="red-text" asp-validation-for="@Model.TablasSistemas[0].NombreTabla"></span></small>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <small><span class=" right red-text mr-2" asp-validation-for="@Model.TablasSistemas[0].Prioridad"></span></small>
+                                        <div class="col s12 display-flex justify-content-end short-group">
+                                            Prioridad:
+                                            <input class="short-text map-priority" type="text" asp-for="@Model.TablasSistemas[0].Prioridad" />
+                                            <a class="ml-2 btn-floating waves-effect waves-light light-green lightrn-1 btn-small disabled-btn">
+                                                <i class="material-icons map-table-action" data-map-column-add="0">add</i>
+                                            </a>
+
+                                        </div>
+                                        <div class="card card-default scrollspy border-radius-6 col s12">
+                                            <div class="card-content p-0">
+                                                <table data-map-column-list="0" class="display responsive" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Col. Archivo</th>
+                                                            <th>Col. Tabla</th>
+                                                            <th>Es Llave</th>
+                                                            <th>Es Nulo</th>
+                                                            <th>Tipo</th>
+                                                            <th>Acción</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="step-actions">
+        <div>
+            <button class="btn btn-flat purple-text waves-effect waves-light btn-next" type="submit">
+                <span class="hide-on-small-only">Finalizar</span> <i class="material-icons">navigate_next</i>
+            </button>
+        </div>
+        <div>
+            <button class="middle-indicator-text btn btn-flat red-text waves-effect waves-light close" type="button">
+                <span class="hide-on-small-only">Cerrar</span>
+            </button>
+        </div>
+        <div>
+            <button id="step3-previous" class="btn btn-flat purple-text waves-effect waves-light btn-prev previous-step" type="button">
+                <i class="material-icons">navigate_before</i> <span class="hide-on-small-only">Anterior</span>
+            </button>
+        </div>
+
+    </div>
+</form>

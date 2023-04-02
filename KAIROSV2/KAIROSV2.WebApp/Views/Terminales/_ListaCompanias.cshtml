@@ -1,0 +1,85 @@
+﻿
+<div id="compania">
+    <fieldset id="fieldset-compania" disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+        <div class="col s12 m5 l5 card card-default scrollspy border-radius-6 fixed-width" style="margin-bottom:20px;">
+            <div class="card-content p-0">
+                <header class="board-header">
+                    <div class="title-board" contenteditable="true">Compañías Habilitadas</div>
+                </header>
+                <table id="companias-habilitadas" class="display" style="width:100%; white-space:nowrap" data-turbolinks="false">
+                    <thead>
+                        <tr>
+                            @foreach (var cabecera1 in Model.EncabezadosTerminalCompañias)
+                            {
+                <th>@cabecera1</th>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var compañia in Model.TerminalCompañias)
+                        {
+            <tr id="@compañia.IdCompañia">
+                <td class="center-align contact-checkbox">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="foo" class="chb" data-compid="@compañia.IdCompañia" />
+                        <span></span>
+                    </label>
+                </td>
+                <td>@compañia.Compañia</td>
+                <td>@compañia.Estado</td>
+                <td>@compañia.SicomCompañiaTerminal</td>
+                <td>@compañia.Socia</td>
+                <td>@compañia.CompañiaAgrupadora</td>
+                <td>@compañia.PorcentajePropiedad</td>
+            </tr>}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col s12 m2 l2 center-align mt-5">
+            <a id="companias-habilitar" class="btn-floating mb-1 waves-effect waves-light" data-turbolinks="false">
+                <i class="material-icons hide-on-med-and-up companias-action">arrow_upward</i>
+                <i class="material-icons companias-action">arrow_back</i>
+            </a>
+            <a id="companias-deshabilitar" class="btn-floating mb-1 waves-effect waves-light" data-turbolinks="false">
+                <i class="material-icons hide-on-med-and-up companias-action">arrow_downward</i>
+                <i class="material-icons companias-action">arrow_forward</i>
+            </a>
+        </div>
+        <div class="col s12 m5 l5 card card-default scrollspy border-radius-6 fixed-width" style="margin-bottom:40px;">
+            <div class="card-content p-0">
+                <header class="board-header">
+                    <div class="title-board" contenteditable="true">Compañías Inhabilitadas</div>
+                </header>
+                <table id="companias-inhabilitadas" class="display" style="width:100%; white-space:nowrap" data-turbolinks="false">
+                    <thead>
+                        <tr>
+                            @foreach (var cabecera2 in Model.EncabezadosCompañias)
+                            {
+                <th>@cabecera2</th>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var compañia in Model.Compañias)
+                        {
+            <tr id="@compañia.IdCompañia">
+                <td class="center-align contact-checkbox">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="foo" class="chbi" data-compid="@compañia.IdCompañia" />
+                        <span></span>
+                    </label>
+                </td>
+                <td>@compañia.IdCompañia</td>
+                <td>@compañia.Nombre</td>
+                <td>@compañia.SalesOrganization</td>
+                <td>@compañia.DistributionChannel</td>
+                <td>@compañia.Division</td>
+                <td>@compañia.SupplierType</td>
+                <td>@compañia.CodigoSicom</td>
+            </tr>}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+</div>
+

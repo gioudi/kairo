@@ -1,0 +1,25 @@
+﻿@model PermisosDTO
+
+
+@if (Model.Permisos.Count > 0)
+{
+    <ul>
+        @for (var c = 0; c < Model.Permisos.Count; c++)
+        {
+        <li>
+            <label>
+                <input type="hidden" asp-for="@Model.Permisos[c].IdPermiso" />
+                <input type="hidden" asp-for="@Model.Permisos[c].Nombre" />
+                <input type="hidden" asp-for="@Model.Permisos[c].IdEntidadPadre" />
+                <input type="checkbox" asp-for="@Model.Permisos[c].Habilitada" checked="@Model.Permisos[c].Habilitada" />
+                <span>@Model.Permisos[c].Nombre</span>
+            </label>
+
+            @if (Model.Permisos[c].Permisos.Count > 0)
+            {
+                @await Html.PartialAsync("_PermisosRol", Model.Permisos[c], $"Permisos[{c}]")
+            }
+        </li>
+        }
+    </ul>
+}

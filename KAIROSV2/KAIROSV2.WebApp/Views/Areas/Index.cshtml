@@ -1,0 +1,56 @@
+﻿@model ListViewModel<TArea>
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana -->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Áreas</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Configuración</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Lista Áreas
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana -->
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <!-- Botón para agregar una nueva área -->
+                <div class="contact-overlay"></div>
+                <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top @(@Model.ActionsPermission.Crear ? "" : "disable-action")">
+                    <a id="area-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+                <!-- Inicio del área de contenido -->
+                <div class="content-area">
+                    <div class="app-wrapper">
+                        @await Html.PartialAsync("_ListaAreas")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="area-modal" class="modal small-modal modal-fixed-footer">
+    </div>
+</div>
+
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" type="text/css" href="~/css/pages/areas.css">
+    <script type="module" src="~/dist/js/pages/areas.js" asp-append-version="true"></script>
+}
+

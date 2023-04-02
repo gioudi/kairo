@@ -1,0 +1,670 @@
+﻿/* GENERALES */
+
+/* Mapping Card Styles */
+
+#files-mapped .card {
+    width: 280px;
+    overflow: clip;
+}
+
+#files-mapped .divider-h {
+    width: 1px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#files-mapped .card svg {
+    position: absolute;
+    z-index: -1;
+}
+
+#files-mapped .card-border {
+    border-radius: 10px;
+}
+
+#files-mapped .card .card-content {
+    border-radius: 0 0 10px 10px;
+    padding: 4px 10px 4px 10px;
+    height: 80px;
+}
+
+    #files-mapped .card .card-content p {
+        height: 45px;
+        word-wrap: break-word;
+    }
+
+#files-mapped .card .card-header {
+    padding: 10px;
+}
+
+#files-mapped .card .number-tables {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+/* End Card Styles */
+
+
+/* Modal Styles */
+#intro .modal.open {
+    height: 100%;
+    max-height: 700px;
+    max-width: 1000px
+}
+
+    #intro .modal.open .modal-content {
+        overflow: hidden;
+        height: 100%;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        /*padding: 0px;*/
+    }
+
+#intro .modal .modal-close span i.material-icons {
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+}
+/*
+#intro .modal .modal-content:after {
+    background: url('../../../app-assets/images/gallery/wave.png');
+    background-size: cover;
+}*/
+
+#intro .modal .bg-img-div {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    width: 90%;
+    height: 100px;
+    opacity: 1;
+    background: url('../../../app-assets/images/gallery/wave.png');
+    background-size: cover;
+}
+
+/* End Modal Styles*/
+
+
+/* Stepper Styles */
+#intro .stepper {
+    margin: 0px -24px 0px -24px;
+    padding: 0 20px 0 20px;
+    height: 100%;
+}
+
+#intro .modal-content > form {
+    height: 110%;
+}
+
+#intro .modal .modal-content .stepper .step .step-actions {
+    justify-content: space-between;
+}
+
+#intro .modal .modal-content .stepper .step .btn.close {
+    font-weight: normal;
+    text-shadow: 0px 0px;
+    padding: 5px 30px 0px 30px;
+}
+
+#intro .modal .modal-content .stepper .step .btn.previous-step,
+#intro .modal .modal-content .stepper .step .btn.close,
+#intro .modal .modal-content .stepper .step .step-actions .btn-next {
+    border-radius: 30px;
+    position: relative;
+}
+
+    #intro .modal .modal-content .stepper .step .step-actions .btn-next:hover {
+        color: #fff !important;
+        background-color: #8e24aa;
+    }
+
+    #intro .modal .modal-content .stepper .step .btn.previous-step:hover {
+        color: #fff !important;
+        background-color: #8e24aa;
+    }
+
+    #intro .modal .modal-content .stepper .step .btn.close:hover {
+        color: #fff !important;
+        background-color: #ee3a3a;
+    }
+
+#intro .modal .modal-content .stepper .step .middle-indicator-text {
+    position: absolute;
+}
+
+#intro .modal .modal-content .stepper .step .btn .hide-on-small-only {
+    position: relative;
+    bottom: 5px;
+}
+
+#intro .modal .modal-content .stepper .step .step-title {
+    padding: 0 55px 0 55px;
+}
+
+#intro .modal .modal-content .stepper .step .scroll-content {
+    position: absolute;
+    height: calc(100% - 50px);
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px 20px 0px 20px;
+    width: 100%;
+}
+
+#intro .modal .modal-content ul.stepper.horizontal .step .step-content {
+    overflow-y: hidden;
+}
+/* End Stepper Styles */
+
+/* Carousel Styles */
+#intro .modal .modal-content .carousel.carousel-slider {
+    height: 100% !important;
+}
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item .middle-indicator-text {
+        position: absolute;
+    }
+
+        #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item .middle-indicator-text.moveNextCarousel {
+            top: -5px;
+            right: -0;
+            border-radius: 30px;
+        }
+
+            #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item .middle-indicator-text.moveNextCarousel:hover {
+                color: #fff !important;
+                background-color: #8e24aa;
+            }
+
+        #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item .middle-indicator-text.movePrevCarousel {
+            top: -5px;
+            left: -0;
+            border-radius: 30px;
+        }
+
+            #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item .middle-indicator-text.movePrevCarousel:hover {
+                color: #fff !important;
+                background-color: #8e24aa;
+            }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-fixed-item i.material-icons {
+        line-height: 1;
+        position: relative;
+        top: 4px;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item .slide-1-img,
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item .slide3-img {
+        width: 200px;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item .slide-2-img {
+        width: 160px;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item .intro-step-title {
+        color: #8e24aa;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item.slide-2 .select-wrapper input.select-dropdown {
+        text-overflow: ellipsis;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item.slide-3 ul.feature-list li i.material-icons {
+        position: relative;
+        top: 7px;
+        color: #8e24aa;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item.slide-3 .get-started {
+        border-radius: 30px;
+    }
+
+    #intro .modal .modal-content .carousel.carousel-slider ul.indicators {
+        bottom: 20px;
+    }
+
+        #intro .modal .modal-content .carousel.carousel-slider ul.indicators .indicator-item {
+            background-color: #9e9e9e;
+        }
+
+            #intro .modal .modal-content .carousel.carousel-slider ul.indicators .indicator-item.active {
+                background-color: #8e24aa;
+            }
+/* End Carousel Styles*/
+
+
+/*PASOS STYLES*/
+
+/*PASO 1*/
+#intro .modal .modal-content .stepper .step .step-content img {
+    position: absolute;
+    padding-right: 10px;
+    margin-left: -60px;
+    margin-top: -20px;
+    z-index: -2;
+    height: 100%;
+    opacity: 0.6;
+}
+
+#intro .modal .modal-content .stepper .step .step-content .media-body .upfilewrapper {
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+/*End paso 1*/
+
+/*paso 2*/
+
+#intro .modal .modal-content .stepper .step.step2 .card-content {
+    padding: 5px 5px 5px 10px;
+}
+
+#intro .modal .modal-content .stepper .step.step2 .step-content #table-step2_info,
+#intro .modal .modal-content .stepper .step.step2 .step-content #table-step2_paginate {
+    display: block;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .step-content #table-step2_info,
+#intro .modal .modal-content .stepper .step.step3 .step-content #table-step2_paginate {
+    display: none;
+}
+/* End paso 2*/
+/*paso 3*/
+#intro .modal .modal-content .stepper .step.step3 .collapsible-header {
+    height: 60px;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+    #intro .modal .modal-content .stepper .step.step3 .collapsible-body .card {
+        padding: 0px;
+        max-width: 940px;
+        margin-left: 20px;
+    }
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-header .input-field {
+    padding: 0;
+    margin: 0;
+    width: 300px;
+    top: -18px;
+    margin-left: 10px;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body input[type="text"].short-text {
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body .short-group {
+    align-items: flex-start
+}
+
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body .input-field select {
+    display: block;
+    position: absolute;
+    width: 0;
+    pointer-events: none;
+    height: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body input[type='text'] {
+    height: 30px;
+}
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body .input-field {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+    #intro .modal .modal-content .stepper .step.step3 .collapsible-body .input-field .select-wrapper input.select-dropdown {
+        height: 30px;
+    }
+
+#intro .modal .modal-content .stepper .step.step3 .collapsible-body table td {
+    padding: 10px 5px;
+}
+/* End paso 3*/
+/*-- TABLA STYLES --*/
+#intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
+    overflow-x: hidden !important;
+    cursor: pointer;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-color: rgba(0, 0, 0, .12);
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable thead th {
+    min-width: 69px;
+    color: #616161;
+}
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable thead th.background-image-none {
+        background-image: none !important;
+    }
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable th,
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable td {
+    font-weight: 300;
+    padding: 17px 14px;
+    white-space: nowrap;
+    border-bottom: 1px solid #cfd8dc;
+}
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable th:last-child i,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable td:last-child i {
+        overflow: hidden;
+        max-width: 20px;
+    }
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tbody {
+    overflow: auto;
+}
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tbody th,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tbody td {
+        padding: 8px 14px;
+        white-space: nowrap;
+        border: none !important;
+    }
+
+        #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tbody th i.material-icons,
+        #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tbody td i.material-icons {
+            cursor: pointer;
+            color: #9e9e9e;
+        }
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tfoot th,
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable tfoot td {
+    font-weight: 300;
+    white-space: nowrap;
+    border-top: 1px solid #cfd8dc;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.stripe tbody tr,
+#intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.display tbody tr {
+    height: auto;
+}
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.stripe tbody tr.odd,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.display tbody tr.odd {
+        background-color: #f4f5f7;
+    }
+
+        #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.stripe tbody tr.odd > .sorting_1,
+        #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.display tbody tr.odd > .sorting_1 {
+            background-color: transparent;
+        }
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.display tbody tr.hover > .sorting_1,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.display tbody tr:hover > .sorting_1,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.order-column.hover tbody tr.hover > .sorting_1,
+    #intro .modal .modal-content .stepper .dataTables_wrapper table.dataTable.order-column.hover tbody tr:hover > .sorting_1 {
+        background-color: transparent;
+    }
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table [type='checkbox'] + span:not(.lever):before,
+#intro .modal .modal-content .stepper .dataTables_wrapper table [type='checkbox']:not(.filled-in) + span:not(.lever):after {
+    width: 15px;
+    height: 15px;
+    opacity: .5;
+    border-radius: 4px !important;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper table [type='checkbox']:checked + span:not(.lever):before {
+    width: 10px !important;
+    height: 20px !important;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_length,
+#intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_filter {
+    display: none;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_info {
+    margin-left: 18px;
+    color: #616161;
+}
+
+#intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_paginate {
+    margin-right: 3.8rem;
+    padding-bottom: .75rem;
+}
+
+    #intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_paginate .paginate_button {
+        margin-top: .25rem;
+        padding: .25em .65em;
+    }
+
+        #intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+        #intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: #fff !important;
+            border: 1px solid #3f51b5;
+            border-radius: 6px;
+            background: #3f51b5;
+            box-shadow: 0 0 8px 0 #3f51b5;
+        }
+
+        #intro .modal .modal-content .stepper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            color: #fff !important;
+            border: 1px solid #3f51b5;
+            border-radius: 6px;
+            background: #3f51b5;
+            box-shadow: 0 0 8px 0 #3f51b5;
+        }
+
+#intro .modal .modal-content .stepper .datatable-search {
+    position: relative;
+}
+
+    #intro .modal .modal-content .stepper .datatable-search .search-icon {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: #bdbdbd;
+    }
+
+    #intro .modal .modal-content .stepper .datatable-search .app-filter {
+        max-width: calc(100% - 3rem);
+        margin-bottom: .5rem;
+        padding: .2rem;
+        padding-left: 2.75rem;
+        border: none;
+        border-radius: .4rem;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+    }
+
+        #intro .modal .modal-content .stepper .datatable-search .app-filter:focus {
+            border-bottom: none !important;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2) !important;
+        }
+/*-- END TABLE STYLES --*/
+
+
+/*SEARCH BAR STYLES*/
+#search-page .input-field.col {
+    margin-bottom: 1rem;
+    width: 95%;
+}
+
+#search-page .search-circle {
+    padding-left: 15px;
+    border-radius: 10rem;
+}
+
+#search-page .search-box {
+    width: 100%;
+    box-shadow: 3px 3px 12px #859eaa;
+}
+
+    #search-page .search-box:focus,
+    #search-page .search-box:focus.active {
+        box-shadow: 3px 3px 20px #73838a;
+    }
+
+#search-page .filter-btn {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+}
+
+#search-page .action-btns {
+    -webkit-box-flex: .05;
+    -webkit-flex-grow: .05;
+    -ms-flex-positive: .05;
+    flex-grow: .05;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+/*END SEARCH STYLES*/
+
+
+
+/* Media Query */
+
+@media (min-width: 992px) {
+    #intro .modal {
+        width: 80% !important;
+    }
+}
+
+@media (min-width: 600px) {
+    #search-page .filter-btn .btn {
+        padding: 0 1rem !important;
+    }
+
+        #search-page .filter-btn .btn i {
+            float: left !important;
+            margin-right: 8px !important;
+        }
+}
+
+@media (min-width: 996px) {
+    #intro .modal.open {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #intro .modal {
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #intro .modal.open {
+        height: 60% !important;
+    }
+}
+
+@media (max-width: 540px) {
+    #intro .modal {
+        width: 80% !important;
+        height: 100% !important;
+        max-height: 70% !important;
+    }
+
+        #intro .modal .modal-content .carousel.carousel-slider .carousel-item .intro-step-title {
+            font-size: 1.25rem !important;
+        }
+
+        #intro .modal .modal-content .carousel.carousel-slider .carousel-item.slide-3 ul.feature-list {
+            margin: 0 !important;
+        }
+}
+
+@media (width: 375px) and (height: 667px) {
+    #intro .modal .modal-content .carousel.carousel-slider .carousel-item img.responsive-img {
+        width: 100px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-area .app-wrapper .sidenav-trigger {
+        display: block !important;
+        width: 45px;
+        margin-top: 15px !important;
+        margin-bottom: 5px !important;
+        padding: 10px;
+        color: #fff;
+        background-color: #3f51b5 !important;
+    }
+
+    .content-area .app-wrapper .dataTables_wrapper table.dataTable {
+        height: calc(100vh - 630px);
+    }
+
+    .sidebar .sidebar-content .sidebar-header {
+        top: 20px !important
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content-area .app-wrapper .dataTables_wrapper .dataTables_info {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .content-area {
+        margin-top: -110px !important;
+    }
+
+        .content-area.content-right,
+        .content-area.content-left {
+            z-index: 1;
+            float: none !important;
+            width: 100%;
+        }
+
+    .sidebar .sidebar-content .sidenav-trigger {
+        position: relative;
+        z-index: 1;
+        top: 11px;
+        display: inline-block;
+        left: 5px;
+    }
+
+    .sidebar .sidebar-content .sidebar-header {
+        display: inline-block;
+        left: 10px;
+    }
+
+    .sidebar-menu {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    table.responsive-table thead tr {
+        padding: 0 10px 0 0 !important;
+    }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+    /*.dataTables_wrapper.no-footer div.dataTables_scrollBody > table {
+        height: 850px;
+        border-bottom: none;
+    }*/
+}
+
+
+/* End Media Query*/

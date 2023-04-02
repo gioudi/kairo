@@ -1,0 +1,60 @@
+/*----------------------------------------
+  Áreas
+------------------------------------------*/
+
+@media only screen and (min-width: 900px) 
+{
+    .modal 
+    {
+        width: 35% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 30% !important;
+    }
+    
+    .modal-confirm-message-small 
+    {
+        max-height: 17% !important;
+        width: 45% !important;
+    }
+}
+
+@media only screen and (min-width: 1300px) 
+{
+    .modal 
+    {
+        width: 40% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 55% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 33% !important;
+        width: 40% !important;
+    }
+}
+
+@media only screen and (min-width: 1400px)
+{
+    .modal 
+    {
+        width: 25% !important;
+    }
+
+    .modal.modal-fixed-footer 
+    {
+        height: 40% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 23% !important;
+        width: 30% !important;
+    }
+}

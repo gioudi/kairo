@@ -1,0 +1,37 @@
+﻿@model TerminalCompletaViewModel
+<!-- BEGIN: Campo busqueda y Tabla-->
+
+<div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-Terminales" class="display" style="width:100%; white-space:nowrap">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.EncabezadosTerminales)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @*@foreach (var Log in Model.Terminal)*@
+                @*{*@
+                    <tr id="@Model.Terminal.IdTerminal">
+
+                        <td>@Model.Terminal.IdTerminal</td>
+                        <td>@Model.Terminal.Terminal</td>
+                        <td>@Model.Terminal.IdArea</td>
+                        <td>@Model.Terminal.Superintendente</td>
+                        <td>@Model.Terminal.CentroCosto</td>
+                        <td>@Model.Terminal.Conjunta</td>
+                        <td>@Model.Terminal.Direccion</td>
+                        <td>@Model.Terminal.IdEstado</td>
+                        <td>@Model.Terminal.Poliducto</td>
+                        <td>@Model.Terminal.Telefono</td>
+                        <td>@Model.Terminal.UltimaEdicion</td>
+                    </tr>
+                @*  *@@*}*@
+            </tbody>
+        </table>
+    </div>
+</div>
+

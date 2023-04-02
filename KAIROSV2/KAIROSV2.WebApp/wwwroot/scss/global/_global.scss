@@ -1,0 +1,599 @@
+﻿
+/* Content List */
+/***************/
+// 1.Document
+// 2.Text
+// 3.Multimedia
+// 4.Tables
+// 5. Form
+/**************/
+
+/*1.  Document*/
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: $font-family-sans-serif;
+    line-height: $line-height-base;
+    /*-webkit-text-size-adjust: 100%;*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+
+
+//  Tipography
+body, * {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+
+    h1, h2, h3, h4, h5, h6, p, span, i, button, div, section, a, article, input, textarea {
+        font-family: $font-family-sans-serif;
+        line-height: $line-height-base;
+    }
+
+
+
+    .d-flex {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+
+.custom-status {
+    @include custom-status-kairos();
+}
+
+.custom-floating-action {
+    @include btn-kairos-floating();
+}
+
+.custom-sidenav {
+    @include sidebar-kairos();
+}
+
+
+.custom-contentheader {
+    @include navbar-kairos();
+}
+
+.custom-content-wrapper-before {
+    @include content-wrapper-kairos();
+}
+
+.custom-card {
+    @include card-kairos();
+}
+
+.custom-tabs {
+    @include tabs-kairos();
+}
+
+
+
+
+/* 2.Text */
+/*a {
+    color: $primary;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: $yellow;
+    text-decoration: underline;
+}
+
+a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:not([href]):hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+a.btn.disabled,
+fieldset:disabled a.btn {
+    pointer-events: none;
+}*/
+small,
+.custom-small {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+/* 3.Multimedia*/
+
+
+
+/* 4.Tables*/
+.custom-cotent-dataTable {
+
+    @include custom-datacontent-kairos();
+
+    .custom-datatable {
+        @include custom-datatable-kairos();
+    }
+}
+/* 5. Form*/
+/*button {
+    border-radius: 0;
+}
+
+button:focus {
+    outline: none;
+    outline:none;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+
+input[type="radio"],
+input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+    -webkit-appearance: listbox;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}*/
+.custom-form-group {
+    margin-bottom: 1rem;
+
+    span, i, i.prefix ~ input {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    i, i.prefix {
+        right: 5px;
+        font-size: 1.1rem;
+        top: 10px;
+        color: $grey-38;
+    }
+
+    > i.active {
+        color: $blue !important;
+    }
+
+    > i.is-valid {
+        color: $primary;
+    }
+
+    > i.is-invalid {
+        color: $red;
+    }
+}
+
+
+
+.custom-input-field {
+
+    i, i.prefix ~ input {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    i, i.prefix {
+        right: 5px;
+        font-size: 1.1rem;
+        top: 10px;
+        color: $grey-38;
+    }
+
+    > i.active {
+        color: $primary;
+    }
+
+    > i.is-valid {
+        color: $primary;
+    }
+
+    > i.is-invalid {
+        color: $red;
+    }
+}
+
+
+input.custom-input {
+    @include input-close-kairos();
+}
+
+input.custom-inputf {
+    @include input-open-kairos();
+}
+
+
+textarea.custom-textarea {
+    @include textarea-kairos();
+}
+
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+
+.custom-btn {
+    @include btn-kairos();
+}
+
+.custom-btnic {
+    @include btnic-kairos();
+}
+
+
+
+.custom-alert {
+    @include alert-kairos();
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $black;
+    text-shadow: 0 1px 0 $white;
+    opacity: .5;
+}
+
+.close:hover {
+    color: $black;
+    text-decoration: none;
+}
+
+.close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+    opacity: .75;
+}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+a.close.disabled {
+    pointer-events: none;
+}
+
+.custom-control {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+    -webkit-print-color-adjust: exact;
+}
+
+
+
+.custom-swicth {
+    @include switch-kairos();
+}
+
+.custom-checkbox {
+    @include checkbox-kairos();
+}
+
+.custom-radio {
+    @include radio-kairos();
+}
+
+
+.custom-select {
+    @include select-kairos();
+}
+
+.select2.select2-container {
+    width: 100% !important;
+
+    .select2-selection {
+        outline: none;
+        @include transition(0.15s);
+    }
+
+    .select2-selection .select2-selection__rendered {
+        color: $grey-70;
+        padding-right: 2.1rem;
+    }
+
+    .select2-selection .select2-selection__arrow {
+        height: 2rem;
+        width: 2.5rem;
+    }
+
+
+
+    &.select2-container--open .select2-selection.select2-selection--multiple {
+        border: 1px solid #34495e;
+    }
+
+    &.select2-container--focus .select2-selection {
+        outline: none;
+    }
+
+    .select2-selection--multiple {
+        height: auto;
+        min-height: 34px;
+    }
+
+    .select2-selection--multiple .select2-search--inline .select2-search__field {
+        margin-top: 0;
+        height: 32px;
+    }
+
+    .select2-selection--multiple .select2-selection__rendered {
+        display: block;
+        padding: 0 4px;
+        line-height: 29px;
+    }
+
+    .select2-selection--multiple .select2-selection__choice {
+        border: 1px solid $grey-20;
+        @include radius(0.2rem,0.2rem,0.2rem,0.2rem);
+        margin: 4px 4px 0 0;
+        padding: 0 6px 0 22px;
+        height: 1.5rem;
+        line-height: 24px;
+        font-size: 0.8rem;
+        position: relative;
+    }
+
+    .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        margin: 0;
+        text-align: center;
+        color: $black2;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+}
+
+
+.select2-container .select2-dropdown, .select2-container--open .select2-dropdown--above, .select2-container--open .select2-dropdown--below {
+    background: $white;
+    border: 2px solid $grey-35;
+    @include box-shadow($top: 0.3rem, $left: 0.3rem, $blur: 0.5rem, $color: rgba(0,0,0,.025), $inset: "");
+    @include radius(0.3rem,0.3rem,0.3rem,0.3rem);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: rgb(0, 0, 0) transparent transparent;
+    border-width: 6px 4px 0 4px;
+    margin-left: 0.58rem;
+}
+
+
+
+
+.select2-container .select2-dropdown .select2-search {
+    padding: 0.5rem;
+}
+
+.select2-container .select2-dropdown .select2-search input {
+    outline: none;
+    @include input-close-kairos();
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 2.5rem 0.375rem 1rem;
+    font-size: 0.85rem;
+    line-height: $line-height-base;
+    color: $grey-55;
+    background-color: $white;
+    background-clip: padding-box;
+    border: 1px solid $grey-38;
+    @include radius($border-top-left: 0.25rem, $border-top-right: 0.25rem, $border-bottom-left: 0.25rem, $border-bottom-right: 0.25rem);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:before {
+        font-family: "Font Awesome 5 Solid";
+        content: '\f002';
+        position: absolute;
+        right: 0.8rem;
+        top: 0.8rem;
+        font-weight: 600;
+    }
+
+    &:focus {
+        color: $blue;
+        background-color: $white;
+        border-color: $blue;
+        outline: 0;
+        @include box-shadow($top: 0, $left: 0, $blur: 0.2rem, $color:rgba(30,34,170,0.5), $inset: "");
+    }
+}
+
+.select2-container .select2-dropdown .select2-results {
+    padding: 0;
+}
+
+.select2-container .select2-dropdown .select2-results ul {
+    list-style: none;
+    text-transform: capitalize;
+
+    .select2-results__option:nth-child(even) {
+        background: $grey-5
+    }
+
+    .select2-results__option:nth-child(odd) {
+        background: $white
+    }
+
+    .select2-results__option {
+        border-bottom: 1px solid $grey-5;
+        position: relative;
+        padding-right: 2.5rem;
+
+
+        &:hover {
+            background: rgba(255, 167, 38, 0.2);
+
+            &:before {
+                content: ' ';
+                font-family: $font-family-fontawesome;
+                font-size: 0.9rem;
+                color: $primary;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                font-weight: 800;
+            }
+        }
+    }
+
+    .select2-results__option:first-child {
+        &:hover {
+            background: $white;
+        }
+    }
+
+    .select2-results__option:last-child {
+        border-bottom: none;
+    }
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+    &::-webkit-scrollbar-track {
+        @include box-shadow($top: 0.3rem, $left: 0.3rem, $blur: 0.5rem, $color: rgba(0,0,0,.025), $inset: "");
+        background-color: $grey-15;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0.275rem;
+        background-color: $grey-15;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @include box-shadow($top: 0.3rem, $left: 0.3rem, $blur: 0.5rem, $color: rgba(0,0,0,.025), $inset: "");
+        background-color: $grey-35;
+    }
+}
+
+.select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+    color: $primary;
+
+    &:before {
+        content: '\f00c';
+        font-family: $font-family-fontawesome;
+        font-size: 0.9rem;
+        color: $primary;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-weight: 800;
+    }
+}
+
+.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple {
+    height: 2.4750rem;
+    background-color: transparent;
+}
+
+.big-drop {
+    width: 600px !important;
+}
+
+
+.tabs-vertical .tabs {
+    height: auto;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.tabs-vertical .tab a {
+    text-align: left;
+}
+
+.tabs-vertical .tab .active {
+    -moz-transition: border-color .5s ease;
+    -o-transition: border-color .5s ease;
+    -webkit-transition: border-color .5s ease;
+    transition: border-color .5s ease;
+    border-right: 3px solid pink;
+}
+
+.tabs-vertical .tab :hover {
+    border-right: 3px solid #eeeeee;
+}
+
+.tabs-vertical .indicator {
+    display: none;
+}
+
+.tabs-vertical .tab-content {
+    display: block;
+    /*  make tab content scrollable , by define height, then overflow: auto*/
+    height: 100vh;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+    /*  make tab content scrollable */
+}
+
+.tabs-vertical > .tab-content .active {
+    display: block;
+}
+
+#top,
+#bottom {
+    padding: 0;
+    margin: 0;
+    display: block;
+    overflow-y: auto;
+    overflow-x: auto;
+}

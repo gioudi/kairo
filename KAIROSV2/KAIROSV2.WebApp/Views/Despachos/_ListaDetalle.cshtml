@@ -1,0 +1,70 @@
+﻿@model DespachosViewModel
+
+<div id="detalle" class="card card card-default  scrollspy border-radius-6 fixed-width">
+    <div class="card-content custom-cotent-dataTable">
+        <div class="datatable-search">
+            <i class="material-icons mr-2 search-icon">search</i>
+            <input type="text" placeholder="Buscar" class="app-filter" id="filtro_detalle">
+        </div>
+        @*<div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top">
+            <a id="despacho-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point disabled">
+                <i class="material-icons">add</i>
+            </a>
+        </div>*@
+        <table id="data-table-despacho-detalle" class="display custom-datatable" style="width:100%; white-space:nowrap">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.EncabezadosDetallado)
+                    {
+                        @if (cabecera == "Estado Off/On")
+                        {
+                            <th style="white-space: pre-line; text-align: center; padding-right: 30px">@cabecera</th>
+                        }
+                        else
+                        {
+                            <th>@cabecera</th>
+                        }
+                    }
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var cont = 0;
+                }
+                @foreach (var Despacho in Model.DespachosDetallados)
+                {
+                <tr id="@Despacho.Id_Despacho" data-idDespacho="@Despacho.Id_Despacho">
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">
+                        <div class="switch custom-swicth @(@Model.ActionsPermission.Editar && Model.PermiteEditar ? "" : "disable-action")">
+                            <label>
+                                <label id="label-estado-@cont" class="est" style="display:none">@Despacho.Estado_Kairos</label>
+                                <input id="switch-estado-@cont" class="despacho-estado custom-input-switch" type="checkbox" checked="@Despacho.Estado_Kairos" data-idDespacho="@Despacho.Id_Despacho">
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Fecha_Final_Despacho</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Id_Compañia</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.No_Orden</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Compartimento</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Placa_Cabezote</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Placa_Trailer</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Cedula_Conductor</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Id_Producto_Despacho</td>
+                    <td class="despacho-detail volumen" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Volumen_Ordenado.ToString("N2")</td>
+                    <td class="despacho-detail" data-idDespacho="@Despacho.Id_Despacho">@Despacho.Volumen_Cargado.ToString("N2")</td>
+                    <td>
+                        <a class="cursor-point @(@Model.ActionsPermission.Editar && Model.PermiteEditar ? "" : "disable-action")" data-turbolinks="false">
+                            <i class="material-icons despacho-edit" data-idDespacho="@Despacho.Id_Despacho">edit</i>
+                        </a>
+                    </td>    
+
+                </tr>
+                    cont++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

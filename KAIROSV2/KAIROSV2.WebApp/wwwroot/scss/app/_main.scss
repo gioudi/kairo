@@ -1,0 +1,1066 @@
+﻿/* Content List */
+/***************/
+//1. Web
+/**************/
+// 1.1 Landing
+// 1.2 Login
+// 1.3 Register
+// 1.4 Forgot
+// 1.5 Recovery
+// 1.6
+/**************/
+//2. Dashboard
+/**************/
+// 2.1 Graphics
+// 2.2
+// 2.3
+// 2.4
+// 2.5
+// 2.6
+
+
+
+
+
+/*1. Web*/
+//*******
+/* 1.1 Landing */
+
+
+.BodyBackGround:before {
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f28d25;
+    opacity: 0.5;
+}
+
+
+/* 1.2 Login */
+/* #viewLogin { */
+/*Background*/
+/*Boton*/
+/*} */
+
+#viewLogin .login-card {
+    top: -6px;
+    left: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    -webkit-border-bottom-left-radius: 25px;
+    -moz-border-radius-bottomright: 25px;
+    -moz-border-radius-bottomleft: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    padding: 50px 40px;
+}
+
+
+
+
+
+.title-sm {
+    font-size: 12px;
+}
+
+
+.logoKairos {
+    height: 55px;
+}
+
+.logoKairos img {
+    height: 55px;
+    width: auto;
+    object-fit: cover;
+}
+/*Background*/
+.custom-parallax-container {
+    height: 100vh;
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .login-card {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 628px) {
+    .login-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .paralax-img {
+        min-height: 1024px;
+    }
+}
+
+.custom-input-secondary {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.custom-input-secondary > input[type=text], custom-input-secondary > .custom-input-secondary > input[type=password]:not(.browser-default) {
+    border: 1px solid transparent;
+}
+
+
+.custom-input-secondary > input[type=text]:not(.browser-default), .custom-input-secondary > input[type=password]:not(.browser-default) {
+    border: 1px solid #9e9e9e;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 8px 15px;
+    box-sizing: border-box;
+    font-size: 13px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 40px;
+}
+
+
+.custom-input-secondary .prefix ~ input {
+    width: 100%;
+    margin: 0;
+}
+
+.custom-input-secondary .prefix {
+    right: 5px;
+    font-size: 18px;
+    top: 12px;
+    color: #a6a6a6;
+}
+
+.custom-input-secondary > input[type=text]:not(.browser-default):focus:not([readonly]), .custom-input-secondary > input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border: 1px solid #FF6900;
+    box-shadow: 0 1px 0 0 #FFB81C;
+}
+
+.custom-input-secondary > i.prefix.active {
+    color: #FF6900;
+}
+
+
+
+.custom-input-secondary > input[type='checkbox'] + span:not(.lever) {
+    font-size: 11px;
+}
+
+.text-xs, form > div:nth-child(4) > div.col.s12.display-flex.justify-content-between > label > span {
+    font-size: 11px;
+    padding-left: 20px;
+    font-weight: 800;
+}
+
+a.text-xs {
+    color: #FF6900;
+    font-weight: 800;
+}
+
+a.text-xs:hover {
+    color: #FFB81C;
+}
+
+
+[type='checkbox'].filled-in:not(:checked) + span:not(.lever):after {
+    border: 2px solid #ff9800;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+}
+
+[type='checkbox'].filled-in:checked + span:not(.lever):after {
+    border: 2px solid #ff9800;
+    background-color: #ff9800;
+    width: 16px;
+    height: 16px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    top: 4px;
+}
+
+[type='checkbox'].filled-in:checked + span:not(.lever):before {
+    width: 6px;
+    height: 8px;
+    top: 4px;
+}
+/*Boton*/
+
+
+.card-msg-landing {
+    background: transparent;
+    width: 95%;
+    height: 420px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    box-shadow: none;
+}
+
+.header-text-msg {
+    color: #fff;
+    font-size: 25px;
+    text-align: -webkit-center;
+    font-weight: 800;
+    position: relative;
+}
+
+.header-text-msg > .text-sm {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.header-text-msg::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    border: 2px solid #FFB81C;
+    bottom: 15%;
+    left: 33%;
+}
+
+@media screen and (max-width: 2560px) {
+    #viewLogin .login-card {
+        width: 40%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 20px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 97px;
+        border: 2px solid #FFB81C;
+        bottom: 22%;
+        right: 41%;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    #viewLogin .login-card {
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 1300px) {
+    #viewLogin .header-text-msg::before {
+        bottom: 10%;
+        left: 25%;
+    }
+
+    #viewLogin .paralax-img {
+        min-height: 1024px;
+    }
+}
+
+
+@media screen and (max-width: 1085px) {
+    #viewLogin .login-card {
+        width: 62%;
+    }
+
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 82px;
+        border: 2px solid #FFB81C;
+        bottom: 11%;
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #viewLogin .login-card {
+        width: 64%;
+    }
+
+    #viewLogin .logoKairos img {
+        height: 47px;
+        width: auto;
+        object-fit: cover;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 19px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 75px;
+        border: 2px solid #FFB81C;
+        bottom: 16%;
+        left: 34%;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    #viewLogin .login-card {
+        width: 65%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 25px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        left: -31%;
+    }
+}
+
+
+
+@media screen and (max-width: 992px) {
+    #viewLogin .login-card {
+        width: 50%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 28px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 32rem;
+        max-width: 291px;
+        max-height: 108px;
+        left: 69%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        bottom: 10%;
+        left: 37%;
+    }
+
+    #viewLogin .header-text-msg > .text-sm {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    #viewLogin .header-text-msg::before {
+        top: 154%;
+        width: 5rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 5rem;
+        border: 2px solid #FFB81C;
+        bottom: 16%;
+    }
+}
+
+
+
+
+
+
+@media screen and (max-width: 667px) {
+
+
+    #viewLogin .logoKairos img {
+        height: 46px;
+        width: auto;
+        object-fit: cover;
+    }
+
+    #viewLogin .login-card {
+        width: 48%;
+    }
+}
+
+
+@media screen and (max-width: 628px) {
+    #viewLogin .login-card {
+        width: 50%;
+    }
+}
+
+
+
+@media screen and (max-width: 425px) {
+    #viewLogin .login-card {
+        width: 100%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 8px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        left: 4rem;
+        bottom: 48%;
+    }
+}
+
+
+@media screen and (max-width: 414px) {
+    #viewLogin .login-card {
+        width: 100%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 16px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 40%;
+        left: 11%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 101px;
+        border: 2px solid #FFB81C;
+        bottom: 15%;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    #viewLogin .login-card {
+        width: 100%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 16px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 40%;
+        left: 11%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 101px;
+        border: 2px solid #FFB81C;
+        bottom: 11%;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 12px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 46%;
+        left: 11%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 101px;
+        border: 2px solid #FFB81C;
+        bottom: 11%;
+        left: 33%;
+    }
+}
+
+
+@media screen and (max-width: 375px) {
+    #viewLogin .login-card {
+        width: 100%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 13px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 45%;
+        left: 4%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 101px;
+        border: 2px solid #FFB81C;
+        bottom: 11%;
+        left: 34%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #viewLogin .login-card {
+        width: 100%;
+        max-height: 480px
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 101px;
+        border: 2px solid #FFB81C;
+        bottom: 11%;
+        left: 34%;
+    }
+}
+
+@media(min-width: 3001px) and (max-width: 10000px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 25px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 34%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    .header-text-msg {
+        color: #fff;
+        font-size: 32px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 52rem;
+    }
+
+    .header-text-msg > .text-sm {
+        font-weight: bold;
+        font-size: 21px;
+    }
+
+    .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 7rem;
+        border: 2px solid #FFB81C;
+        bottom: 22%;
+        left: 42%;
+    }
+}
+
+
+@media(min-width: 2561px) and (max-width: 2992px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 25px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 27%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    .header-text-msg {
+        color: #fff;
+        font-size: 25px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 48rem;
+    }
+
+    .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        border: 2px solid #FFB81C;
+        bottom: 24%;
+        left: 45%;
+    }
+}
+
+
+@media(min-width: 2601px) and (max-width: 3000px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 25px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 32%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    .header-text-msg {
+        color: #fff;
+        font-size: 38px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 39rem;
+    }
+
+    .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        border: 2px solid #FFB81C;
+        bottom: 15%;
+        left: 42%;
+    }
+}
+
+@media(min-width: 2048px) and (max-width: 2600px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 26px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 34rem;
+        top: 2rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 97px;
+        border: 2px solid #FFB81C;
+        bottom: 16%;
+        left: 39%;
+    }
+}
+
+
+
+@media(min-width: 1728px)and (max-width: 2047px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 21px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 31rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 97px;
+        border: 2px solid #FFB81C;
+        bottom: 16%;
+        left: 36%;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 84px;
+        border: 2px solid #FFB81C;
+        bottom: 19%;
+        left: 39%;
+    }
+}
+
+
+@media(min-width: 1701px) and (max-width:2000px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 25px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 29rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 75px;
+        border: 2px solid #FFB81C;
+        bottom: 15%;
+        left: 39%;
+    }
+}
+
+@media(min-width: 1601px)and (max-width: 1700px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 25px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 30rem;
+        top: 4rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 97px;
+        border: 2px solid #FFB81C;
+        bottom: 17%;
+        left: 35%;
+    }
+
+    #viewLogin .login-card {
+        width: 44%;
+    }
+}
+
+
+
+@media(min-width: 1367px)and (max-width: 1600px) {
+
+    #viewLogin .login-card {
+        width: 50%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 20px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        right: 16rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 91px;
+        border: 2px solid #FFB81C;
+        bottom: 19%;
+        left: 35%;
+    }
+}
+
+@media(min-width: 1024px)and (max-width: 1366px) {
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 17px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        top: inherit;
+        /* bottom: -11%; */
+        right: 14rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        content: '';
+        position: absolute;
+        width: 78px;
+        border: 2px solid #FFB81C;
+        bottom: 18%;
+        left: 35%;
+    }
+}
+
+
+
+
+
+@media(min-width: 770px) and (max-width: 995px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 63%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 19px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        left: 27rem;
+        bottom: 31rem;
+    }
+
+    #viewLogin .header-text-msg::before {
+        top: 111%;
+    }
+}
+
+
+@media(min-width: 759px) and (max-width: 920px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        width: 44%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 19px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        left: 29rem;
+        bottom: 31rem;
+    }
+}
+
+@media(min-wid: 754px) and (max-width: 920px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 18px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        left: 24rem;
+    }
+}
+
+@media(min-width: 730px) and (max-width: 992px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 50%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+}
+
+@media(min-width: 629px) and (max-width: 758px) {
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 12px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 32rem;
+        max-width: 291px;
+        max-height: 108px;
+        left: 54%;
+    }
+}
+
+@media(min-width: 690px) and (max-width: 730px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 40%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    #viewLogin .logoKairos img {
+        height: 45px;
+        width: auto;
+        object-fit: cover;
+    }
+}
+
+@media(min-width: 600px) and (max-width: 690px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 50%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    #viewLogin .logoKairos img {
+        height: 35px;
+        width: auto;
+        object-fit: cover;
+    }
+}
+
+
+@media(min-width: 430px) and (max-width: 600px) {
+    #viewLogin .login-card {
+        top: -6px;
+        left: 36px;
+        -webkit-border-bottom-right-radius: 25px;
+        -webkit-border-bottom-left-radius: 25px;
+        -moz-border-radius-bottomright: 25px;
+        -moz-border-radius-bottomleft: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 70%;
+        margin: 0;
+        height: auto;
+        padding: 50px 40px;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 628px) {
+    #viewLogin .login-card {
+        width: 83%;
+    }
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 13px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 11rem;
+        max-width: 291px;
+        max-height: 108px;
+        left: 5%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #viewLogin .login-card {
+        width: 100%;
+        max-height: 480px
+    }
+
+    #viewLogin .logoKairos img {
+        height: 45px;
+        width: auto;
+        object-fit: cover;
+    }
+
+
+
+    #viewLogin .header-text-msg {
+        color: #fff;
+        font-size: 10px;
+        text-align: -webkit-center;
+        font-weight: 800;
+        position: relative;
+        bottom: 47%;
+        left: 4%;
+    }
+}
+
+/* 1.3 Register */
+/* 1.4 Forgot */
+/*1.5 Recovery */
+/* 2.Dashboard */
+/*2.1 viewGraphics*/
+
+#viewGraphics {
+
+    .tabs-vertical .tabs {
+        height: auto;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .tabs-vertical .tab a {
+        text-align: left;
+    }
+
+    .tabs-vertical .tab .active {
+        -moz-transition: border-color .5s ease;
+        -o-transition: border-color .5s ease;
+        -webkit-transition: border-color .5s ease;
+        transition: border-color .5s ease;
+        border-right: 3px solid pink;
+    }
+
+    .tabs-vertical .tab :hover {
+        border-right: 3px solid #eeeeee;
+    }
+
+    .tabs-vertical .indicator {
+        display: none;
+    }
+
+    .tabs-vertical .tab-content {
+        display: block;
+        
+        height: 100vh;
+        overflow: auto;
+        overflow-y: auto;
+        overflow-x: auto;
+       
+    }
+
+    .tabs-vertical > .tab-content .active {
+        display: block;
+    }
+
+    #top,
+    #bottom {
+        padding: 0;
+        margin: 0;
+        display: block;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}

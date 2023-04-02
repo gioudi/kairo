@@ -1,0 +1,39 @@
+﻿@model LineasViewModel
+
+<div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-lineas" class="display" style="width:100% ; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera.Encabezado</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var linea in Model.Lineas)
+                {
+                    <tr id="@linea.Idlinea-@linea.IdTerminal">
+                        <td>@linea.Terminal</td>
+                        <td>@linea.Idlinea</td>
+                        <td>@linea.Producto</td>
+                        <td><span class="chip lighten-5 @linea.EstadoColor @linea.EstadoColor-text">@linea.Estado</span></td>
+                        <td>@linea.Capacidad</td>
+                        <td>@linea.DensidadAforo</td>
+                        <td>@linea.Observaciones</td>
+                        <td>
+                            <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons linea-action linea-edit" data-lineaid="@linea.Idlinea" data-terminalid="@linea.IdTerminal" data-terminal="@linea.Terminal">edit</i>
+                            </a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons linea-action linea-delete" data-lineaid="@linea.Idlinea" data-terminalid="@linea.IdTerminal" data-terminal="@linea.Terminal">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KAIROSV2.Business.Entities\KAIROSV2.Business.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LightCore.Common">
+      <HintPath>..\Libs\LightCore.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,112 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Ingreso KAIROS";
+}
+
+@section NoNavBar_Nosidenav{
+
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/pages/login.css">
+</head>
+
+<body class="BodyBackGround ">
+    <div class="row">
+        <div class="parallax-container custom-parallax-container " id="viewLogin">
+            <div class="parallax">
+
+                <img class="paralax-img" src="~../images/gallery/shutterstock_1106084129.jpg" />
+
+            </div>
+            <div class="container-np">
+                <div class="row">
+                    <div class="col s12  offset-l2 l6">
+                        <div class="login-card card-panel custom-response">
+                            <form asp-controller="Account" asp-action="Login" method="post" class="login-form" style="color: #000000;" role="form">
+                                <input type="hidden" asp-for="ReturnUrl" />
+                                <div class="row mb-8 center ">
+                                    <div class="col s12 display-flex  mb-8 justify-content-center center">
+                                        <div class="logoKairos">
+                                            <img src="~/images/logo/logo-kairos.svg" alt="">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col s12 l8 offset-l2  display-flex justify-content-center center">
+                                        <h6 class="grey-text font-weight-700 title-sm">Sistema de Automatización Control y Gestión</h6>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="input-field  custom-form-group col s12 l12">
+
+                                        <input asp-for="UserName" id="usernameM" type="text" class="custom-input  custom-form-control" placeholder="Nombre de usuario">
+
+                                        <span asp-validation-for="UserName" class="custom-small red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="input-field custom-form-group col col s12 l12">
+
+                                        <input asp-for="Password" id="passwordM" type="password" class="custom-input custom-form-control" placeholder="Contraseña">
+
+                                        <span asp-validation-for="Password" class="custom-small red-text text-darken-4"></span>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12  center">
+                                        <button type="submit" class="custom-btn-gradient custom-btn d-flex">Quiero Ingresar</button>
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="col s12  offset-l1 l3  center  ">
+                        <div class="card card-msg-landing ">
+                            <p class="header-text-msg">
+                                "Ir juntos es comenzar,  mantenerse juntos es progresar, trabajar juntos es triunfar "<br />
+                                <span class="text-sm">Henry Ford</span><hr />
+
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+@section scripts {
+
+    <script language="javascript">
+        $(document).ready(function () {
+            let credenciales = document.getElementById('validar').value;
+            if (credenciales == 'false') {
+                M.toast({ html: 'Credenciales invalidas', classes: "error" });
+                return;
+            }
+            console.log(credenciales);
+        });
+
+
+    </script>
+
+
+
+}
+

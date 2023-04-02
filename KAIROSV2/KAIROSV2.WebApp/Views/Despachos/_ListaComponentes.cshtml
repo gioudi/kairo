@@ -1,0 +1,92 @@
+﻿@model List<DespachosComponentesViewModel>
+@*@Html.EditorFor(m => m)*@
+
+<div class="row" style="position: absolute; width: 93%;">
+    <div id="detalle" class="card card card-default  scrollspy border-radius-6 fixed-width">
+        <div class="card-content custom-cotent-dataTable">
+            <div class="contenedor-tabla">
+                <table id="data-table-componentes" class="display tabla-cebra custom-datatable" style="width:100%; white-space:nowrap">
+                    <thead>
+                        <tr>
+                            <th style="min-width:220px">Producto Componente</th>
+                            <th>Volumen Bruto - Gal</th>
+                            <th>Temperatura - °F</th>
+                            <th>Densidad - API</th>
+                            <th>Factor</th>
+                            <th>Volumen Neto - Gal</th>
+                            <th>Tanque</th>
+                            <th>Contador</th>
+                            <th>Código de Destino</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var c = 0; c < Model.Count(); c++)
+                        {
+                            <tr>
+                                <td>
+                                    <input id="producto_@c" type="text" class="" asp-for="@Model[c].Producto_Componente" value="@Model[c].Producto_Componente" readonly="readonly">
+                                    <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Producto_Componente"></span></small>
+                                </td>
+                                <td>
+                                    <input id="volumen_bruto_@c" type="text" class="volumenBruto" asp-for="@Model[c].Volumen_Bruto" value="@Model[c].Volumen_Bruto" readonly="readonly">
+                                    <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Volumen_Bruto"></span></small>
+                                </td>
+                                <td>
+                                    <input id="temperatura_@c" type="text" class="" asp-for="@Model[c].Temperatura" value="@Model[c].Temperatura">
+                                    <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Temperatura"></span></small>
+                                </td>
+                                <td>
+                                    <input id="densidad_@c" type="text" class="" asp-for="@Model[c].Densidad" value="@Model[c].Densidad">
+                                    <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Densidad"></span></small>
+                                </td>
+                                <td>
+                                    <input id="factor_@c" type="text" class="factor" value="@Model[c].Factor" readonly="readonly">
+                                </td>
+                                <td>
+                                    <input id="volumen_neto_@c" type="text" class="volumenNeto" asp-for="@Model[c].Volumen_Neto" value="@Model[c].Volumen_Neto">
+                                    <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Volumen_Neto"></span></small>
+                                </td>
+                                @if (@Model[c].Lectura)
+                                {
+                                    <td>
+                                        <input id="tanques_@c" type="text" class="" value="@Model[c].Tanque" asp-for="@Model[c].Tanque" readonly="readonly">
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Tanque"></span></small>
+                                    </td>
+                                    <td>
+                                        <input id="contadores_@c" type="text" class="" value="@Model[c].Contador" asp-for="@Model[c].Contador" readonly="readonly">
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Contador"></span></small>
+                                    </td>
+                                    <td>
+                                        <input id="shipto_@c" type="text" class="" value="@Model[c].Ship_To" asp-for="@Model[c].Ship_To" readonly="readonly">
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Ship_To"></span></small>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <select id="tanques_@c" class="select2 browser-default" value="@Model[c].Tanque" asp-for="@Model[c].Tanque" asp-items="@Model[c].Tanques">
+                                            <option value="" selected disabled>Seleccionar</option>
+                                        </select>
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Tanque"></span></small>
+                                    </td>
+                                    <td>
+                                        <select id="contadores_@c" class="select2 browser-default" value="@Model[c].Contador" asp-for="@Model[c].Contador" asp-items="@Model[c].Contadores">
+                                            <option value="" selected disabled>Seleccionar</option>
+                                        </select>
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Contador"></span></small>
+                                    </td>
+                                    <td>
+                                        <select id="shipto_@c" class="select2 browser-default" value="@Model[c].Ship_To" asp-for="@Model[c].Ship_To" asp-items="@Model[c].Ship_Tos">
+                                            <option value="" selected disabled>Seleccionar</option>
+                                        </select>
+                                        <small style="display: table;"><span class="red-text" asp-validation-for="@Model[c].Ship_To"></span></small>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

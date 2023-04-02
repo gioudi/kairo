@@ -1,0 +1,44 @@
+﻿@model GestionContadorViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="contador-form" novalidate>
+
+    <fieldset  class="modal-content">
+
+        <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+               value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <h5><b>@Model.Titulo</b></h5>
+                <div class="divider"></div><br />
+            </div>
+
+            <!--Id Contador-->
+            <div class="col s12 m12 input-field">
+                <input id="contador-id" type="text" class="" value="@Model.IdContador" asp-for="@Model.IdContador" name="IdContador" readonly="@(Model.Lectura ? "readonly" : null)">
+                <label class="active" for="contador-id">Id Contador *</label>
+                <small><span class="red-text" asp-validation-for="IdContador"></span></small>
+            </div>
+
+            <!--Tipo contador-->
+            <!--<div class="col s12 m12 input-field">
+                <select class="select2 browser-default" asp-for="" name="Tipo" id="contador-TipoContador" asp-items="">
+                    <option value="" selected disabled>Seleccionar tipo</option>
+                </select>
+                <label class="active" for="contador-TipoContador">Tipo Contador *</label>
+                <small><span class="red-text" asp-validation-for="Tipo"></span></small>
+            </div>-->
+
+        </div>
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="contador-modal-cancel">Cancelar</button>
+        <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+    </div>
+
+</form>

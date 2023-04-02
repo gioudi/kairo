@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    //"declaration": true,
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    //"moduleResolution": "Node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "target": "es5",
+    //"outDir": "dist",
+    "lib": [ "ES2015", "ES5", "ES2015.Promise", "dom" ],
+    "typeRoots": [
+      "./Scripts/Types",
+      "Scripts/Types",
+      "node_modules/@types"
+    ]
+  },
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

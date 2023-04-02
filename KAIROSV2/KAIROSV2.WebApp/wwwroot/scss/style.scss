@@ -1,0 +1,24 @@
+﻿// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.css");
+//Variable
+@import './global/variables';
+
+// Mixin
+
+@import './mixin/mixin';
+
+//Global
+
+
+@import './global/global';
+
+
+
+
+
+// My style app
+
+@import './app';

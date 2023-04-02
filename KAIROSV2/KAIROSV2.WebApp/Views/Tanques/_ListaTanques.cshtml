@@ -1,0 +1,47 @@
+﻿@model ListViewModel<TanqueDTO>
+
+<div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-tanques" class="display" style="width:100% ; white-space:nowrap" data-turbolinks="false">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.Encabezados)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tanque in Model.Entidades)
+                {
+                    <tr id="@tanque.Tanque-@tanque.IdTerminal">
+                        <td>@tanque.Terminal</td>
+                        <td>@tanque.Tanque</td>
+                        @if (tanque.IconoProducto != "")
+                        {
+                            <td><i style="color: @tanque.IconoColor" class="material-icons icono">@tanque.IconoProducto</i></td>
+                        }
+                        else
+                        {
+                            <td><i class="material-icons icono">format_color_reset</i></td>
+                        }
+                        <td>@tanque.Producto</td>
+                        <td><span class="bullet @tanque.ClaseColor"></span>@tanque.ClaseTanque</td>
+                        <td><span class="chip lighten-5 @tanque.EstadoColor @tanque.EstadoColor-text">@tanque.Estado</span></td>
+                        <td>
+                            <a class="cursor-point @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons tanque-action tanque-edit" data-tanqueid="@tanque.Tanque" data-terminalid="@tanque.IdTerminal" data-terminal="@tanque.Terminal">edit</i>
+                            </a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons tanque-action tanque-delete" data-tanqueid="@tanque.Tanque" data-terminalid="@tanque.IdTerminal" data-terminal="@tanque.Terminal">delete</i>
+                            </a>
+                            <a class="cursor-point @(@Model.ActionsPermission.Detalles ? "" : "disable-action")" data-turbolinks="false">
+                                <i class="material-icons tanque-action tanque-detail" data-tanqueid="@tanque.Tanque" data-terminalid="@tanque.IdTerminal" data-terminal="@tanque.Terminal">remove_red_eye</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

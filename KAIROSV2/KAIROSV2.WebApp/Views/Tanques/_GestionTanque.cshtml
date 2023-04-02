@@ -1,0 +1,186 @@
+﻿@model GestionTanqueViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="tanque-form" novalidate>
+    <div id="tanque-modalcontent" class="modal-content">
+        <fieldset>
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+            <div class="section row equal-col">
+
+                <!--Header-->
+                <div class="col s12">
+                    <h5><b>@Model.Titulo</b></h5>
+                    <div class="divider"></div><br />
+                </div>
+
+                <!--Id tanque-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-id" type="text" class="" value="@Model.IdTanque" asp-for="@Model.IdTanque" name="IdTanque" readonly="@(Model.Lectura ? "readonly" : null)">
+                    <label class="active" for="tanque-id">Nombre *</label>
+                    <small><span class="red-text" asp-validation-for="IdTanque"></span></small>
+                </div>
+                <!--Terminal-->
+                <div class="col s12 m4 input-field">
+                    @if (!Model.Lectura)
+                    {
+                        <select class="select2 browser-default" value="@Model.Terminal" asp-for="@Model.Terminal" name="Terminal" id="tanque-Terminal" asp-items="@(new SelectList(Model.Terminales))">
+                            <option value="" selected disabled>Seleccionar terminal</option>
+                        </select>
+
+                    }
+                    else
+                    {
+                        <input id="tanque-Terminal" type="text" class="" value="@Model.Terminal" asp-for="@Model.Terminal" name="Terminal" readonly="@(Model.Lectura ? "readonly" : null)">
+                    }
+
+                    <label class="active" for="tanque-terminal">Terminal *</label>
+                    <small><span class="red-text" asp-validation-for="Terminal"></span></small>
+
+                </div>
+                <!--Producto-->
+                <div class="col s12 m4 input-field">
+                    <select class="select2 browser-default" asp-for="@Model.Producto" name="Producto" id="tanque-producto" asp-items="@(new SelectList(Model.Productos ))">
+                        <option value="" selected disabled>Seleccionar producto</option>
+                    </select>
+                    <label class="active" for="tanque-producto">Producto *</label>
+                    <small><span class="red-text" asp-validation-for="Producto"></span></small>
+                </div>
+                <!--Clase tanque-->
+                <div class="col s12 m4 input-field">
+                    <select class="select2 browser-default" asp-for="@Model.ClaseTanque" name="ClaseTanque" id="tanque-claseTanque" asp-items="@(new SelectList(Model.Clases))">
+                        <option value="" selected disabled>Seleccionar clase tanque</option>
+                    </select>
+                    <label class="active" for="tanque-claseTanque">Clase Tanque *</label>
+                    <small><span class="red-text" asp-validation-for="ClaseTanque"></span></small>
+                </div>
+                <!--Estado-->
+                <div class="col s12 m4 input-field">
+                    <select class="select2 browser-default" asp-for="@Model.Estado" name="Estado" id="tanque-estado" asp-items="@(new SelectList(Model.EstadosTanque ))">
+                        <option value="" selected disabled>Seleccionar estado</option>
+                    </select>
+                    <label class="active" for="tanque-estado">Estado *</label>
+                    <small><span class="red-text" asp-validation-for="Estado"></span></small>
+                </div>
+                <!--Tipo tanque-->
+                <div class="col s12 m4 input-field">
+                    <select class="select2 browser-default" asp-for="@Model.TipoTanque" name="TipoTanque" id="tanque-TipoTanque" asp-items="@(new SelectList(Model.Tipos))">
+                        <option value="" selected disabled>Seleccionar tipo</option>
+                    </select>
+                    <label class="active" for="tanque-TipoTanque">Tipo Tanque *</label>
+                    <small><span class="red-text" asp-validation-for="TipoTanque"></span></small>
+                </div>
+                <!--Capacidad nominal-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-CapacidadNominal" type="text" class="input-unidades" value="@(Model.CapacidadNominal == 0 ? null : Model.CapacidadNominal)" asp-for="@Model.CapacidadNominal" name="CapacidadNominal">
+                    <label class="active" for="tanque-capacidadNominal">Capacidad Nominal *</label>
+                    <span class="span-unidades">gal</span>
+                    <div><small><span class="red-text" asp-validation-for="CapacidadNominal"></span></small></div>
+                </div>
+                <!--Capacidad operativa-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-capacidadOperativa" type="text" class="input-unidades" value="@(Model.CapacidadOperativa == 0 ? null : Model.CapacidadOperativa)" asp-for="@Model.CapacidadOperativa" name="CapacidadOperativa">
+                    <label class="active" for="tanque-capacidadOperativa">Capacidad Operativa *</label>
+                    <span class="span-unidades">gal</span>
+                    <div><small><span class="red-text" asp-validation-for="CapacidadOperativa"></span></small></div>
+                </div>
+                <!--Aforado por-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-aforadoPor" type="text" class="" value="@Model.AforadoPor" asp-for="@Model.AforadoPor" name="AforadoPor">
+                    <label class="active" for="tanque-aforadoPor">Aforado Por *</label>
+                    <small><span class="red-text" asp-validation-for="AforadoPor"></span></small>
+                </div>
+                <!--Volumen no bombeable-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-volumenNoBombeable" type="text" class="input-unidades" value="@(Model.VolumenNoBombeable == 0 ? null : Model.VolumenNoBombeable)" asp-for="@Model.VolumenNoBombeable" name="VolumenNoBombeable">
+                    <label class="active" for="tanque-volumenNoBombeable">Volumen no Bombeable *</label>
+                    <span class="span-unidades">gal</span>
+                    <div><small><span class="red-text" asp-validation-for="VolumenNoBombeable"></span></small></div>
+                </div>
+                <!--Altura máxima de aforo-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-AlturaMaximaAforo" type="text" class="input-unidades" value="@(Model.AlturaMaximaAforo == 0 ? null : Model.AlturaMaximaAforo)" asp-for="@Model.AlturaMaximaAforo" name="AlturaMaximaAforo">
+                    <label class="active" for="tanque-AlturaMaximaAforo">Altura Máxima Aforo *</label>
+                    <span class="span-unidades">cm</span>
+                    <div><small><span class="red-text" asp-validation-for="AlturaMaximaAforo"></span></small></div>
+                </div>
+                <!--Fecha aforo-->
+                <div class="col s12 m4 input-field">
+                    <input id="tanque-fechaAforo" type="text" asp-for="@Model.FechaAforo" asp-format="{0:dd/MMM/yyyy}" class="datepicker formato-fecha-corta">
+                    <label class="active" for="tanque-fechaAforo">Fecha Aforo</label>
+                    <small><span class="red-text" asp-validation-for="FechaAforo"></span></small>
+                </div>
+                <!--Pantalla flotante-->
+                <div class="col s12 m4 input-field">
+                    <div class="display-flex justify-content-between pb-2">
+                        <span>Pantalla Flotante</span>
+                        <div class="switch">
+                            <label>
+                                <input id="switch" type="checkbox" asp-for="PantallaFlotante" checked="@Model.PantallaFlotante" name="PantallaFlotante">
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--Observaciones-->
+                <div class="col s12 m6 input-field">
+                    <textarea id="tanque-observaciones" class="materialize-textarea" data-length="120" value="@Model.Observaciones" asp-for="@Model.Observaciones" onkeypress="characterCounterObs()"></textarea>
+                    <label class="active" for="tanque-observaciones">Observaciones *</label>
+                    <small><span class="red-text" asp-validation-for="Observaciones"></span></small>
+                </div>
+            </div>
+            @*@if (Model.PantallaFlotante)
+            {*@
+            <ul id="ulPantallaFlotante" class="collapsible" hidden="@(Model.PantallaFlotante ? null : "hidden")">
+                <li id="liPantallaFlotante">
+                    <div id="tanque-collapsible" class="collapsible-header" style="color: black"><i class="material-icons" style="color: #FF6900">assignment</i>Pantalla Flotante</div>
+                    <div class="collapsible-body">
+                        <div class="section row equal-col">
+                            <!--Densidad aforo-->
+                            <div class="col s12 m6 input-field">
+                                <input id="tanque-densidadAforo" type="text" class="input-unidades" value="@(Model.DensidadAforo == 0 ? null : Model.DensidadAforo)" asp-for="@Model.DensidadAforo" name="DensidadAforo">
+                                <label class="active" for="tanque-densidadAforo">Densidad Aforo *</label>
+                                <span class="span-unidades">API</span>
+                                <div><small><span class="red-text" asp-validation-for="DensidadAforo"></span></small></div>
+                            </div>
+                            <!--Galones por grado-->
+                            <div class="col s12 m6 input-field">
+                                <input id="tanque-galonesPorGrado" type="text" class="input-unidades" value="@(Model.GalonesPorGrado == 0 ? null : Model.GalonesPorGrado)" asp-for="@Model.GalonesPorGrado" name="GalonesPorGrado">
+                                <label class="active" for="tanque-GalonesPorGrado">Galones x Grado *</label>
+                                <span class="span-unidades">gal</span>
+                                <div><small><span class="red-text" asp-validation-for="GalonesPorGrado"></span></small></div>
+                            </div>
+                            <!--Nivel Corrección Inicial-->
+                            <div class="col s12 m6 input-field">
+                                <input id="tanque-nivelCorreccionInicial" type="text" class="input-unidades" value="@(Model.NivelCorreccionInicial == 0 ? null : Model.NivelCorreccionInicial)" asp-for="@Model.NivelCorreccionInicial" name="NivelCorreccionInicial">
+                                <label class="active" for="tanque-nivelCorreccionInicial">Nivel Corrección Inicial *</label>
+                                <span class="span-unidades">cm</span>
+                                <div><small><span class="red-text" asp-validation-for="NivelCorreccionInicial"></span></small></div>
+                            </div>
+                            <!--Nivel Corrección Final-->
+                            <div class="col s12 m6 input-field">
+                                <input id="tanque-nivelCorreccionFinal" type="text" class="input-unidades" value="@(Model.NivelCorreccionFinal == 0 ? null : Model.NivelCorreccionFinal)" asp-for="@Model.NivelCorreccionFinal" name="NivelCorreccionFinal">
+                                <label class="active" for="tanque-nivelCorreccionFinal">Nivel Corrección Final *</label>
+                                <span class="span-unidades">cm</span>
+                                <div><small><span class="red-text" asp-validation-for="NivelCorreccionFinal"></span></small></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            @*}
+            else
+            {
+                <ul id="ulPantallaFlotante" class="collapsible"></ul>
+            }*@
+
+        </fieldset>
+    </div>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="tanque-modal-cancel">Cancelar</button>
+        <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+    </div>    
+
+</form>

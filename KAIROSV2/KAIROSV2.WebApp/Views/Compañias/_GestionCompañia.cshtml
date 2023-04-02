@@ -1,0 +1,85 @@
+﻿@model GestionCompañiaViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="compañia-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+        @*<fieldset class="modal-content">*@
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+    <div class="section row equal-col">
+
+        <!--Header-->
+        <div class="col s12">
+            <h4>@Model.Titulo</h4>
+            <div class="divider"></div><br />
+        </div>
+
+        <!--Id-->
+        <div class="col s6 input-field">
+            <i class="material-icons prefix" style="color:#FF6900">label</i>
+            <input id="compañia-id" type="text" class="validate" value="@Model.IdCompañia" asp-for="IdCompañia" name="IdCompañia" readonly="@(Model.Accion == "Actualizar" || Model.Lectura ? "readonly" : null)">
+            <label class="active" for="compañia-id">Id</label>
+            <small><span class="red-text" asp-validation-for="IdCompañia"></span></small>
+        </div>
+
+        <!--Nombre Compañia-->
+        <div class="col s6 input-field">
+            <i class="material-icons prefix" style="color:#FF6900">business</i>
+            <input id="compañia-name" type="text" class="validate" value="@Model.Compañia" asp-for="Compañia" name="Compañia">
+            <label class="active" for="compañia-name">Nombre</label>
+            <small><span class="red-text" asp-validation-for="Compañia"></span></small>
+        </div>
+
+        <!--Sales Organization -->
+        <div class="col s6 input-field">
+            <input id="salesOrganization-name" type="text" class="validate" value="@Model.SalesOrganization" asp-for="SalesOrganization" name="SalesOrganization">
+            <label class="active" for="salesOrganization-name">Sales Organization</label>
+            <small><span class="red-text" asp-validation-for="SalesOrganization"></span></small>
+        </div>
+
+        <!--Distribution Channel-->
+        <div class="col s6 input-field">
+            <input id="distributionChannel-name" type="text" class="validate" value="@Model.DistributionChannel" asp-for="DistributionChannel" name="DistributionChannel">
+            <label class="active" for="distributionChannel-name">Distribution Channel</label>
+            <small><span class="red-text" asp-validation-for="DistributionChannel"></span></small>
+        </div>
+
+        <!--Division-->
+        <div class="col s6 input-field">
+            <input id="division-name" type="text" class="validate" value="@Model.Division" asp-for="Division" name="Division">
+            <label class="active" for="division-name">Division</label>
+            <small><span class="red-text" asp-validation-for="Division"></span></small>
+        </div>
+
+        <!--Supplier Type-->
+        <div class="col s6 input-field">
+            <input id="supplierType-name" type="text" class="validate" value="@Model.SupplierType" asp-for="SupplierType" name="SupplierType">
+            <label class="active" for="supplierType-name">Supplier Type</label>
+            <small><span class="red-text" asp-validation-for="SupplierType"></span></small>
+        </div>
+
+        <!--SICOM-->
+        <div class="col s6 input-field" style="margin-left: 0px">
+            <input id="codigoSICOM-name" type="text" class="validate" value="@Model.CodigoSICOM" asp-for="CodigoSICOM" name="CodigoSICOM">
+            <label class="active" for="codigoSICOM-name">SICOM</label>
+            <small><span class="red-text" asp-validation-for="CodigoSICOM"></span></small>
+        </div>
+    </div>
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="compañia-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

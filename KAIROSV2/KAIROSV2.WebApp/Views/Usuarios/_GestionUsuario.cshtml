@@ -1,0 +1,140 @@
+﻿@model GestionUsuarioViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="user-form" novalidate>
+
+    <div id="user-modalcontent" class="modal-content">
+        <fieldset disabled="@(Model.Lectura ? "disabled" : null)">
+            @if (!Model.Lectura)
+            {
+                <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                       value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+            }
+            <div class="section row equal-col">
+
+                <!--Header-->
+                <div class="col s12">
+                    <b><h5>@Model.Titulo</h5></b>
+                    <div class="divider"></div><br />
+                </div>
+
+                <!--Imagen-->
+                <div class="col row s5 m2 pr-0">
+                    <div class="s12 image-gap-margin">
+                        @{string imgsrc = ""; }
+                        @if (Model.Foto != null)
+                        {
+                            var base64 = Convert.ToBase64String(Model.Foto);
+                            imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                        }
+                        else
+                        {
+                            imgsrc = "/images/avatar/account_circle-blue-48dp.svg";
+                        }
+
+                        <input type="file" id="user-img" class="" data-default-imgsrc="@imgsrc"
+                               name="Imagen" value="@Model.Imagen" accept=".png" data-val="true" data-val-maxfilesize="Supera tamaño maximo" data-val-maxfilesize-size="500"
+                               data-val-allowedextensions="Extensión no permitida" data-val-allowedextensions-exts=".jpg,.png" />
+                    </div>
+                    <small><span class="red-text" asp-validation-for="Imagen"></span></small>
+                </div>
+
+                <div class="row col s10">
+                    <!--Busqueda usuario-->
+                    <div class="col s12 m6 input-field">
+                        <select class="select2-data-ajax browser-default" id="user-id" asp-for="@Model.IdUsuario" name="IdUsuario" disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disabled" : null)">
+                            @if (Model.Accion != "Crear")
+                            {
+                                <option value="@Model.IdUsuario" selected>@Model.IdUsuario</option>
+                            }
+                        </select>
+                        <label class="active" for="user-id">Usuario *</label>
+                        <input type="hidden" asp-for="@Model.IdUsuario" />
+                        <small><span class="red-text" asp-validation-for="IdUsuario"></span></small>
+                    </div>
+                    <!--Nombre usuario-->
+                    <div class="col s12 m6 input-field">
+                        <i class="material-icons prefix" style="color: #FF6900">account_box</i>
+                        <input id="user-name" type="text" class="" value="@Model.Nombre" asp-for="Nombre" name="Nombre" readonly="@(Model.Accion != ""  || Model.Lectura ? "readonly" : null)">
+                        <label class="active" for="user-name">Nombre *</label>
+                        <small><span class="red-text" asp-validation-for="Nombre"></span></small>
+                    </div>
+                    <!--Rol usuario-->
+                    <div class="col s12 m6 input-field">
+                        <select class="select2 browser-default" asp-for="@Model.RolId" name="RolId" id="user-rol" asp-items="@(new SelectList(Model.Roles))" disabled="@(Model.Accion == "" || Model.Lectura ? "disabled" : null)">
+                            <option value="" selected disabled>Selecciona un rol</option>
+                        </select>
+                        <label class="active" for="user-rol">Rol *</label>
+                        <small><span class="red-text" asp-validation-for="RolId"></span></small>
+                    </div>
+                    <!--Telefono usuario-->
+                    <div class="col s12 m6 input-field">
+                        <i class="material-icons prefix" style="color: #FF6900">local_phone</i>
+                        <input id="user-phone" type="tel" class="" value="@Model.Telefono" asp-for="Telefono" name="Telefono" readonly="@(Model.Accion != "" || Model.Lectura ? "readonly" : null)">
+                        <label class="active" for="user-phone">Teléfono</label>
+                    </div>
+                </div>
+
+                <!--Email usuario-->
+                <div class="col s11 m12 input-field">
+                    <i class="material-icons prefix" style="color: #FF6900">email</i>
+                    <input id="user-email" type="email" class="" value="@Model.Email" asp-for="Email" name="Email" readonly="@(Model.Accion != "" || Model.Lectura ? "readonly" : null)">
+                    <label class="active" for="user-email">Email *</label>
+                    <small><span class="red-text" asp-validation-for="Email"></span></small>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <ul class="collapsible user">
+                    <li>
+                        <div id="user-collapsible" class="collapsible-header" style="color: black"><i class="material-icons" style="color: #FF6900">playlist_add_check</i>Terminal-Compañia</div>
+                        <div class="collapsible-body">
+                            <ul id="user-terminals">
+                                @for (var i = 0; i < Model.TerminalCompañia?.Count; i++)
+                                {
+                                    <li class="li-collapsed">
+                                        <label>
+                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].IdEntidad" />
+                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].Nombre" />
+                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].EsTerminal" />
+                                            <input type="checkbox" asp-for="@Model.TerminalCompañia[i].Habilitada" checked="@Model.TerminalCompañia[i].Habilitada" />
+                                            <span>@Model.TerminalCompañia[i].Nombre</span>
+                                        </label>
+                                        @if (Model.TerminalCompañia[i].Compañias.Count > 0)
+                                        {
+                                            <ul>
+                                                @for (var c = 0; c < Model.TerminalCompañia[i].Compañias.Count; c++)
+                                                {
+                                                    <li class="li-collapsed">
+                                                        <label>
+                                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].Compañias[c].IdEntidadPadre" />
+                                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].Compañias[c].IdEntidad" />
+                                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].Compañias[c].Nombre" />
+                                                            <input type="hidden" asp-for="@Model.TerminalCompañia[i].Compañias[c].EsTerminal" />
+                                                            <input type="checkbox" asp-for="@Model.TerminalCompañia[i].Compañias[c].Habilitada" checked="@Model.TerminalCompañia[i].Compañias[c].Habilitada" />
+                                                            <span>@Model.TerminalCompañia[i].Compañias[c].Nombre</span>
+                                                        </label>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="user-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

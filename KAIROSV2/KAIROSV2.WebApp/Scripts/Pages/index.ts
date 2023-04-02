@@ -1,0 +1,28 @@
+﻿import { UsuariosPage } from "./Usuarios";
+import { LogsPage } from "./Log";
+import { CabezotesPage } from "./Cabezotes";
+import { TrailersPage } from "./Trailers";
+import { ConductoresPage } from "./Conductores";
+import { AreasPage } from "./Areas";
+import { CompañiasPage } from "./Compañias";
+import { TerminalesPage } from "./Terminales";
+import { TanquesPage } from "./Tanques";
+import { ProveedoresPage } from "./Proveedores";
+import { ProductosPage } from "./Productos";
+import { DespachosPage } from "./Despachos";
+import { GraficosPage } from "./Graficos";
+export const pages = [UsuariosPage, CabezotesPage, TrailersPage, ConductoresPage, AreasPage, LogsPage, CompañiasPage, TerminalesPage, TanquesPage, ProveedoresPage, ProductosPage, DespachosPage, GraficosPage];
+
+export * from "./Usuarios";
+export * from "./Log";
+export * from "./Cabezotes";
+export * from "./Trailers";
+export * from "./Conductores";
+export * from "./Areas";
+export * from "./Compañias";
+export * from "./Terminales";
+export * from "./Tanques";
+export * from "./Proveedores";
+export * from "./Productos";
+export * from "./Despachos";
+export * from "./Graficos";

@@ -1,0 +1,160 @@
+﻿@model GestionDespachosViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="despacho-modal-form" novalidate>
+    <div id="despacho-modalcontent" class="modal-content">
+        <fieldset>
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+            <div class="section row equal-col">
+
+                <!--Header-->
+                <div class="col s12">
+                    <h5><b>@Model.Titulo</b></h5>
+                    <div class="divider"></div><br />
+                </div>
+
+                <!--Id Despacho-->
+                <input id="id-despacho" type="text" class="" value="@Model.Id_Despacho" asp-for="@Model.Id_Despacho" name="Id_Despacho" hidden>
+
+                <!--Terminal-->
+                <div class="col s12 m4 input-field">
+                    <select id="despacho-terminal" class="select2 browser-default" value="@Model.Terminal" asp-for="@Model.Terminal" asp-items="@Model.Terminales" disabled="disabled"></select>
+                    <label class="active" for="despacho-terminal">Terminal *</label>
+                    <small><span class="red-text" asp-validation-for="Terminal"></span></small>
+                </div>
+                <!--Compañía-->
+                <div class="col s12 m4 input-field">
+                    <select id="despacho-compañia" class="select2 browser-default" value="@Model.Compañia" asp-for="@Model.Compañia"  asp-items="@Model.Compañias" disabled="disabled"></select>
+                    <label class="active" for="despacho-compañia">Compañía *</label>
+                    <small><span class="red-text" asp-validation-for="Compañia"></span></small>
+                </div>
+                <!--Fecha-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    @if (!Model.Lectura)
+                    {
+                        <input id="despacho-fecha" type="text" value="" asp-for="@Model.FechaDespacho" class="formatos-fecha-corta custom-inputf custom-form-control" readonly="readonly">
+                    }
+                    else
+                    {
+                        <input id="fecha" type="text" value="@Model.FechaDespacho.ToString("dd/MMM/yyyy")" asp-for="@Model.FechaDespacho" class="formatos-fecha-corta custom-inputf custom-form-control" readonly="readonly">
+                    }
+                    <label class="active" for="despacho-fecha">Fecha *</label>
+                    <small><span class="red-text" asp-validation-for="FechaDespacho"></span></small>
+                </div>
+                <!--Numero de Orden-->
+                <div class="col s12 m4 input-field  custom-input-field">
+                    <input id="numero-orden" type="text" class="custom-inputf custom-form-control" value="@Model.No_Orden" asp-for="@Model.No_Orden" name="No_Orden" readonly="@(Model.Lectura ? "readonly" : null)">
+                    <label class="active" for="numero-orden">Numero de Orden *</label>
+                    <small><span class="red-text" asp-validation-for="No_Orden"></span></small>
+                </div>
+                <!--Producto-->
+                <div class="col s12 m4 input-field">
+                    @if (!Model.Lectura)
+                    {
+                        <select id="despacho-producto" class="select2 browser-default" value="@Model.IdProducto" asp-for="@Model.IdProducto" name="IdProducto" asp-items="@Model.Productos">
+                            <option value="" selected disabled>Seleccionar producto</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select id="despacho-producto" class="select2 browser-default" value="@Model.IdProducto" asp-for="@Model.IdProducto" name="IdProducto" asp-items="@Model.Productos" disabled="disabled">
+                            <option value="" selected >Producto no asignado</option>
+                        </select>
+                    }
+                    <label class="active" for="despacho-producto">Producto *</label>
+                    <small><span class="red-text" asp-validation-for="IdProducto"></span></small>
+                </div>
+                <!--Sold To-->
+                <div class="col s12 m4 input-field">
+                    <select id="despacho-soldto" class="select2 browser-default" value="@Model.Sold_To" asp-for="@Model.Sold_To" name="Sold_To" asp-items="@Model.Sold_Tos">
+                        <option value="" selected disabled>Seleccionar código</option>
+                    </select>
+                    <label class="active" for="despacho-soldto">Código de cliente *</label>
+                    <small><span class="red-text" asp-validation-for="Sold_To"></span></small>
+                </div>
+                <!--Placa Cabezote-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    <input id="placa-cabezote" type="text" class="custom-inputf custom-form-control" value="@Model.Placa_Cabezote" asp-for="@Model.Placa_Cabezote" name="Placa_Cabezote">
+                    <label class="active" for="placa-cabezote">Placa Cabezote *</label>
+                    <small><span class="red-text" asp-validation-for="Placa_Cabezote"></span></small>
+                </div>
+                <!--Placa Tráiler-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    <input id="placa-trailer" type="text" class="custom-inputf custom-form-control" value="@Model.Placa_Trailer" asp-for="@Model.Placa_Trailer" name="Placa_Trailer">
+                    <label class="active" for="placa-trailer">Placa Tráiler *</label>
+                    <small><span class="red-text" asp-validation-for="Placa_Trailer"></span></small>
+                </div>
+                <!--Compartimento-->
+                <div class="col s12 m4 input-field">
+
+                    @for (var j = 1; 5 >= j; j++)
+                    {
+                    <div class="custom-control custom-radio custom-control-inline ">
+                        @if (Model.Compartimento == j)
+                        {
+                            <input type="radio" id="customRadio+@j"  class="custom-control-input" name="group1" value="@j" onchange="compartimento.value=this.value" checked disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disbaled" : null)">
+                           
+                        }
+                        else
+                        {
+                          
+                            <input type="radio" id="customRadio+@j" name="group1" value="@j" class="custom-control-input with-gap" onchange="compartimento.value=this.value" disabled="@(Model.Accion == "Actualizar" || Model.Lectura ? "disbaled" : null)">
+                        }
+                        <label class="custom-control-label" for="customRadio+@j">@j</label>
+
+                    </div>
+                        }
+
+
+             
+
+                <label class="active" for="despacho-compartimiento">Compartimiento *</label>
+                <div><small><span class="red-text" asp-validation-for="Compartimento"></span></small></div>
+                </div>
+                <!--Volumen Ordenado-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    <input id="volumen-ordenado" type="text" class="input-unidades custom-inputf custom-form-control" value="@(Model.Volumen_Ordenado == 0 ? null : Model.Volumen_Ordenado)" asp-for="@Model.Volumen_Ordenado" name="Volumen_Ordenado">
+                    <label class="active" for="volumen-ordenado">Volumen Ordenado *</label>
+                    <span class="span-unidades custom-units">gal</span>
+                    <div><small><span class="red-text" asp-validation-for="Volumen_Ordenado"></span></small></div>
+                </div>
+                <!--Volumen Cargado-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    <input id="volumen-cargado" type="text" class="input-unidades custom-inputf custom-form-control" value="@(Model.Volumen_Cargado == 0 ? null : Model.Volumen_Cargado)" asp-for="@Model.Volumen_Cargado" name="Volumen_Cargado">
+                    <label class="active" for="volumen-cargado">Volumen Cargado *</label>
+                    <span class="span-unidades custom-units">gal</span>
+                    <div><small><span class="red-text" asp-validation-for="Volumen_Cargado"></span></small></div>
+                </div>
+                <!--Cédula Conductor-->
+                <div class="col s12 m4 input-field custom-input-field">
+                    <input id="cedula-conductor" type="text" class="custom-inputf custom-form-control" value="@(Model.Cedula_Conductor == 0 ? null : Model.Cedula_Conductor)" asp-for="@Model.Cedula_Conductor" name="Cedula_Conductor">
+                    <label class="active" for="volumen-cargado">Cédula Conductor *</label>
+                    <div><small><span class="red-text" asp-validation-for="Cedula_Conductor"></span></small></div>
+                </div>
+                <!--Observaciones-->
+                <div class="col s12 input-field ">
+                    <textarea id="despacho-observaciones" class="materialize-textarea " data-length="50" value="@Model.Observaciones" asp-for="@Model.Observaciones" onkeypress="characterCounterObs()"></textarea>
+                    <label class="active" for="despacho-observaciones">Observaciones *</label>
+                    <small><span class="red-text" asp-validation-for="Observaciones"></span></small>
+                </div>
+                <!--En blanco-->
+                <div class="col s12 m4 input-field custom-input-field  display-none">
+                    <input class="custom-inputf custom-form-control display-none" id="compartimento" type="number" value="@(Model.Compartimento == 0 ? null : Model.Compartimento)" asp-for="@Model.Compartimento" name="Compartimento" hidden />
+                </div>
+            </div>
+            <!--Tabla Componentes-->
+            <h7><b>COMPONENTES:</b></h7>
+            <div id="lista-componentes">
+                @await Html.PartialAsync("_ListaComponentes" , @Model.Componentes , "Componentes")
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="despacho-modal-cancel">Cancelar</button>
+        <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+    </div>
+
+</form>

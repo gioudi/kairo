@@ -1,0 +1,73 @@
+﻿@model MapeoArchivoDatosIniciales
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="mapeo-form-step1" novalidate>
+
+    <img src="~/images/gallery/MapeoBackground.jpg" />
+    <h5 class="position-absolute blue-text text-lighten-2 mt-5">Bienvenido al asistente para</h5>
+    <h4 class="position-absolute blue-text text-lighten-1 mt-9">Mapeo de Archivos</h4>
+
+    <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+           value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+    <div class="row">
+        <div class="col s12 offset-m6 m6 offset-l5 l7 mt-9 row">
+            <div class="input-field col s12 p-0">
+                @if (!Model.Nuevo)
+                {
+                    <input type="hidden" asp-for="@Model.IdMapeo" />
+                }
+                <input id="mapeo-id" type="text" class="validate" placeholder="Id Mapeo" asp-for="@Model.IdMapeo" disabled="@(Model.Nuevo ? null : "disabled")">
+                <label class="active" for="mapeo-id">Id Mapeo *</label>
+                <small><span class="red-text" asp-validation-for="@Model.IdMapeo"></span></small>
+            </div>
+            <div class="input-field col s12 p-0">
+                <input id="mapeo-desc" type="text" placeholder="Descripción" class="validate" asp-for="@Model.Descripcion">
+                <label class="active" for="mapeo-desc">Descripción *</label>
+                <small><span class="red-text" asp-validation-for="@Model.Descripcion"></span></small>
+            </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <select id="datos-iniciales-separador" asp-for="@Model.Separador" asp-items="Html.GetEnumSelectList<SeparadorArchivoEnum>()">
+                    </select>
+                    <label class="active" for="datos-iniciales-separador">Separador</label>
+                </div>
+                <div class="input-field col m6 s12 p-0">
+                    <input id="mapeo-other" type="text" placeholder="Otro" class="validate" asp-for="@Model.OtroCaracter" disabled="@(Model.Separador == SeparadorArchivoEnum.Otro ? null : "disabled")">
+                    <label class="active" for="mapeo-other">Otro</label>
+                    <small><span class="red-text" asp-validation-for="@Model.OtroCaracter"></span></small>
+                </div>
+            </div>
+            <div class="media-body col s12">
+                <div class="general-action-btn">
+                    <button id="select-files" class="btn indigo mr-2" type="button">
+                        <span>Cargar Archivo</span>
+                    </button>
+                </div>
+                <small>Permitido CSV, TXT. Tamaño Max. 800kB</small>
+                <br />
+                <label class="active" asp-for="Archivo" />
+                <small><span class="red-text" asp-validation-for="@Model.Archivo"></span></small>
+                <div class="upfilewrapper">
+                    <input asp-for="@Model.Archivo" type="file" id="mapeo-archivo" accept=".txt, .csv" data-val="true" data-val-maxfilesize="Supera tamaño maximo" data-val-maxfilesize-size="800"
+                           data-val-allowedextensions="Extensión no permitida" data-val-allowedextensions-exts=".txt,.csv" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="step-actions">
+        <div>
+            <button class="btn btn-flat purple-text waves-effect waves-light btn-next" type="submit">
+                <span class="hide-on-small-only">Siguiente</span> <i class="material-icons">navigate_next</i>
+            </button>
+        </div>
+        <div>
+            <button class="middle-indicator-text btn btn-flat red-text waves-effect waves-light close" type="button">
+                <i class="material-icons">navigate_before</i> <span class="hide-on-small-only">Cerrar</span>
+            </button>
+        </div>
+    </div>
+
+</form>

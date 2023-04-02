@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ProcesamientoArchivosViewModel>
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Titulo de la ventana -->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Procesamiento Archivos</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Configuración</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Procesamiento de Archivos de Texto
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del titulo de la ventana -->
+        </div>
+
+        <div class="col s12">
+            <div class="container p-0">
+                <div class="contact-overlay"></div>
+
+
+                <div id="search-page" class="section">
+                    <div class="input-field col s12">
+                        <input placeholder="Buscar..." id="map-busqueda" type="text" class="search-box validate white search-circle">
+                        <div class="filter-btn">
+                            <!-- Dropdown Trigger -->
+                            <a class='dropdown-trigger btn waves-effect waves-light grey darken-1 border-round' href="#"
+                               data-target='btn-filter'>
+                                <span class="hide-on-small-only">Buscar Filtro</span>
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='btn-filter' class='dropdown-content'>
+                                <li><a data-turbolinks="false" href="javascript:void(0)" class="filter-action">Todos</a></li>
+                                <li><a data-turbolinks="false" href="javascript:void(0)" class="filter-action">Título</a></li>
+                                <li><a data-turbolinks="false" href="javascript:void(0)" class="filter-action">Descripción</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Inicio del área de contenido -->
+                <div class="section" id="files-mapped">
+                    <div class="row file-process">
+
+                        <!-- Cards de mapeo -->
+                        @await Html.PartialAsync("_ListaMapeos", Model)
+
+                    </div>
+                </div>
+
+                <!-- Botón para agregar una nueva Mapeo -->
+                <div style="bottom: 54px; right: 19px;" class="fixed-action-btn direction-top">
+                    <a id="mapeoArchivos-add" data-turbolinks="false" class="btn-floating btn-large waves-effect primary-text gradient-shadow contact-sidebar-trigger cursor-point">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="intro">
+        <div class="row">
+            <div class="col s12">
+                <div id="img-modal" class="modal white border-radius-10">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <link rel="stylesheet" type="text/css" href="~/css/pages/procesamientoArchivos.css">
+    <script type="module" src="~/dist/js/pages/mapeoArchivos.js" asp-append-version="true"></script>
+    @*<script type="module" src="~/js/gestionMenu.js" asp-append-version="true"></script>*@
+
+    @*<script language="javascript">
+
+            $(document).ready(function () {
+
+                actualizarMenu();
+
+            });
+
+        </script>*@
+}
+

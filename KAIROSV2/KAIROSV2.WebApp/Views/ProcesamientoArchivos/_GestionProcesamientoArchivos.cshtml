@@ -1,0 +1,48 @@
+﻿@model GestionProcesamientoArchivosViewModel
+
+<div class="modal-content">
+    @*<div class="bg-img-div"></div>*@
+    @*<p class="modal-header right modal-close">
+            Cerrar <span class="right"><i class="material-icons right-align">clear</i></span>
+        </p>*@
+
+
+    <ul class="stepper linear horizontal">
+        <!--Paso 1-->
+        <li class="step step1 @(@Model.Paso1 && !Model.Paso3 ? "active" : "")">
+            <div class="step-title" data-step-label="Datos Iniciales">Paso 1</div>
+            <div class="step-content" id="step-1-content">
+                @if (Model.Paso1)
+                {
+                    @await Html.PartialAsync("_Paso1DatosIniciales", Model.MapeoArchivoPaso1)
+                }
+            </div>
+        </li>
+
+        <!--Paso 2-->
+        <li class="step step2 @(@Model.Paso2 ? "active" : "")">
+            <div class="step-title waves-effect waves-dark" data-step-label="Previsualización">Paso 2</div>
+            <div class="step-content" id="step-2-content">
+                @if (Model.Paso2)
+                {
+                    @await Html.PartialAsync("_Paso2Previsualizacion", Model.MapeoArchivoPaso2)
+                }
+            </div>
+        </li>
+
+        <!--Paso 3-->
+        <li class="step step3 @(@Model.Paso3 ? "active" : "")">
+            <div class="step-title waves-effect waves-dark" data-step-label="Mapeo">Paso 3</div>
+            <div class="step-content" id="step-3-content">
+                @if (Model.Paso3)
+                {
+                    @await Html.PartialAsync("_Paso3Mapeo", Model.MapeoArchivoPaso3)
+                }
+            </div>
+        </li>
+
+    </ul>
+
+</div>
+
+

@@ -1,0 +1,99 @@
+﻿@model TerminalCompletaViewModel
+
+@{
+    ViewData["Title"] = "Terminales";
+
+}
+<!-- BEGIN: Page Main-->
+
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before lighten-5" style="background:#737373"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+            <!-- Search for small screen-->
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 m6 l6">
+                        <h5 class="breadcrumbs-title mt-0 mb-0"><span>Terminales</span></h5>
+                        <ol class="breadcrumbs mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Kairos</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Administración</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Terminales
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="container">
+                <div class="content-area">
+
+                    <div class="app-wrapper">
+                        <div id="prefixes" class="card card card-default scrollspy">
+                            <div class="card-panel">
+                                <form>
+                                    <div class="row">
+                                        <div class="input-field col s12 m6 l2" >
+                                            <a id="insert" asp-controller="Terminales" asp-action="pruebas" class="btn amber darken-4 waves-effect waves-light left right">
+                                                Insertar
+                                                <i class="material-icons left">search</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                
+                                <div id="log-list">
+                                    @await Html.PartialAsync("_TerminalesList", Model)
+                                </div>
+                            </div>
+
+                            <div class="col s12">
+                                
+                                <div id="log-list">
+                                    @await Html.PartialAsync("_CompañiasList", Model)
+                                </div>
+                            </div>
+
+                            <div class="col s12">
+                                
+                                <div id="log-list">
+                                    @await Html.PartialAsync("_TerminalCompañiasList", Model)
+                                </div>
+                            </div>
+
+                            <div class="col s12">
+                                
+                                <div id="log-list">
+                                    @await Html.PartialAsync("_ProductosList", Model)
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link rel="stylesheet" type="text/css" href="~/css/pages/Log.css">
+    <script type="module" src="~/js/Log.js" asp-append-version="true"></script>
+    <script src="~/js/materializedatetimepicker.js"></script>
+    <script src="~/js/datetimepickerformat.js"></script>
+}

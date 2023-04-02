@@ -1,0 +1,133 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>84726869-1d7b-4af7-8d59-97d2f120530b</UserSecretsId>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Scripts\Pages\Despachos - Copy\**" />
+    <Content Remove="Scripts\Pages\Despachos - Copy\**" />
+    <EmbeddedResource Remove="Scripts\Pages\Despachos - Copy\**" />
+    <None Remove="Scripts\Pages\Despachos - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\dist\js\pages\GestionTerminales.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\Core\IPage.ts" />
+    <None Remove="Scripts\Core\Page.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\GestionMapeoArchivo.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\index.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\MapeoArchivos.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\MapeoPaso1.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\MapeoPaso2.ts" />
+    <None Remove="Scripts\Pages\ProcesamientoArchivos\MapeoPaso3.ts" />
+    <None Remove="Scripts\Shared\Components\DatepickerComponent.ts" />
+    <None Remove="Scripts\Shared\Models\ActionsPermission.ts" />
+    <None Remove="Scripts\Shared\Models\FechasCorteDTO.ts" />
+    <None Remove="Scripts\Shared\Models\ProcesamientoArchivos.ts" />
+    <None Remove="Scripts\Shared\Models\TablasKairos.ts" />
+    <None Remove="Scripts\Shared\Utils\index.ts" />
+    <None Remove="Scripts\Shared\Utils\MaskFormats.ts" />
+    <None Remove="Scripts\Shared\Utils\MaskFormatsManager.ts" />
+    <None Remove="Scripts\Types\MStepper.d.ts" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Support\FilterAttributes\" />
+    <Folder Include="wwwroot\dist\js\pages\" />
+    <Folder Include="wwwroot\images\cards\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\admin-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\cierre-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\logistic-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\operacion-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\reportes-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\storage-ico.svg" />
+    <None Include="wwwroot\images\icon\Iconos menu svg\tablas-ico.svg" />
+    <None Include="wwwroot\scss\app\_footer.scss" />
+    <None Include="wwwroot\scss\app\_header.scss" />
+    <None Include="wwwroot\scss\app\_main.scss" />
+    <None Include="wwwroot\scss\global\_global.scss" />
+    <None Include="wwwroot\scss\global\_variables.scss" />
+    <None Include="wwwroot\scss\mixin\_mixin.scss" />
+    <None Include="wwwroot\scss\style.scss" />
+    <None Include="wwwroot\scss\_app.scss" />
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KAIROSV2.Business.Common\KAIROSV2.Business.Common.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Contracts\KAIROSV2.Business.Contracts.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Engines\KAIROSV2.Business.Engines.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Entities\KAIROSV2.Business.Entities.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Managers\KAIROSV2.Business.Managers.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Data.Contracts\KAIROSV2.Data.Contracts.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Data\KAIROSV2.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LightCore.Common">
+      <HintPath>..\Libs\LightCore.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="LightCore.Files">
+      <HintPath>..\Libs\LightCore.Files.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Core\IPage.ts" />
+    <TypeScriptCompile Include="Scripts\Core\Page.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\MapeoPaso3.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\GestionMapeoArchivo.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\index.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\MapeoArchivos.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\MapeoPaso1.ts" />
+    <TypeScriptCompile Include="Scripts\Pages\ProcesamientoArchivos\MapeoPaso2.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Components\DatepickerComponent.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Models\ActionsPermission.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Models\FechasCorteDTO.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Models\ProcesamientoArchivos.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Models\TablasKairos.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Utils\index.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Utils\MaskFormats.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Utils\MaskFormatsManager.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Shared\Models\ProductoTipo.ts" />
+    <TypeScriptCompile Include="Scripts\Types\MStepper.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\ComponentesGraficos\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+
+</Project>

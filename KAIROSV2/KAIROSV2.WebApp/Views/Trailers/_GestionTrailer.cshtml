@@ -1,0 +1,52 @@
+﻿@model GestionTrailerViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+<form id="trailer-form" novalidate>
+
+    <fieldset disabled="@(Model.Lectura ? "disabled" : null)" class="modal-content">
+
+        @if (!Model.Lectura)
+        {
+            <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+                   value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+        }
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <h4>@Model.Titulo</h4>
+                <div class="divider"></div>
+            </div>
+
+            <div class="row col s12">
+                <!--Cedula conductor-->
+                <div class="col s12 input-field" style="margin-top: 2rem!important">
+                    <i class="material-icons prefix" style="color:#FF6900">directions_bus</i>
+                    <input id="placa" type="text" class="validate" value="@Model.Placa" asp-for="Placa" name="Placa" maxlength="6"
+                           onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" 
+                           onkeyup="javascript:this.value=this.value.toUpperCase();"
+                           readonly="@(Model.Accion == "Actualizar" || Model.Lectura ? "readonly" : null)">
+                    <label class="active" for="placa">Placa</label>
+
+                    <small>
+                        <span class="red-text" asp-validation-for="Placa"></span>
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="row col s10">
+            </div>
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="trailer-modal-cancel">Cancelar</button>
+        @if (!Model.Lectura)
+        {
+            <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+        }
+    </div>
+
+</form>

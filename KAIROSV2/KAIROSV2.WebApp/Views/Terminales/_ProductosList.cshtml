@@ -1,0 +1,32 @@
+﻿@model TerminalCompletaViewModel
+<!-- BEGIN: Campo busqueda y Tabla-->
+
+<div id="button-trigger" class="card card card-default scrollspy border-radius-6 fixed-width">
+    <div class="card-content">
+        <table id="data-table-Productos" class="display" style="width:100%; white-space:nowrap">
+            <thead>
+                <tr>
+                    @foreach (var cabecera in Model.EncabezadosTerminalCompañiasProductos)
+                    {
+                        <th>@cabecera</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Log in Model.TerminalCompañiasProductos)
+                {
+                    <tr id="@Log.IdCompañia">
+
+                        <td>@Log.IdCompañia</td>
+                        <td>@Log.IdTerminal</td>
+                        <td>@Log.IdProducto</td>
+                        <td>@Log.IdCompañíaQueAsume</td>
+                        <td>@Log.ParticipaEnVariaciones</td>
+                        <td>@Log.UltimaEdicion</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KAIROSV2.Business.Common\KAIROSV2.Business.Common.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Business.Entities\KAIROSV2.Business.Entities.csproj" />
+    <ProjectReference Include="..\KAIROSV2.Data.Contracts\KAIROSV2.Data.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LightCore.Common">
+      <HintPath>..\Libs\LightCore.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

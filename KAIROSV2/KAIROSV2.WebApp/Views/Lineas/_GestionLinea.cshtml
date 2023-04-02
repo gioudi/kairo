@@ -1,0 +1,89 @@
+﻿@model GestionLIneaViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+
+<form id="linea-form" novalidate>
+
+    <fieldset class="modal-content">
+
+        <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken"
+               value="@Xsrf.GetAndStoreTokens(Context).RequestToken" />
+
+
+        <div class="section row equal-col">
+
+            <!--Header-->
+            <div class="col s12">
+                <h5><b>@Model.Titulo</b></h5>
+                <div class="divider"></div><br />
+            </div>
+
+            <!--Terminal-->
+            <div class="col s12 m4 input-field">
+                @if (!Model.Lectura)
+                {
+                    <select class="select2 browser-default" value="@Model.Terminal" asp-for="@Model.Terminal" name="Terminal" id="linea-Terminal" asp-items="@(new SelectList(Model.Terminales))">
+                        <option value="" selected disabled>Seleccionar terminal</option>
+                    </select>
+                }
+                else
+                {
+                    <input id="linea-Terminal" type="text" class="" value="@Model.Terminal" asp-for="@Model.Terminal" name="Terminal" readonly="readonly">
+
+                }
+                <label class="active" for="linea-Terminal">Terminal *</label>
+                <small><span class="red-text" asp-validation-for="Terminal"></span></small>
+
+            </div>
+            <!--Línea-->
+            <div class="col s12 m4 input-field">
+                <input id="linea-id" type="text" class="" value="@Model.IdLinea" asp-for="@Model.IdLinea" name="IdLinea" readonly="@(Model.Lectura ? "readonly" : null)">
+                <label class="active" for="linea-id">Línea *</label>
+                <small><span class="red-text" asp-validation-for="IdLinea"></span></small>
+            </div>
+            <!--Producto-->
+            <div class="col s12 m4 input-field">
+                <select class="select2 browser-default" asp-for="@Model.Producto" name="Producto" id="linea-producto" asp-items="@(new SelectList(Model.Productos ))">
+                    <option value="" selected disabled>Seleccionar producto</option>
+                </select>
+                <label class="active" for="linea-producto">Producto *</label>
+                <small><span class="red-text" asp-validation-for="Producto"></span></small>
+            </div>
+            <!--Estado-->
+            <div class="col s12 m4 input-field">
+                <select class="select2 browser-default" asp-for="@Model.Estado" name="Estado" id="linea-estado" asp-items="@(new SelectList(Model.EstadosLinea ))">
+                    <option value="" selected disabled>Seleccionar estado</option>
+                </select>
+                <label class="active" for="linea-estado">Estado *</label>
+                <small><span class="red-text" asp-validation-for="Estado"></span></small>
+            </div>
+            <!--Volumen-->
+            <div class="col s12 m4 input-field">
+                <input id="linea-Capacidad" type="text" class="input-unidades formato-int" value="@(Model.Capacidad == 0 ? null : Model.Capacidad)" asp-for="@Model.Capacidad" name="Capacidad">
+                <label class="active" for="linea-Capacidad">Volumen *</label>
+                <span class="span-unidades">gal</span>
+                <div><small><span class="red-text" asp-validation-for="Capacidad"></span></small></div>
+            </div>
+            <!--Densidad Aforo-->
+            <div class="col s12 m4 input-field">
+                <input id="linea-densidad" type="text" class="input-unidades formato-int" value="@(Model.DensidadAforo == 0 ? null : Model.DensidadAforo)" asp-for="@Model.DensidadAforo" name="DensidadAforo">
+                <label class="active" for="linea-densidad">Densidad Aforo *</label>
+                <span class="span-unidades">API</span>
+                <div><small><span class="red-text" asp-validation-for="DensidadAforo"></span></small></div>
+            </div>
+            <!--Observaciones-->
+            <div class="col s12 m12 input-field">
+                <textarea id="linea-observaciones" class="materialize-textarea" data-length="250" value="@Model.Observaciones" asp-for="@Model.Observaciones" onkeypress="characterCounterObs()"></textarea>
+                <label class="active" for="linea-observaciones">Observaciones</label>
+                <small><span class="red-text" asp-validation-for="Observaciones"></span></small>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <div class="modal-footer">
+        <button class="waves-effect btn-flat btn-orange" type="button" id="linea-modal-cancel">Cancelar</button>
+        <button class="waves-effect btn-flat btn-orange" type="submit" name="action">@Model.Accion</button>
+    </div>
+
+</form>

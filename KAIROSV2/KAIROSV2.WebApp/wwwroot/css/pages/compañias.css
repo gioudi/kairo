@@ -1,0 +1,42 @@
+/*----------------------------------------
+  Compañías
+------------------------------------------*/
+
+@media only screen and (min-width: 900px) 
+{
+    .modal-confirm-message-small 
+    {
+        max-height: 17% !important;
+        width: 45% !important;
+    }
+}
+
+@media only screen and (min-width: 1300px) 
+{
+    .modal 
+    {
+        width: 60% !important;
+        max-height: 100% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 35% !important;
+        width: 40% !important;
+    }
+}
+
+@media only screen and (min-width: 1400px)
+{
+    .modal 
+    {
+        width: 40% !important;
+        max-height: 60% !important;
+    }
+
+    .modal-confirm-message-small 
+    {
+        max-height: 23% !important;
+        width: 30% !important;
+    }
+}

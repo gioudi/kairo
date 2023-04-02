@@ -1,0 +1,24 @@
+﻿@model ListViewModel<TArea>
+
+<div id="kanba" class="row">
+    @foreach (var areas in Model.Entidades)
+    {
+        <div id="@areas.IdArea" class="col s12 m6 l4">
+            <div id="profile-card" class="card animate custom-card fadeRight " data-turbolinks="false">
+                <div class="card-image waves-effect custom-card-image waves-block waves-light" style="background: lightgrey;">
+                   <img src="~/images/gallery/shutterstock_1106084129.jpg" alt="user bg">
+                </div>
+                <div class="card-content  custom-card-content">
+                    <a class="btn-floating btn-move-up waves-effect waves-light blue accent-2 z-depth-4 right @(@Model.ActionsPermission.Editar ? "" : "disable-action")" data-turbolinks="false">
+                        <i class="material-icons area-action area-edit" data-areaid="@areas.IdArea" data-areaname="@areas.Area">edit</i>
+                    </a>
+                    <a class="btn-floating btn-move-up waves-effect waves-light red accent-2 z-depth-4 right @(@Model.ActionsPermission.Borrar ? "" : "disable-action")" data-turbolinks="false">
+                        <i class="material-icons area-action area-delete" data-areaid="@areas.IdArea" data-areaname="@areas.Area">delete</i>
+                    </a>
+                    <p><i class="material-icons profile-card-i" style="color:#FF6900">apps</i> @areas.Area</p>
+                    <p><i class="material-icons profile-card-i" style="color:#FF6900">select_all</i> ID: @areas.IdArea</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

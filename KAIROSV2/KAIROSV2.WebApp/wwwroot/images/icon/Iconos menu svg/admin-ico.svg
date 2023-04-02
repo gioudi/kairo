@@ -1,0 +1,18 @@
+<svg id="Componente_29_1" data-name="Componente 29 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff6b39"/>
+      <stop offset="1" stop-color="#ffb81c"/>
+    </linearGradient>
+  </defs>
+  <path id="Trazado_3429" data-name="Trazado 3429" d="M259.281,259.121h8.829v8.829h-8.829Zm0,0" transform="translate(-246.605 -246.453)" fill="#fff"/>
+  <path id="Trazado_3430" data-name="Trazado 3430" d="M259.281,10.289h8.829v8.829h-8.829Zm0,0" transform="translate(-246.605 -9.786)" fill="url(#linear-gradient)"/>
+  <path id="Trazado_3431" data-name="Trazado 3431" d="M10.449,259.121h8.829v8.829H10.449Zm0,0" transform="translate(-9.938 -246.453)" fill="#fff"/>
+  <path id="Trazado_3432" data-name="Trazado 3432" d="M10.449,10.289h8.829v8.829H10.449Zm0,0" transform="translate(-9.938 -9.786)" fill="#fff"/>
+  <g id="Grupo_488" data-name="Grupo 488">
+    <path id="Trazado_3433" data-name="Trazado 3433" d="M9.827.489A.489.489,0,0,0,9.338,0H.489A.489.489,0,0,0,0,.489V9.338a.489.489,0,0,0,.489.489H9.338a.489.489,0,0,0,.489-.489Zm-.978,8.36H.978V.978H8.849Zm0,0" fill="#707070"/>
+    <path id="Trazado_3434" data-name="Trazado 3434" d="M258.827.489A.489.489,0,0,0,258.338,0h-8.849A.489.489,0,0,0,249,.489V9.338a.489.489,0,0,0,.489.489h8.849a.489.489,0,0,0,.489-.489Zm-.978,8.36h-7.871V.978h7.871Zm0,0" transform="translate(-236.827)" fill="#707070"/>
+    <path id="Trazado_3435" data-name="Trazado 3435" d="M9.827,249.489A.489.489,0,0,0,9.338,249H.489a.489.489,0,0,0-.489.489v8.849a.489.489,0,0,0,.489.489H9.338a.489.489,0,0,0,.489-.489Zm-.978,8.36H.978v-7.871H8.849Zm0,0" transform="translate(0 -236.827)" fill="#707070"/>
+    <path id="Trazado_3436" data-name="Trazado 3436" d="M258.827,249.489a.489.489,0,0,0-.489-.489h-8.849a.489.489,0,0,0-.489.489v8.849a.489.489,0,0,0,.489.489h8.849a.489.489,0,0,0,.489-.489Zm-.978,8.36h-7.871v-7.871h7.871Zm0,0" transform="translate(-236.827 -236.827)" fill="#707070"/>
+  </g>
+</svg>
